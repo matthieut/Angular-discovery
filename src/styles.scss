@@ -6,6 +6,7 @@ html, body {
   margin: 0;
   background-image: url('/background.png') ;
   background-size: cover;
+  --p-scrollarea-handle-background: var(--p-primary-color);
 }
 .p-dock-item:has(.p-dock-item-link.router-link-active) {
     border-bottom: 2px solid var(--p-primary-color);

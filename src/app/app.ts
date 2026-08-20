@@ -6,10 +6,11 @@ import { TooltipModule } from 'primeng/tooltip';
 import { MenuItem } from 'primeng/api';
 import { RouterOutlet } from '@angular/router';
 import { CardModule } from 'primeng/card';
+import { ScrollAreaModule } from 'primeng/scrollarea';
 
 @Component({
   selector: 'app-root',
-    imports: [RouterOutlet, DockModule, RadioButtonModule, TooltipModule, FormsModule, CardModule],
+    imports: [RouterOutlet, DockModule, RadioButtonModule, TooltipModule, FormsModule, CardModule, ScrollAreaModule],
   templateUrl: './app.html',
   //changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.scss'
