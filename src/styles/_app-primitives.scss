@@ -5,6 +5,7 @@
     box-shadow: var(--shadow-panel);
     -webkit-backdrop-filter: var(--backdrop-blur);
     backdrop-filter: var(--backdrop-blur);
+    border-radius: var(--p-scrollarea-border-radius) !important;
 }
 
 .app-control {

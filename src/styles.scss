@@ -14,7 +14,7 @@ html, body {
   font-family: var(--font-family-app);
   background-image: url('/background.png') ;
   background-size: cover;
-  --p-scrollarea-handle-background: var(--p-primary-color);
+  //background: var(--surface-glass);
 }
 .p-dock-item:has(.p-dock-item-link.router-link-active) {
     border-left: 2px solid var(--p-primary-color);
