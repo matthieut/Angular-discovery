@@ -5,6 +5,7 @@ import { PortfolioComponent } from './portfolio-component/portfolio-component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'cv', component: HomeComponent },
   {
     path: 'lab',
     loadChildren: () =>

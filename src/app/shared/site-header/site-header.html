@@ -1,0 +1,28 @@
+<header class="site-header app-surface">
+  <a class="identity" routerLink="/home" (click)="closeMenu()" aria-label="Accueil de Matthieu Talleu">
+    <span class="identity__monogram" aria-hidden="true">MT</span>
+    <span class="identity__text">
+      <strong>Matthieu Talleu</strong>
+      <small>Architecte logiciel · Tech Lead</small>
+    </span>
+  </a>
+
+  <button type="button" class="menu-toggle" [class.is-open]="menuOpen()"
+    [attr.aria-expanded]="menuOpen()" aria-controls="site-navigation"
+    aria-label="Ouvrir ou fermer le menu" (click)="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav id="site-navigation" class="navigation" [class.is-open]="menuOpen()" aria-label="Navigation principale">
+    @for (item of navigation; track item.route) {
+      <a [routerLink]="item.route" routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+        #activeLink="routerLinkActive" [attr.aria-current]="activeLink.isActive ? 'page' : null"
+        (click)="closeMenu()">{{ item.label }}</a>
+    }
+  </nav>
+
+  <!--<a class="contact-link" href="mailto:mtalleu@outlook.fr">
+    <span aria-hidden="true"></span>Disponible
+  </a>-->
+</header>

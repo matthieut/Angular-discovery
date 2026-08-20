@@ -1,9 +1,10 @@
 .app-surface {
-  border: 1px solid var(--border-color-strong);
-  border-radius: var(--radius-lg);
-  background: var(--surface-glass);
-  box-shadow: var(--shadow-panel);
-  backdrop-filter: var(--backdrop-blur);
+  border-bottom: 1px solid var(--border-color-strong);
+    /* border-radius: var(--radius-lg); */
+    background: var(--surface-glass);
+    box-shadow: var(--shadow-panel);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    backdrop-filter: var(--backdrop-blur);
 }
 
 .app-control {

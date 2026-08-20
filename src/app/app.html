@@ -20,13 +20,9 @@
     </div>
 
 </div> -->
-<div class="px-8 p-5 h-full">
+<div class="app-shell">
+  <app-site-header />
+  <main class="app-content">
     <router-outlet />
+  </main>
 </div>
-<!--  -->
-
-<p-dock [model]="items" position="right">
-    <ng-template #item let-item>
-        <img [pTooltip]="item.label" tooltipPosition="top" [src]="item.icon" [alt]="item.label" width="100%" />
-    </ng-template>
-</p-dock>
