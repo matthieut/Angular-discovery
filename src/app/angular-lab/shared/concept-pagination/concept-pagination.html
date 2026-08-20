@@ -1,0 +1,13 @@
+<footer class="sheet-pagination">
+  @if (previousRoute()) {
+    <a [routerLink]="previousRoute()">← Fiche précédente</a>
+  } @else {
+    <span class="disabled">← Fiche précédente</span>
+  }
+  <strong>{{ current().toString().padStart(2, '0') }} / {{ total() }}</strong>
+  @if (nextRoute()) {
+    <a [routerLink]="nextRoute()">Fiche suivante →</a>
+  } @else {
+    <span class="disabled">Fiche suivante →</span>
+  }
+</footer>

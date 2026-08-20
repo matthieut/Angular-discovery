@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.lab-demo-card button {
+  margin-top: 0.45rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--lab-border-active);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--lab-secondary);
+  cursor: pointer;
+}
+.lab-demo-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}

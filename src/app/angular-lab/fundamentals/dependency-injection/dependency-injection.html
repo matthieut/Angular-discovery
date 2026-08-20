@@ -1,0 +1,93 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Fondamentaux"
+    [sheetNumber]="5"
+    title="Injection de dépendances"
+    description="Comprendre comment Angular construit, partage et remplace les services à travers sa hiérarchie d’injecteurs."
+    level="Fondamental"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/architecture.png'"
+            title="Comparer la portée des providers"
+            description="Observe le partage ou l’isolation de deux instances de composant."
+          />
+          <div class="scope-switch">
+            <button
+              type="button"
+              [class.is-active]="scope() === 'root'"
+              (click)="changeScope('root')"
+            >
+              Provider root</button
+            ><button
+              type="button"
+              [class.is-active]="scope() === 'component'"
+              (click)="changeScope('component')"
+            >
+              Provider composant
+            </button>
+          </div>
+          <div class="lab-demo-grid">
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">Composant A</span>
+              <h4>{{ leftValue() }}</h4>
+              <button class="lab-demo-action" type="button" (click)="increment('left')">
+                Incrémenter A
+              </button>
+            </div>
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">Composant B</span>
+              <h4>{{ rightValue() }}</h4>
+              <button class="lab-demo-action" type="button" (click)="increment('right')">
+                Incrémenter B
+              </button>
+            </div>
+          </div>
+          <p class="scope-explanation">
+            {{
+              scope() === 'root'
+                ? 'Les deux composants reçoivent la même instance.'
+                : 'Chaque composant possède sa propre instance.'
+            }}
+          </p>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="counter.service.ts"
+            [code]="serviceCode"
+            caption="Service injectable"
+          /><app-code-preview
+            filename="app.config.ts"
+            [code]="tokenCode"
+            caption="InjectionToken"
+          />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination [current]="5" previousRoute="../directives-pipes" />
+    </section>
+    <app-concept-learning
+      introduction="L’injecteur résout un token en recherchant un provider dans sa hiérarchie. La position du provider détermine la portée et la durée de vie de l’instance."
+      [points]="[
+        'inject() demande une dépendance à l’injecteur actif.',
+        'providedIn root crée un service partagé et tree-shakable.',
+        'InjectionToken représente une configuration ou une abstraction sans classe.',
+      ]"
+      [useCases]="useCases"
+      recommendation="Place le provider au niveau le plus haut qui doit réellement partager l’instance. Déclarer un service stateful dans un composant sans le vouloir crée des états divergents difficiles à diagnostiquer."
+      [exercises]="[
+        'Crée un InjectionToken de configuration.',
+        'Remplace un service par un fake dans un test.',
+        'Compare root et providers de composant avec deux instances.',
+      ]"
+    />
+  </div>
+</article>

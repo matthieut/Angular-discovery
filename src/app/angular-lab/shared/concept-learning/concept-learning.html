@@ -1,0 +1,39 @@
+<aside class="learning-column">
+  <section class="insight-card">
+    <span class="insight-card__icon"><img [src]="iconPath + '/angular.png'" alt="" /></span>
+    <h3>Ce qu’il faut comprendre</h3>
+    <p>{{ introduction() }}</p>
+    <ul>
+      @for (point of points(); track point) {
+        <li>{{ point }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="use-card">
+    <h3><img [src]="iconPath + '/timeline.png'" alt="" />Quand l’utiliser ?</h3>
+    @for (useCase of useCases(); track useCase.title) {
+      <div>
+        <strong>{{ useCase.title }}</strong>
+        <p>{{ useCase.description }}</p>
+      </div>
+    }
+  </section>
+
+  <section class="recommendation-card">
+    <span><img [src]="iconPath + '/star.png'" alt="" /></span>
+    <div>
+      <strong>Recommandation</strong>
+      <p>{{ recommendation() }}</p>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <h3>À toi de jouer</h3>
+    <ol>
+      @for (exercise of exercises(); track exercise) {
+        <li>{{ exercise }}</li>
+      }
+    </ol>
+  </section>
+</aside>

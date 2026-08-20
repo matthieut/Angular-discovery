@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+.sheet-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+.sheet-pagination :is(a, .disabled) {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--lab-border-subtle);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.58rem;
+  text-decoration: none;
+}
+.sheet-pagination a {
+  color: var(--lab-secondary);
+}
+.sheet-pagination .disabled {
+  color: var(--lab-text-subtle);
+  opacity: 0.55;
+}
+.sheet-pagination strong {
+  color: var(--lab-text-subtle);
+  font-size: 0.59rem;
+}
+.sheet-pagination a:focus-visible {
+  outline: 3px solid var(--lab-focus-ring);
+  outline-offset: 2px;
+}

@@ -1,0 +1,83 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Fondamentaux"
+    [sheetNumber]="2"
+    title="Composants et templates"
+    description="Construire une interface à partir de composants standalone, de templates déclaratifs et du nouveau contrôle de flux."
+    level="Fondamental"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/grid.png'"
+            title="Composer une carte de profil"
+            description="Observe la responsabilité du composant et celle de son template."
+          />
+          <div class="lab-demo-controls">
+            <button
+              class="lab-demo-action"
+              type="button"
+              (click)="showDetails.update((value) => !value)"
+            >
+              {{ showDetails() ? 'Masquer' : 'Afficher' }} les technologies
+            </button>
+          </div>
+          <article class="profile-preview">
+            <span class="lab-demo-chip">app-profile-card</span>
+            <h3>Matthieu Talleu</h3>
+            <p>Architecte logiciel · Tech Lead</p>
+            @if (showDetails()) {
+              <ul>
+                @for (technology of technologies; track technology) {
+                  <li>{{ technology }}</li>
+                }
+              </ul>
+            }
+          </article>
+          <div class="component-tree">
+            <span>Page</span><i>→</i><span>ProfileCard</span><i>→</i><span>Template</span>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="profile-card.ts"
+            [code]="componentCode"
+            caption="Composant"
+          /><app-code-preview
+            filename="profile-card.html"
+            [code]="templateCode"
+            caption="Template"
+          />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="2"
+        previousRoute="../standalone-bootstrap"
+        nextRoute="../data-binding"
+      />
+    </section>
+    <app-concept-learning
+      introduction="Un composant associe une API, un comportement et une vue. Le template décrit l’état attendu de l’interface ; il ne doit pas devenir un second contrôleur."
+      [points]="[
+        'Le selector identifie le composant dans un template.',
+        'Les imports rendent les dépendances de vue explicites.',
+        '@if et @for expriment le contrôle de flux sans directives structurelles importées.',
+      ]"
+      [useCases]="useCases"
+      recommendation="Découpe par responsabilité métier ou visuelle. Un composant n’est pas justifié uniquement pour réduire le nombre de lignes d’un fichier."
+      [exercises]="[
+        'Extrais la carte de profil en composant.',
+        'Ajoute un état vide avec @if.',
+        'Utilise track dans une boucle @for.',
+      ]"
+    />
+  </div>
+</article>

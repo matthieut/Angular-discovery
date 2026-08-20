@@ -1,0 +1,14 @@
+<div class="comparison-grid">
+  @for (item of items(); track item.title) {
+    <section class="panel comparison-card" [class.is-recommended]="item.recommended">
+      <span>{{ item.badge }}</span>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+      <ul>
+        @for (point of item.points; track point) {
+          <li>{{ point }}</li>
+        }
+      </ul>
+    </section>
+  }
+</div>

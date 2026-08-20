@@ -32,10 +32,10 @@ export class AngularLab {
       icon: 'angular.png',
       concepts: [
         { title: 'Projet standalone et bootstrap', route: 'fondamentaux/standalone-bootstrap' },
-        { title: 'Composants et templates' },
-        { title: 'Data binding' },
-        { title: 'Directives et pipes' },
-        { title: 'Injection de dépendances' },
+        { title: 'Composants et templates', route: 'fondamentaux/composants-templates' },
+        { title: 'Data binding', route: 'fondamentaux/data-binding' },
+        { title: 'Directives et pipes', route: 'fondamentaux/directives-pipes' },
+        { title: 'Injection de dépendances', route: 'fondamentaux/injection-dependances' },
       ],
     },
     {
@@ -85,13 +85,13 @@ export class AngularLab {
     if (!query) return this.categories;
 
     return this.categories
-      .map(category => ({
+      .map((category) => ({
         ...category,
-        concepts: category.concepts.filter(concept =>
+        concepts: category.concepts.filter((concept) =>
           `${category.title} ${concept.title}`.toLocaleLowerCase('fr').includes(query),
         ),
       }))
-      .filter(category => category.concepts.length > 0);
+      .filter((category) => category.concepts.length > 0);
   });
 
   setSearch(value: string): void {
@@ -99,6 +99,6 @@ export class AngularLab {
   }
 
   toggleCategory(title: string): void {
-    this.expandedCategory.update(current => current === title ? '' : title);
+    this.expandedCategory.update((current) => (current === title ? '' : title));
   }
 }

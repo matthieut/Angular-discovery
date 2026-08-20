@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.comparison-card {
+  position: relative;
+  padding: 1.1rem;
+}
+.comparison-card > span {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+  background: rgb(106 124 153 / 13%);
+  color: var(--lab-text-disabled);
+  font-size: 0.57rem;
+  text-transform: uppercase;
+}
+.comparison-card h3 {
+  margin: 0.7rem 0 0.35rem;
+  font-size: 1rem;
+}
+.comparison-card p {
+  min-height: 65px;
+  margin: 0;
+  color: var(--lab-text-muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+.comparison-card ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--lab-text-muted);
+  font-size: 0.68rem;
+  line-height: 1.7;
+}
+.comparison-card.is-recommended {
+  border-color: var(--lab-border-active);
+}
+.comparison-card.is-recommended > span {
+  background: rgb(22 167 216 / 12%);
+  color: var(--lab-secondary);
+}
+@media (max-width: 700px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}

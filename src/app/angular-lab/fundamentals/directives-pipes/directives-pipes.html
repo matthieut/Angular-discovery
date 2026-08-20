@@ -1,0 +1,86 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Fondamentaux"
+    [sheetNumber]="4"
+    title="Directives et pipes"
+    description="Enrichir le comportement du DOM et transformer les valeurs d’affichage sans déplacer la logique métier dans le template."
+    level="Fondamental"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/code.png'"
+            title="Filtrer et présenter une liste"
+            description="Le pipe transforme la donnée ; la directive enrichit son élément."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >Filtrer<input
+                [ngModel]="query()"
+                (ngModelChange)="query.set($event)"
+                placeholder="Rechercher un nom" /></label
+            ><button
+              class="lab-demo-action"
+              type="button"
+              (click)="highlight.update((value) => !value)"
+            >
+              {{ highlight() ? 'Retirer' : 'Activer' }} la directive
+            </button>
+          </div>
+          <div class="member-list">
+            @for (member of visibleMembers(); track member) {
+              <article [appHighlight]="highlight()">
+                <span>{{ member | initials }}</span>
+                <div>
+                  <strong>{{ member | uppercase }}</strong
+                  ><small>Pipe initials + uppercase</small>
+                </div>
+              </article>
+            } @empty {
+              <p class="lab-demo-empty">Aucun résultat</p>
+            }
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="members.html"
+            [code]="templateCode"
+            caption="Template"
+          /><app-code-preview
+            filename="initials.pipe.ts"
+            [code]="pipeCode"
+            caption="Pipe personnalisé"
+          />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="4"
+        previousRoute="../data-binding"
+        nextRoute="../injection-dependances"
+      />
+    </section>
+    <app-concept-learning
+      introduction="Une directive agit sur la structure ou le comportement d’un élément. Un pipe produit une représentation à partir d’une valeur sans porter de logique métier."
+      [points]="[
+        'Les directives attributaires enrichissent un élément existant.',
+        'Les pipes purs ne sont recalculés que si leur entrée change.',
+        '@if et @for remplacent la majorité des anciennes directives structurelles.',
+      ]"
+      [useCases]="useCases"
+      recommendation="Un pipe doit rester pur et léger. Pour une transformation coûteuse ou métier, prépare la donnée dans le composant ou le service plutôt que dans le template."
+      [exercises]="[
+        'Ajoute un pipe de troncature.',
+        'Rends la couleur de la directive configurable.',
+        'Affiche un état vide avec @empty.',
+      ]"
+    />
+  </div>
+</article>

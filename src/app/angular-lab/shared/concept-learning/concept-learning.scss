@@ -1,0 +1,135 @@
+:host {
+  display: block;
+}
+.learning-column {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+}
+.insight-card,
+.use-card,
+.recommendation-card,
+.exercise-card {
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-panel);
+  background: var(--lab-panel-background);
+}
+.insight-card,
+.use-card,
+.exercise-card {
+  padding: 0.9rem;
+}
+.insight-card__icon {
+  display: grid;
+  width: 38px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 9px;
+  background: linear-gradient(135deg, rgb(178 43 230 / 18%), rgb(23 150 230 / 16%));
+}
+.insight-card__icon img {
+  width: 25px;
+}
+h3 {
+  margin: 0.7rem 0 0.45rem;
+  color: var(--lab-text);
+  font-size: 0.79rem;
+}
+p,
+li {
+  color: var(--lab-text-muted);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+.insight-card > p {
+  margin: 0;
+}
+.insight-card ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.insight-card li {
+  position: relative;
+  padding-left: 0.85rem;
+}
+.insight-card li::before {
+  content: '';
+  position: absolute;
+  top: 0.48rem;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lab-secondary);
+}
+.use-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0;
+}
+.use-card h3 img {
+  width: 19px;
+}
+.use-card > div {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--lab-border-subtle);
+}
+.use-card strong {
+  color: var(--lab-text);
+  font-size: 0.67rem;
+}
+.use-card p {
+  margin: 0.15rem 0 0;
+}
+.recommendation-card {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.8rem;
+  border-color: rgb(191 72 255 / 21%);
+  background: linear-gradient(135deg, rgb(156 38 210 / 10%), rgb(11 100 168 / 8%));
+}
+.recommendation-card > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(179 59 231 / 13%);
+}
+.recommendation-card img {
+  width: 22px;
+}
+.recommendation-card strong {
+  color: var(--lab-text);
+  font-size: 0.68rem;
+}
+.recommendation-card p {
+  margin: 0.15rem 0 0;
+}
+.exercise-card h3 {
+  margin-top: 0;
+  color: var(--lab-secondary);
+}
+.exercise-card ol {
+  margin: 0.2rem 0 0;
+  padding-left: 1.15rem;
+}
+@media (max-width: 1180px) {
+  .learning-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .recommendation-card,
+  .exercise-card {
+    min-height: 100%;
+  }
+}
+@media (max-width: 700px) {
+  .learning-column {
+    grid-template-columns: 1fr;
+  }
+}

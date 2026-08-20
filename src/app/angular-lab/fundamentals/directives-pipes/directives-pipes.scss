@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.member-list,
+.code-stack {
+  display: grid;
+  gap: 0.55rem;
+}
+.member-list article {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-control);
+  background: rgb(255 255 255 / 2%);
+  transition: border-color 160ms ease;
+}
+.member-list article > span {
+  display: grid;
+  width: 34px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(178 43 230 / 20%), rgb(23 150 230 / 18%));
+  color: var(--lab-secondary);
+  font-size: 0.65rem;
+  font-weight: 850;
+}
+.member-list div {
+  display: grid;
+}
+.member-list strong {
+  font-size: 0.68rem;
+}
+.member-list small {
+  color: var(--lab-text-subtle);
+  font-size: 0.58rem;
+}

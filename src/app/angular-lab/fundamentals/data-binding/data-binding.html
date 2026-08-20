@@ -1,0 +1,86 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Fondamentaux"
+    [sheetNumber]="3"
+    title="Data binding"
+    description="Relier explicitement l’état TypeScript, le DOM et les événements utilisateur sans perdre le sens du flux de données."
+    level="Fondamental"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/trend.png'"
+            title="Observer les quatre bindings"
+            description="Chaque action met en évidence un sens de circulation différent."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >Nom — two-way binding<input
+                [ngModel]="name()"
+                (ngModelChange)="name.set($event)" /></label
+            ><button
+              class="lab-demo-action"
+              type="button"
+              (click)="locked.update((value) => !value)"
+            >
+              {{ locked() ? 'Déverrouiller' : 'Verrouiller' }}
+            </button>
+          </div>
+          <div class="lab-demo-grid">
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">Interpolation</span>
+              <h4>Bonjour {{ name() }}</h4>
+              <p>Le signal est lu dans le texte.</p>
+            </div>
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">Property binding</span>
+              <h4>Bouton {{ status() }}</h4>
+              <button
+                type="button"
+                [disabled]="locked()"
+                (click)="count.update((value) => value + 1)"
+              >
+                Compteur : {{ count() }}
+              </button>
+              <p>disabled suit l’état TypeScript.</p>
+            </div>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="binding-demo.html"
+          [code]="code"
+          caption="Les quatre syntaxes"
+        />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="3"
+        previousRoute="../composants-templates"
+        nextRoute="../directives-pipes"
+      />
+    </section>
+    <app-concept-learning
+      introduction="Angular évalue le template à partir de l’état du composant. Le sens du binding indique qui possède la valeur et qui déclenche sa modification."
+      [points]="[
+        '{{ }} produit une représentation textuelle.',
+        '[property] écrit dans une propriété.',
+        '(event) remonte une interaction.',
+        '[(ngModel)] combine valeur et événement.',
+      ]"
+      [useCases]="useCases"
+      recommendation="Préfère des entrées et événements séparés entre composants. Réserve le two-way binding aux contrôles qui représentent réellement une valeur éditable."
+      [exercises]="[
+        'Ajoute un bouton de remise à zéro.',
+        'Remplace le two-way binding par sa forme développée.',
+        'Empêche l’incrémentation lorsque le bouton est verrouillé.',
+      ]"
+    />
+  </div>
+</article>
