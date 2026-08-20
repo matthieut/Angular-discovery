@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ScrollAreaModule } from 'primeng/scrollarea';
 
 type ProjectCategory = 'Tous' | '.NET' | 'Angular' | 'Architecture' | 'Smart City';
 
@@ -17,7 +18,7 @@ interface Project {
 
 @Component({
   selector: 'app-portfolio-component',
-  imports: [RouterLink],
+  imports: [RouterLink, ScrollAreaModule],
   templateUrl: './portfolio-component.html',
   styleUrl: './portfolio-component.scss',
 })

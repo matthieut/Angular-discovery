@@ -34,8 +34,8 @@ export class App implements OnInit {
             },{
                 label: 'Angular',
                 icon: '/angular-icon.webp',
-                url:'/angular',
-                routerLink: '/angular'
+                url:'/lab',
+                routerLink: '/lab'
             }
         ];
     }

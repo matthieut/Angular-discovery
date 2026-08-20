@@ -1,0 +1,107 @@
+<article class="concept-sheet">
+  <header class="concept-header">
+    <div class="breadcrumb"><span>Fondamentaux</span><i>/</i><strong>Fiche 01</strong></div>
+    <div class="concept-title-row">
+      <div>
+        <h2>Projet standalone et bootstrap</h2>
+        <p>Lire le point d’entrée d’une application moderne et configurer ses dépendances globales sans <code>AppModule</code>.</p>
+      </div>
+      <span class="level"><i></i>Fondamental</span>
+    </div>
+    <nav class="tabs" aria-label="Contenu de la fiche">
+      <button type="button" [class.is-active]="activeTab() === 'demo'" (click)="selectTab('demo')"><img [src]="iconPath + '/rocket.png'" alt="" />Démonstration</button>
+      <button type="button" [class.is-active]="activeTab() === 'code'" (click)="selectTab('code')"><img [src]="iconPath + '/code.png'" alt="" />Code</button>
+      <button type="button" [class.is-active]="activeTab() === 'comparison'" (click)="selectTab('comparison')"><img [src]="iconPath + '/grid.png'" alt="" />Comparaison</button>
+    </nav>
+  </header>
+
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <div class="panel-heading">
+            <div><span class="panel-icon"><img [src]="iconPath + '/rocket.png'" alt="" /></span><div><h3>Composer le bootstrap</h3><p>Active les providers et observe la configuration produite.</p></div></div>
+            <span class="live-badge"><i></i>Interactif</span>
+          </div>
+
+          <div class="environment-switch" aria-label="Environnement">
+            <button type="button" [class.is-active]="environment() === 'development'" (click)="setEnvironment('development')">Développement</button>
+            <button type="button" [class.is-active]="environment() === 'production'" (click)="setEnvironment('production')">Production</button>
+          </div>
+
+          <div class="provider-grid">
+            <button type="button" [class.is-enabled]="routerEnabled()" (click)="toggleProvider('router')"><span><img [src]="iconPath + '/architecture.png'" alt="" /></span><strong>Router</strong><small>Navigation globale</small><i></i></button>
+            <button type="button" [class.is-enabled]="httpEnabled()" (click)="toggleProvider('http')"><span><img [src]="iconPath + '/api.png'" alt="" /></span><strong>HttpClient</strong><small>Accès aux API</small><i></i></button>
+            <button type="button" [class.is-enabled]="interceptorEnabled()" [class.is-disabled]="!httpEnabled()" (click)="toggleProvider('interceptor')"><span><img [src]="iconPath + '/shield.png'" alt="" /></span><strong>Intercepteur</strong><small>Authentification</small><i></i></button>
+          </div>
+
+          <div class="boot-result">
+            <div class="boot-result__status"><span><i></i>Application initialisée</span><small>{{ providerCount() + 1 }} providers actifs</small></div>
+            <div class="boot-flow"><span>main.ts</span><i>→</i><span>bootstrapApplication</span><i>→</i><span>AppComponent</span></div>
+          </div>
+        </div>
+
+        <div class="code-preview">
+          <div class="code-preview__bar"><span><i></i><i></i><i></i></span><strong>main.ts</strong><small>Configuration générée</small></div>
+          <pre><code>{{ bootstrapCode() }}</code></pre>
+        </div>
+      }
+
+      @if (activeTab() === 'code') {
+        <div class="panel article-panel">
+          <h3>Implémentation complète</h3>
+          <p>Le point d’entrée reste court : il démarre le composant racine et rassemble uniquement les providers globaux.</p>
+          <pre><code>import &#123; bootstrapApplication &#125; from '@angular/platform-browser';
+import &#123; provideRouter &#125; from '@angular/router';
+import &#123; provideHttpClient, withInterceptors &#125; from '@angular/common/http';
+import &#123; AppComponent &#125; from './app/app.component';
+import &#123; routes &#125; from './app/app.routes';
+import &#123; authInterceptor &#125; from './app/core/auth.interceptor';
+
+bootstrapApplication(AppComponent, &#123;
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ]
+&#125;).catch(console.error);</code></pre>
+          <h4>Points d’attention</h4>
+          <ul><li>Déclarer un provider global une seule fois.</li><li>Importer explicitement les dépendances de chaque composant standalone.</li><li>Utiliser un <code>InjectionToken</code> pour rendre la configuration substituable en test.</li></ul>
+        </div>
+      }
+
+      @if (activeTab() === 'comparison') {
+        <div class="comparison-grid">
+          <section class="panel comparison-card is-recommended"><span>Recommandé</span><h3>API standalone</h3><p>Un démarrage explicite, des imports locaux et des providers composables avec les fonctions <code>provideX()</code>.</p><ul><li>Moins de cérémonial</li><li>Dépendances visibles</li><li>Lazy loading naturel</li></ul></section>
+          <section class="panel comparison-card"><span>Héritage</span><h3>NgModule</h3><p>Une organisation historique encore utile pendant une migration progressive ou pour certaines bibliothèques.</p><ul><li>Conventions connues</li><li>Regroupements parfois opaques</li><li>Risque de SharedModule fourre-tout</li></ul></section>
+        </div>
+      }
+
+      <footer class="sheet-pagination"><button type="button" disabled>← Fiche précédente</button><span>01 / 68</span><button type="button" disabled>Fiche suivante →</button></footer>
+    </section>
+
+    <aside class="learning-column">
+      <section class="insight-card">
+        <span class="insight-card__icon"><img [src]="iconPath + '/angular.png'" alt="" /></span>
+        <h3>Ce qu’il faut comprendre</h3>
+        <p>Une application standalone ne supprime pas l’injection de dépendances : elle déplace sa composition vers des APIs fonctionnelles et explicites.</p>
+        <ul><li><code>bootstrapApplication</code> démarre le composant racine.</li><li>Les fonctions <code>provideX()</code> configurent les services globaux.</li><li>Les composants déclarent directement leurs imports de template.</li></ul>
+      </section>
+
+      <section class="use-card">
+        <h3><img [src]="iconPath + '/timeline.png'" alt="" />Quand l’utiliser ?</h3>
+        <div><strong>Nouveau projet</strong><p>Choix par défaut pour une application Angular moderne.</p></div>
+        <div><strong>Migration progressive</strong><p>Convertir route par route sans réécriture totale.</p></div>
+      </section>
+
+      <section class="recommendation-card">
+        <span><img [src]="iconPath + '/star.png'" alt="" /></span>
+        <div><strong>Recommandation</strong><p>Préfère les APIs standalone et <code>provideX()</code>. Conserve les NgModules uniquement lorsqu’un contexte existant le justifie.</p></div>
+      </section>
+
+      <section class="exercise-card">
+        <h3>À toi de jouer</h3>
+        <ol><li>Ajoute une configuration via <code>InjectionToken</code>.</li><li>Migre un petit <code>AppModule</code>.</li><li>Vérifie que le provider est substituable en test.</li></ol>
+      </section>
+    </aside>
+  </div>
+</article>

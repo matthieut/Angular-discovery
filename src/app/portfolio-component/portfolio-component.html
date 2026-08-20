@@ -1,104 +1,154 @@
-<main class="portfolio-page">
-  <header class="portfolio-hero">
-    <p class="eyebrow">Portfolio</p>
-    <h1>Des solutions métier, pas seulement du code</h1>
-    <p class="portfolio-hero__intro">
-      De l’architecture à la livraison, j’accompagne la modernisation et la création
-      de solutions métier complexes, avec des résultats mesurables et durables.
-    </p>
+<p-scrollarea class="app-container h-full">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
 
-    <nav class="filters" aria-label="Filtrer les projets">
-      @for (category of categories; track category) {
-        <button
-          type="button"
-          [class.filters__button--active]="selectedCategory() === category"
-          [attr.aria-pressed]="selectedCategory() === category"
-          (click)="selectCategory(category)"
-        >
-          <img [src]="iconPath + '/' + categoryIcons[category]" alt="" width="20" height="20" />
-          {{ category }}
-        </button>
-      }
-    </nav>
-  </header>
-
-  <section class="projects" aria-label="Projets sélectionnés">
-    
-      <article class="featured-project">
-        <div class="featured-project__visual">
-          <img
-            src="images/nextcity-smart-concept.png"
-            alt="Illustration conceptuelle d’une ville connectée et de ses équipements urbains"
-          />
-          <span class="project-label"><img [src]="iconPath + '/star.png'" alt="" width="17" height="17" />Projet phare</span>
-        </div>
-
-        <div class="featured-project__content">
-          <div class="project-heading">
-            <h2><span>NextCity</span> SMART</h2>
-            <p>Smart City · IoT · SIG</p>
-          </div>
-
-          <p class="project-role">Architecture globale · Tech lead</p>
-          <p class="project-description">
-            Solution Smart City de gestion du patrimoine urbain et des services :
-            interopérable, performante et sécurisée, au service des collectivités.
+      <main class="portfolio-page">
+        <header class="portfolio-hero">
+          <p class="eyebrow">Portfolio</p>
+          <h1>Des solutions métier, pas seulement du code</h1>
+          <p class="portfolio-hero__intro">
+            De l’architecture à la livraison, j’accompagne la modernisation et la création
+            de solutions métier complexes, avec des résultats mesurables et durables.
           </p>
 
-          <dl class="project-metrics">
-            <div><img [src]="iconPath + '/users.png'" alt="" width="25" height="25" /><div><dt>1 200+</dt><dd>utilisateurs</dd></div></div>
-            <div><img [src]="iconPath + '/cube.png'" alt="" width="25" height="25" /><div><dt>1,2 M+</dt><dd>équipements</dd></div></div>
-            <div><img [src]="iconPath + '/shield.png'" alt="" width="25" height="25" /><div><dt>99,9 %</dt><dd>SLA critique</dd></div></div>
-          </dl>
+          <nav class="filters" aria-label="Filtrer les projets">
+            @for (category of categories; track category) {
+            <button type="button" [class.filters__button--active]="selectedCategory() === category"
+              [attr.aria-pressed]="selectedCategory() === category" (click)="selectCategory(category)">
+              <img [src]="iconPath + '/' + categoryIcons[category]" alt="" width="20" height="20" />
+              {{ category }}
+            </button>
+            }
+          </nav>
+        </header>
 
-          <a class="primary-action" routerLink="/portfolio/nextcity-smart">
-            Voir l’étude de cas <img [src]="iconPath + '/arrow.png'" alt="" width="20" height="20" />
-          </a>
-        </div>
-      </article>
-    
+        <section class="projects" aria-label="Projets sélectionnés">
 
-    <div class="secondary-projects">
-      @for (project of visibleProjects(); track project.title) {
-        @if($index <= 1){
-        <article class="project-card">
-          <header>
-            <span class="project-card__icon"><img [src]="iconPath + '/' + project.icon" alt="" width="29" height="29" /></span>
-            <div><h2>{{ project.title }}</h2><p>{{ project.subtitle }}</p></div>
-          </header>
-          <p class="project-card__description">{{ project.description }}</p>
-          <p class="project-card__metric"><img [src]="iconPath + (project.title === 'Modernisation NextCity' ? '/clock.png' : '/users.png')" alt="" width="25" height="25" /><span><strong>{{ project.metric }}</strong><small>{{ project.metricLabel }}</small></span></p>
-          <!--<a [routerLink]="project.route" [attr.aria-label]="'Découvrir ' + project.title">Découvrir <img [src]="iconPath + '/arrow.png'" alt="" width="17" height="17" /></a>-->
-        </article>
-      }
-      }
-    </div>
-  </section>
+          <article class="featured-project">
+            <div class="featured-project__visual">
+              <img src="images/nextcity-smart-concept.png"
+                alt="Illustration conceptuelle d’une ville connectée et de ses équipements urbains" />
+              <span class="project-label"><img [src]="iconPath + '/star.png'" alt="" width="17" height="17" />Projet
+                phare</span>
+            </div>
 
-  <section class="projects-secondary" aria-label="Projets sélectionnés">
-    <div class="tertiary-projects">
-      @for (project of visibleProjects(); track project.title) {
-        @if($index > 1){
-        <article class="project-card">
-          <header>
-            <span class="project-card__icon"><img [src]="iconPath + '/' + project.icon" alt="" width="29" height="29" /></span>
-            <div><h2>{{ project.title }}</h2><p>{{ project.subtitle }}</p></div>
-          </header>
-          <p class="project-card__description">{{ project.description }}</p>
-          <p class="project-card__metric"><img [src]="iconPath + (project.title === 'Modernisation NextCity' ? '/clock.png' : '/users.png')" alt="" width="25" height="25" /><span><strong>{{ project.metric }}</strong><small>{{ project.metricLabel }}</small></span></p>
-          <!--<a [routerLink]="project.route" [attr.aria-label]="'Découvrir ' + project.title">Découvrir <img [src]="iconPath + '/arrow.png'" alt="" width="17" height="17" /></a>-->
-        </article>
-      }
-      }
-    </div>
-  </section>
-  <section class="contribution" aria-labelledby="contribution-title">
-    <h2 id="contribution-title">Ma contribution</h2>
-    <ol>
-      <li><span><img [src]="iconPath + '/search.png'" alt="" width="27" height="27" /></span><div><h3>Comprendre</h3><p>Analyser le métier, les besoins et les contraintes.</p></div></li>
-      <li><span><img [src]="iconPath + '/cube.png'" alt="" width="27" height="27" /></span><div><h3>Architecturer</h3><p>Concevoir une solution robuste, évolutive et interopérable.</p></div></li>
-      <li><span><img [src]="iconPath + '/users.png'" alt="" width="27" height="27" /></span><div><h3>Piloter</h3><p>Coordonner les équipes et sécuriser les décisions techniques.</p></div></li>
-      <li><span><img [src]="iconPath + '/rocket.png'" alt="" width="27" height="27" /></span><div><h3>Livrer</h3><p>Mettre en production une solution performante et durable.</p></div></li>
-    </ol>
-  </section>
-</main>
+            <div class="featured-project__content">
+              <div class="project-heading">
+                <h2><span>NextCity</span> SMART</h2>
+                <p>Smart City · IoT · SIG</p>
+              </div>
+
+              <p class="project-role">Architecture globale · Tech lead</p>
+              <p class="project-description">
+                Solution Smart City de gestion du patrimoine urbain et des services :
+                interopérable, performante et sécurisée, au service des collectivités.
+              </p>
+
+              <dl class="project-metrics">
+                <div><img [src]="iconPath + '/users.png'" alt="" width="25" height="25" />
+                  <div>
+                    <dt>1 200+</dt>
+                    <dd>utilisateurs</dd>
+                  </div>
+                </div>
+                <div><img [src]="iconPath + '/cube.png'" alt="" width="25" height="25" />
+                  <div>
+                    <dt>1,2 M+</dt>
+                    <dd>équipements</dd>
+                  </div>
+                </div>
+                <div><img [src]="iconPath + '/shield.png'" alt="" width="25" height="25" />
+                  <div>
+                    <dt>99,9 %</dt>
+                    <dd>SLA critique</dd>
+                  </div>
+                </div>
+              </dl>
+
+              <a class="primary-action" routerLink="/portfolio/nextcity-smart">
+                Voir l’étude de cas <img [src]="iconPath + '/arrow.png'" alt="" width="20" height="20" />
+              </a>
+            </div>
+          </article>
+
+
+          <div class="secondary-projects">
+            @for (project of visibleProjects(); track project.title) {
+            @if($index <= 1){ <article class="project-card">
+              <header>
+                <span class="project-card__icon"><img [src]="iconPath + '/' + project.icon" alt="" width="29"
+                    height="29" /></span>
+                <div>
+                  <h2>{{ project.title }}</h2>
+                  <p>{{ project.subtitle }}</p>
+                </div>
+              </header>
+              <p class="project-card__description">{{ project.description }}</p>
+              <p class="project-card__metric"><img
+                  [src]="iconPath + (project.title === 'Modernisation NextCity' ? '/clock.png' : '/users.png')" alt=""
+                  width="25" height="25" /><span><strong>{{ project.metric }}</strong><small>{{ project.metricLabel
+                    }}</small></span></p>
+              <!--<a [routerLink]="project.route" [attr.aria-label]="'Découvrir ' + project.title">Découvrir <img [src]="iconPath + '/arrow.png'" alt="" width="17" height="17" /></a>-->
+              </article>
+              }
+              }
+          </div>
+        </section>
+
+        <section class="projects-secondary" aria-label="Projets sélectionnés">
+          <div class="tertiary-projects">
+            @for (project of visibleProjects(); track project.title) {
+            @if($index > 1){
+            <article class="project-card">
+              <header>
+                <span class="project-card__icon"><img [src]="iconPath + '/' + project.icon" alt="" width="29"
+                    height="29" /></span>
+                <div>
+                  <h2>{{ project.title }}</h2>
+                  <p>{{ project.subtitle }}</p>
+                </div>
+              </header>
+              <p class="project-card__description">{{ project.description }}</p>
+              <p class="project-card__metric"><img
+                  [src]="iconPath + (project.title === 'Modernisation NextCity' ? '/clock.png' : '/users.png')" alt=""
+                  width="25" height="25" /><span><strong>{{ project.metric }}</strong><small>{{ project.metricLabel
+                    }}</small></span></p>
+              <!--<a [routerLink]="project.route" [attr.aria-label]="'Découvrir ' + project.title">Découvrir <img [src]="iconPath + '/arrow.png'" alt="" width="17" height="17" /></a>-->
+            </article>
+            }
+            }
+          </div>
+        </section>
+        <section class="contribution" aria-labelledby="contribution-title">
+          <h2 id="contribution-title">Ma contribution</h2>
+          <ol>
+            <li><span><img [src]="iconPath + '/search.png'" alt="" width="27" height="27" /></span>
+              <div>
+                <h3>Comprendre</h3>
+                <p>Analyser le métier, les besoins et les contraintes.</p>
+              </div>
+            </li>
+            <li><span><img [src]="iconPath + '/cube.png'" alt="" width="27" height="27" /></span>
+              <div>
+                <h3>Architecturer</h3>
+                <p>Concevoir une solution robuste, évolutive et interopérable.</p>
+              </div>
+            </li>
+            <li><span><img [src]="iconPath + '/users.png'" alt="" width="27" height="27" /></span>
+              <div>
+                <h3>Piloter</h3>
+                <p>Coordonner les équipes et sécuriser les décisions techniques.</p>
+              </div>
+            </li>
+            <li><span><img [src]="iconPath + '/rocket.png'" alt="" width="27" height="27" /></span>
+              <div>
+                <h3>Livrer</h3>
+                <p>Mettre en production une solution performante et durable.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </main>
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+</p-scrollarea>

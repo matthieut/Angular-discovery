@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ScrollAreaModule } from "primeng/scrollarea";
 
 interface Experience {
   period: string;
@@ -14,6 +15,7 @@ interface Skill {
 
 @Component({
   selector: 'app-home-component',
+  imports: [ScrollAreaModule],
   templateUrl: './home-component.html',
   styleUrl: './home-component.scss',
 })
