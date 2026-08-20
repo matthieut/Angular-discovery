@@ -6,6 +6,48 @@
   align-content: start;
   gap: 0.65rem;
 }
+
+.prerequisites-card,
+.mental-model-card {
+  padding: 0.85rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-panel);
+  background: var(--lab-panel-background);
+}
+
+.prerequisites-card h3,
+.mental-model-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+}
+
+.prerequisites-card ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--lab-text-muted);
+  font-size: 0.64rem;
+  line-height: 1.55;
+}
+
+.mental-model-card p {
+  margin: 0;
+  color: var(--lab-text-muted);
+  font-size: 0.65rem;
+  line-height: 1.55;
+}
+
+.exercise-card details {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--lab-border);
+}
+
+.exercise-card summary {
+  color: var(--lab-secondary);
+  cursor: pointer;
+  font-size: 0.64rem;
+  font-weight: 750;
+}
 .insight-card,
 .why-card,
 .steps-card,

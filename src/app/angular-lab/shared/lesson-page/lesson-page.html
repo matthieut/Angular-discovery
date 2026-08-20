@@ -1,0 +1,64 @@
+<article class="concept-sheet">
+  <app-concept-header
+    [category]="lesson().category"
+    [sheetNumber]="lesson().sheetNumber"
+    [title]="lesson().title"
+    [description]="lesson().description"
+    [level]="lesson().level"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/angular.png'"
+            [title]="lesson().demoTitle"
+            [description]="lesson().demoDescription"
+          />
+          <div class="lesson-flow" role="list" aria-label="Étapes de la démonstration">
+            @for (action of lesson().demoActions; track action; let index = $index) {
+              <button
+                type="button"
+                role="listitem"
+                [class.is-active]="selectedStep() === index"
+                (click)="selectStep(index)"
+              >
+                <span>{{ index + 1 }}</span>{{ action }}
+              </button>
+            }
+          </div>
+          <div class="lesson-result" aria-live="polite">
+            <span>Ce qu’Angular fait</span>
+            <p>{{ lesson().demoResults[selectedStep()] }}</p>
+          </div>
+          <p class="demo-warning">
+            La démonstration isole le mécanisme étudié. L’onglet Code montre son implémentation réelle.
+          </p>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          @for (example of lesson().codeExamples; track example.filename) {
+            <app-code-preview
+              [filename]="example.filename"
+              [caption]="example.caption"
+              [code]="example.code"
+            />
+          }
+          <app-code-walkthrough [items]="lesson().walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="lesson().comparisons" />
+      }
+      <app-concept-pagination
+        [current]="lesson().current"
+        [previousRoute]="lesson().previousRoute"
+        [nextRoute]="lesson().nextRoute"
+      />
+    </section>
+    <app-concept-learning [content]="lesson().learning" />
+  </div>
+</article>

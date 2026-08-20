@@ -12,6 +12,8 @@ export interface ConceptComparisonItem {
 }
 
 export interface ConceptLearningContent {
+  prerequisites?: string[];
+  mentalModel?: string;
   definition: string;
   why: string;
   steps: string[];
@@ -20,6 +22,13 @@ export interface ConceptLearningContent {
   mistakes: string[];
   takeaway: string;
   exercises: string[];
+  exerciseSolutions?: string[];
+}
+
+export interface ConceptCodeExample {
+  filename: string;
+  caption: string;
+  code: string;
 }
 
 export interface CodeWalkthroughItem {

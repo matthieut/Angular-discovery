@@ -25,63 +25,57 @@
 </header>
 
 <div class="lab-layout">
-  <aside class="concept-browser" aria-label="Concepts Angular">
-    <div class="concept-browser__heading">
-      <span><img [src]="iconPath + '/grid.png'" alt="" width="24" height="24" /></span>
-      <div><strong>Concepts Angular</strong><small>Choisir une expérimentation</small></div>
-    </div>
+  <p-scrollarea class="app-container h-full">
+    <p-scrollarea-viewport>
+      <p-scrollarea-content>
+        <aside class="concept-browser" aria-label="Concepts Angular">
+          <div class="concept-browser__heading">
+            <span><img [src]="iconPath + '/grid.png'" alt="" width="24" height="24" /></span>
+            <div><strong>Concepts Angular</strong><small>Choisir une expérimentation</small></div>
+          </div>
 
-    <label class="concept-search">
-      <img [src]="iconPath + '/search.png'" alt="" width="18" height="18" />
-      <span class="sr-only">Rechercher un concept</span>
-      <input
-        type="search"
-        placeholder="Rechercher…"
-        [ngModel]="search()"
-        (ngModelChange)="setSearch($event)"
-      />
-    </label>
+          <label class="concept-search">
+            <img [src]="iconPath + '/search.png'" alt="" width="18" height="18" />
+            <span class="sr-only">Rechercher un concept</span>
+            <input type="search" placeholder="Rechercher…" [ngModel]="search()" (ngModelChange)="setSearch($event)" />
+          </label>
 
-    <nav class="concept-nav">
-      @for (category of filteredCategories(); track category.title) {
-        <section
-          class="concept-group"
-          [class.concept-group--open]="expandedCategory() === category.title || search()"
-        >
-          <button
-            type="button"
-            class="concept-group__toggle"
-            (click)="toggleCategory(category.title)"
-          >
-            <img [src]="iconPath + '/' + category.icon" alt="" width="21" height="21" />
-            <span>{{ category.title }}</span>
-            <small>{{ category.concepts.length }}</small>
-            <span class="chevron" aria-hidden="true">⌄</span>
-          </button>
-          <div class="concept-group__items">
-            @for (concept of category.concepts; track concept) {
-              @if (concept.route) {
-                <a
-                  [routerLink]="concept.route"
-                  routerLinkActive="is-active"
-                  #activeLink="routerLinkActive"
-                  [attr.aria-current]="activeLink.isActive ? 'page' : null"
-                >
+          <nav class="concept-nav">
+            @for (category of filteredCategories(); track category.title) {
+            <section class="concept-group"
+              [class.concept-group--open]="expandedCategory() === category.title || search()">
+              <button type="button" class="concept-group__toggle" (click)="toggleCategory(category.title)">
+                <img [src]="iconPath + '/' + category.icon" alt="" width="21" height="21" />
+                <span>{{ category.title }}</span>
+                <small>{{ category.concepts.length }}</small>
+                <span class="chevron" aria-hidden="true">⌄</span>
+              </button>
+              <div class="concept-group__items">
+                @for (concept of category.concepts; track concept) {
+                @if (concept.route) {
+                <a [routerLink]="concept.route" routerLinkActive="is-active" #activeLink="routerLinkActive"
+                  [attr.aria-current]="activeLink.isActive ? 'page' : null">
                   <span class="status-dot"></span>{{ concept.title }}
                 </a>
-              } @else {
+                } @else {
                 <button type="button" class="is-planned" disabled title="Fiche planifiée">
                   <span class="status-dot"></span>{{ concept.title }}<small>À venir</small>
                 </button>
-              }
+                }
+                }
+              </div>
+            </section>
+            } @empty {
+            <p class="empty-search">Aucun concept trouvé.</p>
             }
-          </div>
-        </section>
-      } @empty {
-        <p class="empty-search">Aucun concept trouvé.</p>
-      }
-    </nav>
-  </aside>
+          </nav>
+        </aside>
+      </p-scrollarea-content>
+    </p-scrollarea-viewport>
+    <p-scrollarea-scrollbar orientation="vertical">
+      <p-scrollarea-handle />
+    </p-scrollarea-scrollbar>
+  </p-scrollarea>
 
   <p-scrollarea class="app-container h-full">
     <p-scrollarea-viewport>

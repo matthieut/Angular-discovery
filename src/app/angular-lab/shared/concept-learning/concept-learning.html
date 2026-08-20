@@ -1,9 +1,27 @@
 <aside class="learning-column">
+  @if (content().prerequisites?.length) {
+    <section class="prerequisites-card">
+      <h3>Avant de commencer</h3>
+      <ul>
+        @for (prerequisite of content().prerequisites; track prerequisite) {
+          <li>{{ prerequisite }}</li>
+        }
+      </ul>
+    </section>
+  }
+
   <section class="insight-card">
     <span class="insight-card__icon"><img [src]="iconPath + '/angular.png'" alt="" /></span>
     <h3>Définition simple</h3>
     <p>{{ content().definition }}</p>
   </section>
+
+  @if (content().mentalModel) {
+    <section class="mental-model-card">
+      <h3>Le modèle mental</h3>
+      <p>{{ content().mentalModel }}</p>
+    </section>
+  }
 
   <section class="why-card">
     <h3>Pourquoi ce concept existe ?</h3>
@@ -62,5 +80,15 @@
         <li>{{ exercise }}</li>
       }
     </ol>
+    @if (content().exerciseSolutions?.length) {
+      <details>
+        <summary>Afficher les pistes de correction</summary>
+        <ol>
+          @for (solution of content().exerciseSolutions; track solution) {
+            <li>{{ solution }}</li>
+          }
+        </ol>
+      </details>
+    }
   </section>
 </aside>

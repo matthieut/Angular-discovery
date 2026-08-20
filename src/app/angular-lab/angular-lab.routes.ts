@@ -39,6 +39,60 @@ export const ANGULAR_LAB_ROUTES: Routes = [
           ),
       },
       {
+        path: 'fondamentaux/cycle-vie-rendu',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'lifecycle-rendering' },
+      },
+      {
+        path: 'fondamentaux/http-intercepteurs',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'http-interceptors' },
+      },
+      {
+        path: 'composants/anatomie-responsabilite',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'component-responsibility' },
+      },
+      {
+        path: 'composants/inputs-outputs-model',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'inputs-outputs-model' },
+      },
+      {
+        path: 'composants/projection-contenu',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'content-projection' },
+      },
+      {
+        path: 'composants/queries-references',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'queries-references' },
+      },
+      {
+        path: 'composants/host-comportements',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'host-behaviors' },
+      },
+      {
+        path: 'composants/smart-presentational',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'smart-presentational' },
+      },
+      {
+        path: 'composants/composants-dynamiques',
+        loadComponent: () =>
+          import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId: 'dynamic-components' },
+      },
+      {
         path: 'reactivite/signals',
         loadComponent: () => import('./reactivity/signals/signals').then((m) => m.Signals),
       },

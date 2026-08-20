@@ -36,6 +36,21 @@ export class AngularLab {
         { title: 'Data binding', route: 'fondamentaux/data-binding' },
         { title: 'Directives et pipes', route: 'fondamentaux/directives-pipes' },
         { title: 'Injection de dépendances', route: 'fondamentaux/injection-dependances' },
+        { title: 'Cycle de vie et rendu', route: 'fondamentaux/cycle-vie-rendu' },
+        { title: 'HttpClient et intercepteurs', route: 'fondamentaux/http-intercepteurs' },
+      ],
+    },
+    {
+      title: 'Composants',
+      icon: 'cube.png',
+      concepts: [
+        { title: 'Anatomie et responsabilité', route: 'composants/anatomie-responsabilite' },
+        { title: 'Inputs, outputs et model', route: 'composants/inputs-outputs-model' },
+        { title: 'Projection de contenu', route: 'composants/projection-contenu' },
+        { title: 'Queries et références', route: 'composants/queries-references' },
+        { title: 'Host bindings et comportements', route: 'composants/host-comportements' },
+        { title: 'Composition smart / presentational', route: 'composants/smart-presentational' },
+        { title: 'Composants dynamiques', route: 'composants/composants-dynamiques' },
       ],
     },
     {
