@@ -27,15 +27,15 @@ export class App implements OnInit {
                 url:'/home',
                 routerLink: '/home'
             },{
-                label: 'Angular',
-                icon: '/angular-icon.webp',
-                url:'/angular',
-                routerLink: '/angular'
-            },{
                 label: 'Portfolio',
                 icon: '/portfolio-icon.png',
                 url:'/portfolio',
                 routerLink: '/portfolio'
+            },{
+                label: 'Angular',
+                icon: '/angular-icon.webp',
+                url:'/angular',
+                routerLink: '/angular'
             }
         ];
     }

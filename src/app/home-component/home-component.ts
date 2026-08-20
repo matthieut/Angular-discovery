@@ -18,7 +18,7 @@ interface Skill {
   styleUrl: './home-component.scss',
 })
 export class HomeComponent {
-  readonly iconPath = '';
+  readonly iconPath = '/icons';
 
   readonly experiences: Experience[] = [
     {
