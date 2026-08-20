@@ -8,7 +8,7 @@
 * { box-sizing: border-box; }
 
 .case-page {
-  width: min(1380px, calc(100% - 2rem));
+  //width: min(1380px, calc(100% - 2rem));
   margin-inline: auto;
   padding: var(--space-4) 0 7rem;
 }
@@ -99,7 +99,7 @@ h1 span { color: var(--color-brand-violet); }
 .role-card ul, .decision-list { display: grid; gap: 0.55rem; margin: 0; padding-left: 1.15rem; }
 .decision-list strong { color: var(--color-text); }
 
-.challenge-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+.challenge-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
 .challenge-grid article { padding: var(--space-4); border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--surface-interactive); }
 .challenge-grid span { display: grid; width: 44px; height: 44px; place-items: center; border-radius: var(--radius-md); background: var(--surface-icon-brand); }
 .challenge-grid img { width: 30px; height: 30px; object-fit: contain; }
@@ -120,6 +120,7 @@ h1 span { color: var(--color-brand-violet); }
 @media (max-width: 1050px) {
   .case-hero, .case-grid, .case-grid--decision { grid-template-columns: 1fr; }
   .case-metrics { grid-template-columns: repeat(2, 1fr); }
+  .challenge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 700px) {

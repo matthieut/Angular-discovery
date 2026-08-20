@@ -22,7 +22,7 @@ export class NextcitySmartCaseStudy {
   readonly responsibilities: readonly CaseStudyItem[] = [
     {
       title: 'Comprendre et cadrer',
-      description: 'Traduction des besoins d’exploitation en parcours, règles métier, flux et contraintes techniques.',
+      description: 'Immersion auprès des équipes EQUANS Angers, analyse de leurs pratiques et traduction des besoins en processus métier opérationnels.',
       icon: 'search.png',
     },
     {
@@ -57,6 +57,11 @@ export class NextcitySmartCaseStudy {
       title: 'Continuité opérationnelle',
       description: 'Soutenir des activités de maintenance, de supervision et d’astreinte dans un contexte exigeant.',
       icon: 'shield.png',
+    },
+    {
+      title: 'Processus métier adaptés au terrain',
+      description: 'Observer les méthodes de travail sur site, identifier les points de friction, puis coconstruire et déployer les processus les plus adaptés aux contraintes des équipes EQUANS Angers.',
+      icon: 'users.png',
     },
   ];
 
