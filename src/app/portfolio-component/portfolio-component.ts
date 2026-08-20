@@ -36,7 +36,7 @@ export class PortfolioComponent {
 
   readonly secondaryProjects: Project[] = [
     {
-      title: 'Modernisation NextCity',
+      title: 'NextCity EasyWeb',
       subtitle: 'WPF → Angular · API REST',
       description: 'Refonte progressive d’une solution métier historique vers une architecture Web moderne.',
       categories: ['.NET', 'Angular', 'Architecture'],
