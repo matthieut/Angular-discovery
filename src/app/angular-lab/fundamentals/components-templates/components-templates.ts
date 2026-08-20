@@ -1,18 +1,24 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CodePreview } from '../../shared/code-preview/code-preview';
+import { CodeWalkthrough } from '../../shared/code-walkthrough/code-walkthrough';
 import { ConceptComparison } from '../../shared/concept-comparison/concept-comparison';
 import { ConceptHeader } from '../../shared/concept-header/concept-header';
 import { ConceptLearning } from '../../shared/concept-learning/concept-learning';
 import { ConceptPagination } from '../../shared/concept-pagination/concept-pagination';
 import { ConceptTab, ConceptTabs } from '../../shared/concept-tabs/concept-tabs';
 import { DemoHeader } from '../../shared/demo-header/demo-header';
-import { ConceptComparisonItem, ConceptUseCase } from '../../shared/concept.models';
+import {
+  CodeWalkthroughItem,
+  ConceptComparisonItem,
+  ConceptLearningContent,
+} from '../../shared/concept.models';
 
 @Component({
   selector: 'app-components-templates',
   standalone: true,
   imports: [
     CodePreview,
+    CodeWalkthrough,
     ConceptComparison,
     ConceptHeader,
     ConceptLearning,
@@ -64,14 +70,70 @@ export class ProfileCard {
       points: ['Pratique pour quelques lignes', 'Fichier unique', 'Devient vite illisible'],
     },
   ];
-  readonly useCases: ConceptUseCase[] = [
+  readonly learning: ConceptLearningContent = {
+    definition:
+      "Un composant est une partie autonome de l'interface : par exemple un bouton, une carte de profil ou une page. Sa classe TypeScript contient l'état et les actions ; son template HTML décrit ce que l'utilisateur voit.",
+    why: "Découper l'interface évite qu'une seule classe gère toute l'application. Chaque composant peut être compris, testé, réutilisé et modifié sans connaître tous les autres.",
+    steps: [
+      'Angular rencontre le selector du composant dans un template.',
+      'Il crée une instance de la classe TypeScript.',
+      'Le template lit les propriétés ou signals de cette instance.',
+      "Quand l'état change, Angular actualise les parties du DOM concernées.",
+    ],
+    demoGuide: [
+      'La carte affichée représente le composant ProfileCard.',
+      'Le bouton modifie le signal showDetails.',
+      '@if ajoute ou retire la liste selon ce signal.',
+      '@for crée un élément li pour chaque technologie et track permet de les identifier.',
+    ],
+    useCases: [
+      {
+        title: 'Élément réutilisable',
+        description:
+          'Créer une carte, un tableau, un champ ou une modale utilisable à plusieurs endroits.',
+      },
+      {
+        title: 'Page métier',
+        description: 'Composer une page avec plusieurs responsabilités plus petites.',
+      },
+    ],
+    mistakes: [
+      'Créer un composant uniquement pour déplacer quelques lignes sans responsabilité claire.',
+      'Mettre des appels réseau ou des calculs complexes directement dans le template.',
+      'Oublier track dans une boucle contenant des éléments qui évoluent.',
+    ],
+    takeaway:
+      "La classe prépare l'état et répond aux actions ; le template décrit l'affichage de cet état.",
+    exercises: [
+      'Extrais la carte de profil dans son propre composant.',
+      'Ajoute un état vide avec @empty.',
+      'Passe le nom au composant grâce à input().',
+    ],
+  };
+  readonly walkthrough: CodeWalkthroughItem[] = [
     {
-      title: 'Interface réutilisable',
-      description: 'Isoler une responsabilité UI avec une API claire.',
+      code: "selector: 'app-profile-card'",
+      explanation:
+        'Définit la balise HTML utilisée pour insérer ce composant dans un autre template.',
     },
     {
-      title: 'Page métier',
-      description: 'Composer plusieurs composants spécialisés plutôt qu’un composant géant.',
+      code: 'standalone: true',
+      explanation:
+        "Indique que le composant déclare directement ses dépendances et n'a pas besoin d'être déclaré dans un NgModule.",
+    },
+    {
+      code: 'input.required<string>()',
+      explanation:
+        'Déclare une donnée obligatoire fournie par le composant parent et accessible comme un signal.',
+    },
+    {
+      code: '@if (showDetails())',
+      explanation: 'Ajoute le bloc au DOM uniquement lorsque le signal renvoie true.',
+    },
+    {
+      code: '@for (...; track technology)',
+      explanation:
+        'Répète le bloc pour chaque technologie et aide Angular à réutiliser les bons éléments DOM.',
     },
   ];
 }

@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  margin-top: 0.7rem;
+}
+.walkthrough {
+  padding: 0.9rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-panel);
+  background: var(--lab-panel-background);
+}
+h3 {
+  margin: 0 0 0.65rem;
+  color: var(--lab-text);
+  font-size: 0.8rem;
+}
+ol {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+li {
+  color: var(--lab-secondary);
+  font-size: 0.65rem;
+}
+code {
+  display: inline-block;
+  padding: 0.2rem 0.38rem;
+  border-radius: 4px;
+  background: var(--lab-code-background);
+  color: var(--lab-secondary);
+  font:
+    500 0.62rem 'Cascadia Code',
+    Consolas,
+    monospace;
+}
+p {
+  margin: 0.22rem 0 0;
+  color: var(--lab-text-muted);
+  font-size: 0.64rem;
+  line-height: 1.45;
+}

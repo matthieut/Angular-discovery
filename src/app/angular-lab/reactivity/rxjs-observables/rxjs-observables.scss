@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.stream {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  color: var(--lab-text-subtle);
+  font-size: 0.62rem;
+}
+.stream span {
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--lab-border);
+  border-radius: 6px;
+  color: var(--lab-secondary);
+}
+.counter {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--lab-border-active);
+  border-radius: var(--lab-radius-panel);
+}
+.counter > strong {
+  color: var(--lab-secondary);
+  font-size: 2rem;
+}
+.counter div {
+  display: flex;
+  gap: 0.45rem;
+}
+.counter button {
+  min-width: 38px;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--lab-border-active);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--lab-text);
+  cursor: pointer;
+}
+.code-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+@media (max-width: 560px) {
+  .stream {
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+  }
+  .stream i {
+    transform: rotate(90deg);
+  }
+}

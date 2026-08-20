@@ -18,6 +18,32 @@
             description="Active les providers et observe la configuration produite."
           />
 
+          <section class="standalone-demo">
+            <div>
+              <span class="lab-demo-chip">1 · Composant standalone</span>
+              <h4>UserList utilise &lt;app-user-card /&gt;</h4>
+              <p>Le composant parent doit importer explicitement UserCard.</p>
+            </div>
+            <button
+              class="lab-demo-action"
+              type="button"
+              (click)="childImported.update((value) => !value)"
+            >
+              {{
+                childImported() ? 'Retirer UserCard des imports' : 'Ajouter UserCard aux imports'
+              }}
+            </button>
+            <p class="standalone-status" [class.is-valid]="childImported()">
+              {{
+                childImported()
+                  ? '✓ Template valide : UserCard est disponible.'
+                  : '✕ Selector inconnu : UserCard manque dans imports.'
+              }}
+            </p>
+          </section>
+
+          <span class="lab-demo-chip bootstrap-label">2 · Bootstrap et providers globaux</span>
+
           <div class="environment-switch" aria-label="Environnement">
             <button
               type="button"
@@ -94,6 +120,17 @@
             caption="Implémentation complète"
             [code]="implementationCode"
           />
+          <app-code-preview
+            filename="user-card.ts"
+            caption="Composant standalone"
+            [code]="standaloneComponentCode"
+          />
+          <app-code-preview
+            filename="user-list.ts"
+            caption="Import du composant enfant"
+            [code]="parentComponentCode"
+          />
+          <app-code-walkthrough [items]="walkthrough" />
           <h4>Points d’attention</h4>
           <ul>
             <li>Déclarer un provider global une seule fois.</li>
@@ -113,20 +150,6 @@
       <app-concept-pagination [current]="1" nextRoute="../composants-templates" />
     </section>
 
-    <app-concept-learning
-      introduction="Une application standalone ne supprime pas l’injection de dépendances : elle déplace sa composition vers des APIs fonctionnelles et explicites."
-      [points]="[
-        'bootstrapApplication démarre le composant racine.',
-        'Les fonctions provideX configurent les services globaux.',
-        'Les composants déclarent directement leurs imports de template.',
-      ]"
-      [useCases]="useCases"
-      recommendation="Préfère les APIs standalone et provideX(). Conserve les NgModules uniquement lorsqu’un contexte existant le justifie."
-      [exercises]="[
-        'Ajoute une configuration via InjectionToken.',
-        'Migre un petit AppModule.',
-        'Vérifie que le provider est substituable en test.',
-      ]"
-    />
+    <app-concept-learning [content]="learning" />
   </div>
 </article>

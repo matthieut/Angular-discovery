@@ -1,0 +1,62 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Réactivité"
+    [sheetNumber]="7"
+    title="Computed et effect"
+    description="Dériver une valeur à partir de signals et déclencher une action extérieure au bon moment."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/trend.png'"
+            title="Construire un nom complet"
+            description="Le computed produit la valeur ; l’effect observe son changement."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >Prénom<input
+                [ngModel]="firstName()"
+                (ngModelChange)="firstName.set($event)" /></label
+            ><label class="lab-demo-control"
+              >Nom<input [ngModel]="lastName()" (ngModelChange)="lastName.set($event)"
+            /></label>
+          </div>
+          <div class="lab-demo-grid">
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">computed</span>
+              <h4>{{ fullName() }}</h4>
+              <p>Cette valeur n’est jamais modifiée directement.</p>
+            </div>
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">effect</span>
+              <ul class="logs">
+                @for (log of logs(); track $index) {
+                  <li>{{ log }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="profile.ts"
+          [code]="code"
+          caption="computed et effect"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="7"
+        previousRoute="../signals"
+        nextRoute="../rxjs-observables"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

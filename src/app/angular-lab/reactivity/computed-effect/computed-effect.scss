@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.lab-demo-card h4 {
+  margin: 0.75rem 0;
+  color: var(--lab-secondary);
+  font-size: 1.15rem;
+}
+.logs {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.logs li {
+  color: var(--lab-text-muted);
+  font:
+    500 0.6rem 'Cascadia Code',
+    Consolas,
+    monospace;
+}

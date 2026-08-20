@@ -45,6 +45,32 @@ export const routes: Routes = [
             (m) => m.DependencyInjection,
           ),
       },
+      {
+        path: 'reactivite/signals',
+        loadComponent: () =>
+          import('./angular-lab/reactivity/signals/signals').then((m) => m.Signals),
+      },
+      {
+        path: 'reactivite/computed-effect',
+        loadComponent: () =>
+          import('./angular-lab/reactivity/computed-effect/computed-effect').then(
+            (m) => m.ComputedEffect,
+          ),
+      },
+      {
+        path: 'reactivite/rxjs-observables',
+        loadComponent: () =>
+          import('./angular-lab/reactivity/rxjs-observables/rxjs-observables').then(
+            (m) => m.RxjsObservables,
+          ),
+      },
+      {
+        path: 'reactivite/interop-signals-rxjs',
+        loadComponent: () =>
+          import('./angular-lab/reactivity/interop-signals-rxjs/interop-signals-rxjs').then(
+            (m) => m.InteropSignalsRxjs,
+          ),
+      },
     ],
   },
   { path: 'portfolio', component: PortfolioComponent },

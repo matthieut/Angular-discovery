@@ -1,0 +1,69 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Réactivité"
+    [sheetNumber]="6"
+    title="Signals"
+    description="Représenter un état qui évolue et laisser Angular actualiser précisément les consommateurs de cet état."
+    level="Fondamental"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/trend.png'"
+            title="Modifier une ligne de panier"
+            description="Teste les trois opérations essentielles : lire, set et update."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >Nom du produit<input
+                [ngModel]="product()"
+                (ngModelChange)="product.set($event)" /></label
+            ><button
+              class="lab-demo-action"
+              type="button"
+              (click)="available.update((value) => !value)"
+            >
+              {{ available() ? 'Rendre indisponible' : 'Rendre disponible' }}
+            </button>
+          </div>
+          <article class="cart-line">
+            <div>
+              <span class="lab-demo-chip">{{ available() ? 'Disponible' : 'Indisponible' }}</span>
+              <h3>{{ product() }}</h3>
+              <p>Le template lit product(), quantity() et available().</p>
+            </div>
+            <div class="quantity">
+              <button type="button" (click)="decrement()">−</button><strong>{{ quantity() }}</strong
+              ><button type="button" (click)="quantity.update((value) => value + 1)">+</button>
+            </div>
+          </article>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="cart-line.ts"
+            [code]="componentCode"
+            caption="État du composant"
+          /><app-code-preview
+            filename="cart-line.html"
+            [code]="templateCode"
+            caption="Lecture et mise à jour"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="6"
+        previousRoute="../../fondamentaux/injection-dependances"
+        nextRoute="../computed-effect"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

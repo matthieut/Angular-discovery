@@ -1,12 +1,17 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CodePreview } from '../../shared/code-preview/code-preview';
+import { CodeWalkthrough } from '../../shared/code-walkthrough/code-walkthrough';
 import { ConceptComparison } from '../../shared/concept-comparison/concept-comparison';
 import { ConceptHeader } from '../../shared/concept-header/concept-header';
 import { ConceptLearning } from '../../shared/concept-learning/concept-learning';
 import { ConceptPagination } from '../../shared/concept-pagination/concept-pagination';
 import { ConceptTab, ConceptTabs } from '../../shared/concept-tabs/concept-tabs';
 import { DemoHeader } from '../../shared/demo-header/demo-header';
-import { ConceptComparisonItem, ConceptUseCase } from '../../shared/concept.models';
+import {
+  CodeWalkthroughItem,
+  ConceptComparisonItem,
+  ConceptLearningContent,
+} from '../../shared/concept.models';
 
 type Environment = 'development' | 'production';
 
@@ -15,6 +20,7 @@ type Environment = 'development' | 'production';
   standalone: true,
   imports: [
     CodePreview,
+    CodeWalkthrough,
     ConceptComparison,
     ConceptHeader,
     ConceptLearning,
@@ -33,6 +39,7 @@ export class StandaloneBootstrapConcept {
   readonly routerEnabled = signal(true);
   readonly httpEnabled = signal(true);
   readonly interceptorEnabled = signal(true);
+  readonly childImported = signal(false);
 
   readonly providerCount = computed(
     () =>
@@ -67,6 +74,24 @@ bootstrapApplication(AppComponent, {
   ]
 }).catch(console.error);`;
 
+  readonly standaloneComponentCode = `@Component({
+  selector: 'app-user-card',
+  standalone: true,
+  imports: [DatePipe, RouterLink],
+  template: '<a routerLink="/profile">{{ createdAt | date }}</a>'
+})
+export class UserCard {
+  readonly createdAt = new Date();
+}`;
+
+  readonly parentComponentCode = `@Component({
+  selector: 'app-user-list',
+  standalone: true,
+  imports: [UserCard],
+  template: '<app-user-card />'
+})
+export class UserList {}`;
+
   readonly comparisons: ConceptComparisonItem[] = [
     {
       badge: 'Recommandé',
@@ -86,14 +111,80 @@ bootstrapApplication(AppComponent, {
       ],
     },
   ];
-  readonly useCases: ConceptUseCase[] = [
+  readonly learning: ConceptLearningContent = {
+    definition:
+      "Standalone signifie qu'un composant déclare lui-même les composants, directives et pipes utilisés par son template, au lieu d'être déclaré dans un NgModule. Le bootstrap est une autre notion : c'est l'étape qui démarre le composant racine.",
+    why: 'Avec les composants standalone, les besoins du template sont visibles dans imports. bootstrapApplication indique ensuite à Angular quel composant créer en premier et quels services seront globaux.',
+    steps: [
+      'standalone: true rend le composant utilisable sans déclaration dans un NgModule.',
+      'Le tableau imports contient ce que le template du composant utilise.',
+      "Un parent importe explicitement un composant enfant avant d'utiliser son selector.",
+      'main.ts appelle bootstrapApplication avec le composant racine.',
+      'Le tableau providers configure des services ; il ne sert pas aux éléments du template.',
+    ],
+    demoGuide: [
+      "Simule d'abord l'import de UserCard : sans import, le selector est inconnu.",
+      "Active ensuite Router, HttpClient et l'intercepteur dans la zone bootstrap.",
+      'Observe que les éléments de template vont dans imports et les services dans providers.',
+      'Le flux main.ts → bootstrapApplication → AppComponent représente le démarrage.',
+    ],
+    useCases: [
+      {
+        title: 'Nouveau projet',
+        description: 'Utiliser bootstrapApplication et les APIs provideX dès la création.',
+      },
+      {
+        title: 'Migration progressive',
+        description: 'Remplacer un AppModule étape par étape sans réécrire toute l’application.',
+      },
+    ],
+    mistakes: [
+      'Croire que standalone signifie sans dépendances.',
+      "Utiliser un composant enfant sans l'ajouter aux imports du parent.",
+      'Mettre un service dans imports ou un composant dans providers.',
+      "Déclarer dans main.ts des providers qui ne concernent qu'une route.",
+    ],
+    takeaway:
+      "imports répond à « que peut utiliser ce template ? » ; providers à « quels services Angular peut-il injecter ? » ; bootstrapApplication à « quel composant démarre l'application ? ».",
+    exercises: [
+      'Ajoute un provider de configuration avec InjectionToken.',
+      'Retire HttpClient et explique la conséquence.',
+      "Migre le démarrage d'un petit AppModule vers bootstrapApplication.",
+    ],
+  };
+  readonly walkthrough: CodeWalkthroughItem[] = [
     {
-      title: 'Nouveau projet',
-      description: 'Choix par défaut pour une application Angular moderne.',
+      code: 'standalone: true',
+      explanation:
+        "Le composant n'a pas besoin d'être déclaré dans un NgModule ; il porte directement ses dépendances de template.",
     },
     {
-      title: 'Migration progressive',
-      description: 'Convertir route par route sans réécriture totale.',
+      code: 'imports: [UserCard]',
+      explanation: 'Autorise le template du parent à utiliser le selector <app-user-card>.',
+    },
+    {
+      code: 'bootstrapApplication(AppComponent, ...)',
+      explanation:
+        "Demande à Angular de démarrer l'application en utilisant AppComponent comme premier composant.",
+    },
+    {
+      code: 'providers: [...]',
+      explanation:
+        "Liste les dépendances qui seront accessibles depuis l'injecteur global de l'application.",
+    },
+    {
+      code: 'provideRouter(routes)',
+      explanation: "Crée et configure le routeur avec le tableau de routes de l'application.",
+    },
+    {
+      code: 'withInterceptors([authInterceptor])',
+      explanation:
+        "Ajoute une fonction exécutée pour les requêtes HTTP, ici afin de gérer l'authentification.",
+    },
+    {
+      code: '.catch(console.error)',
+      explanation:
+        'Affiche dans la console une erreur survenue pendant le démarrage au lieu de la perdre silencieusement.',
     },
   ];
 

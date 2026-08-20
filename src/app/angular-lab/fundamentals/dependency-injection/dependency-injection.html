@@ -67,27 +67,23 @@
             [code]="tokenCode"
             caption="InjectionToken"
           />
+          <app-code-preview
+            filename="local-counter.ts"
+            [code]="localProviderCode"
+            caption="Provider déclaré dans le composant"
+          />
+          <app-code-walkthrough [items]="walkthrough" />
         </div>
       }
       @if (activeTab() === 'comparison') {
         <app-concept-comparison [items]="comparisons" />
       }
-      <app-concept-pagination [current]="5" previousRoute="../directives-pipes" />
+      <app-concept-pagination
+        [current]="5"
+        previousRoute="../directives-pipes"
+        nextRoute="../../reactivite/signals"
+      />
     </section>
-    <app-concept-learning
-      introduction="L’injecteur résout un token en recherchant un provider dans sa hiérarchie. La position du provider détermine la portée et la durée de vie de l’instance."
-      [points]="[
-        'inject() demande une dépendance à l’injecteur actif.',
-        'providedIn root crée un service partagé et tree-shakable.',
-        'InjectionToken représente une configuration ou une abstraction sans classe.',
-      ]"
-      [useCases]="useCases"
-      recommendation="Place le provider au niveau le plus haut qui doit réellement partager l’instance. Déclarer un service stateful dans un composant sans le vouloir crée des états divergents difficiles à diagnostiquer."
-      [exercises]="[
-        'Crée un InjectionToken de configuration.',
-        'Remplace un service par un fake dans un test.',
-        'Compare root et providers de composant avec deux instances.',
-      ]"
-    />
+    <app-concept-learning [content]="learning" />
   </div>
 </article>

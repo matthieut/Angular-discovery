@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.interop-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0.8rem 0;
+  color: var(--lab-text-subtle);
+  font-size: 0.6rem;
+}
+.interop-flow span {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--lab-border);
+  border-radius: 6px;
+  color: var(--lab-secondary);
+}
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-control);
+}
+.results > span {
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: rgb(71 201 255 / 10%);
+  color: var(--lab-secondary);
+  font-size: 0.62rem;
+}
+@media (max-width: 700px) {
+  .interop-flow {
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+  }
+  .interop-flow i {
+    transform: rotate(90deg);
+  }
+}

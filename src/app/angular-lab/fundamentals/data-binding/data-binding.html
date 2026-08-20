@@ -56,6 +56,7 @@
           [code]="code"
           caption="Les quatre syntaxes"
         />
+        <app-code-walkthrough [items]="walkthrough" />
       }
       @if (activeTab() === 'comparison') {
         <app-concept-comparison [items]="comparisons" />
@@ -66,21 +67,6 @@
         nextRoute="../directives-pipes"
       />
     </section>
-    <app-concept-learning
-      introduction="Angular évalue le template à partir de l’état du composant. Le sens du binding indique qui possède la valeur et qui déclenche sa modification."
-      [points]="[
-        '{{ }} produit une représentation textuelle.',
-        '[property] écrit dans une propriété.',
-        '(event) remonte une interaction.',
-        '[(ngModel)] combine valeur et événement.',
-      ]"
-      [useCases]="useCases"
-      recommendation="Préfère des entrées et événements séparés entre composants. Réserve le two-way binding aux contrôles qui représentent réellement une valeur éditable."
-      [exercises]="[
-        'Ajoute un bouton de remise à zéro.',
-        'Remplace le two-way binding par sa forme développée.',
-        'Empêche l’incrémentation lorsque le bouton est verrouillé.',
-      ]"
-    />
+    <app-concept-learning [content]="learning" />
   </div>
 </article>

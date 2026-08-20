@@ -56,6 +56,7 @@
             [code]="pipeCode"
             caption="Pipe personnalisé"
           />
+          <app-code-walkthrough [items]="walkthrough" />
         </div>
       }
       @if (activeTab() === 'comparison') {
@@ -67,20 +68,6 @@
         nextRoute="../injection-dependances"
       />
     </section>
-    <app-concept-learning
-      introduction="Une directive agit sur la structure ou le comportement d’un élément. Un pipe produit une représentation à partir d’une valeur sans porter de logique métier."
-      [points]="[
-        'Les directives attributaires enrichissent un élément existant.',
-        'Les pipes purs ne sont recalculés que si leur entrée change.',
-        '@if et @for remplacent la majorité des anciennes directives structurelles.',
-      ]"
-      [useCases]="useCases"
-      recommendation="Un pipe doit rester pur et léger. Pour une transformation coûteuse ou métier, prépare la donnée dans le composant ou le service plutôt que dans le template."
-      [exercises]="[
-        'Ajoute un pipe de troncature.',
-        'Rends la couleur de la directive configurable.',
-        'Affiche un état vide avec @empty.',
-      ]"
-    />
+    <app-concept-learning [content]="learning" />
   </div>
 </article>

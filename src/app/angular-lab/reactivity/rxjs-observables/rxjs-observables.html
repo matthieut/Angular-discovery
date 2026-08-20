@@ -1,0 +1,56 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Réactivité"
+    [sheetNumber]="8"
+    title="RxJS et Observables"
+    description="Modéliser une suite de valeurs asynchrones et la transformer avec une chaîne d’opérateurs."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/trend.png'"
+            title="Transformer un flux d’actions"
+            description="Les boutons émettent ; scan construit le compteur au fil du temps."
+          />
+          <div class="stream">
+            <span>actions$</span><i>→</i><span>scan</span><i>→</i><span>count$</span><i>→</i
+            ><span>async</span>
+          </div>
+          <div class="counter">
+            <strong>{{ count$ | async }}</strong>
+            <div>
+              <button type="button" (click)="actions$.next('decrement')">−</button
+              ><button type="button" (click)="actions$.next('increment')">+</button
+              ><button type="button" (click)="actions$.next('reset')">Réinitialiser</button>
+            </div>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="counter.ts"
+            [code]="code"
+            caption="Flux RxJS"
+          /><app-code-preview
+            filename="counter.html"
+            [code]="templateCode"
+            caption="Souscription avec async"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="8"
+        previousRoute="../computed-effect"
+        nextRoute="../interop-signals-rxjs"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

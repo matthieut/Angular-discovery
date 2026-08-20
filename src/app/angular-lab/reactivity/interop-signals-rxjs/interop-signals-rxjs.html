@@ -1,0 +1,53 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Réactivité"
+    [sheetNumber]="9"
+    title="Interop Signals / RxJS"
+    description="Faire circuler une valeur entre l’état synchrone des signals et les traitements asynchrones de RxJS."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/trend.png'"
+            title="Temporiser une recherche"
+            description="Le champ est un signal ; le délai est traité par RxJS ; le résultat redevient un signal."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >Rechercher<input
+                [ngModel]="query()"
+                (ngModelChange)="query.set($event)"
+                placeholder="Angular, RxJS…"
+            /></label>
+          </div>
+          <div class="interop-flow">
+            <span>query signal</span><i>→</i><span>toObservable</span><i>→</i
+            ><span>debounceTime</span><i>→</i><span>toSignal</span>
+          </div>
+          <div class="results">
+            @for (result of results(); track result) {
+              <span>{{ result }}</span>
+            } @empty {
+              <p class="lab-demo-empty">Aucun résultat</p>
+            }
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="search.component.ts"
+          [code]="code"
+          caption="Pont Signals / RxJS"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination [current]="9" previousRoute="../rxjs-observables" />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

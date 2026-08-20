@@ -7,7 +7,11 @@
   gap: 0.65rem;
 }
 .insight-card,
+.why-card,
+.steps-card,
+.demo-guide-card,
 .use-card,
+.mistakes-card,
 .recommendation-card,
 .exercise-card {
   border: 1px solid var(--lab-border);
@@ -15,7 +19,11 @@
   background: var(--lab-panel-background);
 }
 .insight-card,
+.why-card,
+.steps-card,
+.demo-guide-card,
 .use-card,
+.mistakes-card,
 .exercise-card {
   padding: 0.9rem;
 }
@@ -44,18 +52,31 @@ li {
 .insight-card > p {
   margin: 0;
 }
-.insight-card ul {
+.why-card p {
+  margin: 0;
+}
+.steps-card ol,
+.exercise-card ol {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.2rem 0 0;
+  padding-left: 1.15rem;
+}
+.demo-guide-card ul,
+.mistakes-card ul {
   display: grid;
   gap: 0.4rem;
-  margin: 0.65rem 0 0;
+  margin: 0.2rem 0 0;
   padding: 0;
   list-style: none;
 }
-.insight-card li {
+.demo-guide-card li,
+.mistakes-card li {
   position: relative;
   padding-left: 0.85rem;
 }
-.insight-card li::before {
+.demo-guide-card li::before,
+.mistakes-card li::before {
   content: '';
   position: absolute;
   top: 0.48rem;
@@ -64,6 +85,12 @@ li {
   height: 5px;
   border-radius: 50%;
   background: var(--lab-secondary);
+}
+.mistakes-card {
+  border-color: rgb(243 187 84 / 22%);
+}
+.mistakes-card h3 {
+  color: var(--lab-warning);
 }
 .use-card h3 {
   display: flex;
@@ -114,10 +141,6 @@ li {
 .exercise-card h3 {
   margin-top: 0;
   color: var(--lab-secondary);
-}
-.exercise-card ol {
-  margin: 0.2rem 0 0;
-  padding-left: 1.15rem;
 }
 @media (max-width: 1180px) {
   .learning-column {

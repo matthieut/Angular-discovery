@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.cart-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--lab-border-active);
+  border-radius: var(--lab-radius-panel);
+  background: rgb(255 255 255 / 2%);
+}
+.cart-line h3 {
+  margin: 0.55rem 0 0.2rem;
+  font-size: 0.9rem;
+}
+.cart-line p {
+  margin: 0;
+  color: var(--lab-text-muted);
+  font-size: 0.64rem;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.quantity button {
+  display: grid;
+  width: 32px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--lab-border-active);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--lab-secondary);
+  cursor: pointer;
+}
+.quantity strong {
+  min-width: 24px;
+  text-align: center;
+}
+.code-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+@media (max-width: 560px) {
+  .cart-line {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

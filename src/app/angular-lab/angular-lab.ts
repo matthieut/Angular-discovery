@@ -42,10 +42,10 @@ export class AngularLab {
       title: 'Réactivité',
       icon: 'trend.png',
       concepts: [
-        { title: 'Signals' },
-        { title: 'Computed et effect' },
-        { title: 'RxJS et Observables' },
-        { title: 'Interop Signals / RxJS' },
+        { title: 'Signals', route: 'reactivite/signals' },
+        { title: 'Computed et effect', route: 'reactivite/computed-effect' },
+        { title: 'RxJS et Observables', route: 'reactivite/rxjs-observables' },
+        { title: 'Interop Signals / RxJS', route: 'reactivite/interop-signals-rxjs' },
       ],
     },
     {

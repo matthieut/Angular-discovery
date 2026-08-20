@@ -1,18 +1,36 @@
 <aside class="learning-column">
   <section class="insight-card">
     <span class="insight-card__icon"><img [src]="iconPath + '/angular.png'" alt="" /></span>
-    <h3>Ce qu’il faut comprendre</h3>
-    <p>{{ introduction() }}</p>
+    <h3>Définition simple</h3>
+    <p>{{ content().definition }}</p>
+  </section>
+
+  <section class="why-card">
+    <h3>Pourquoi ce concept existe ?</h3>
+    <p>{{ content().why }}</p>
+  </section>
+
+  <section class="steps-card">
+    <h3>Comment cela fonctionne ?</h3>
+    <ol>
+      @for (step of content().steps; track step) {
+        <li>{{ step }}</li>
+      }
+    </ol>
+  </section>
+
+  <section class="demo-guide-card">
+    <h3>Comment lire la démonstration ?</h3>
     <ul>
-      @for (point of points(); track point) {
-        <li>{{ point }}</li>
+      @for (step of content().demoGuide; track step) {
+        <li>{{ step }}</li>
       }
     </ul>
   </section>
 
   <section class="use-card">
     <h3><img [src]="iconPath + '/timeline.png'" alt="" />Quand l’utiliser ?</h3>
-    @for (useCase of useCases(); track useCase.title) {
+    @for (useCase of content().useCases; track useCase.title) {
       <div>
         <strong>{{ useCase.title }}</strong>
         <p>{{ useCase.description }}</p>
@@ -20,18 +38,27 @@
     }
   </section>
 
+  <section class="mistakes-card">
+    <h3>Erreurs fréquentes</h3>
+    <ul>
+      @for (mistake of content().mistakes; track mistake) {
+        <li>{{ mistake }}</li>
+      }
+    </ul>
+  </section>
+
   <section class="recommendation-card">
     <span><img [src]="iconPath + '/star.png'" alt="" /></span>
     <div>
-      <strong>Recommandation</strong>
-      <p>{{ recommendation() }}</p>
+      <strong>À retenir</strong>
+      <p>{{ content().takeaway }}</p>
     </div>
   </section>
 
   <section class="exercise-card">
     <h3>À toi de jouer</h3>
     <ol>
-      @for (exercise of exercises(); track exercise) {
+      @for (exercise of content().exercises; track exercise) {
         <li>{{ exercise }}</li>
       }
     </ol>

@@ -53,6 +53,7 @@
             [code]="templateCode"
             caption="Template"
           />
+          <app-code-walkthrough [items]="walkthrough" />
         </div>
       }
       @if (activeTab() === 'comparison') {
@@ -64,20 +65,6 @@
         nextRoute="../data-binding"
       />
     </section>
-    <app-concept-learning
-      introduction="Un composant associe une API, un comportement et une vue. Le template décrit l’état attendu de l’interface ; il ne doit pas devenir un second contrôleur."
-      [points]="[
-        'Le selector identifie le composant dans un template.',
-        'Les imports rendent les dépendances de vue explicites.',
-        '@if et @for expriment le contrôle de flux sans directives structurelles importées.',
-      ]"
-      [useCases]="useCases"
-      recommendation="Découpe par responsabilité métier ou visuelle. Un composant n’est pas justifié uniquement pour réduire le nombre de lignes d’un fichier."
-      [exercises]="[
-        'Extrais la carte de profil en composant.',
-        'Ajoute un état vide avec @if.',
-        'Utilise track dans une boucle @for.',
-      ]"
-    />
+    <app-concept-learning [content]="learning" />
   </div>
 </article>
