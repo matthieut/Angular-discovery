@@ -75,7 +75,7 @@
   aspect-ratio: 1;
   place-items: center;
   border-radius: 9px;
-  background: linear-gradient(135deg, rgb(178 43 230 / 18%), rgb(23 150 230 / 16%));
+  background: var(--surface-brand-icon);
 }
 .insight-card__icon img {
   width: 25px;
@@ -129,7 +129,7 @@ li {
   background: var(--lab-secondary);
 }
 .mistakes-card {
-  border-color: rgb(243 187 84 / 22%);
+  border-color: var(--border-color-warning);
 }
 .mistakes-card h3 {
   color: var(--lab-warning);
@@ -158,8 +158,8 @@ li {
   display: flex;
   gap: 0.65rem;
   padding: 0.8rem;
-  border-color: rgb(191 72 255 / 21%);
-  background: linear-gradient(135deg, rgb(156 38 210 / 10%), rgb(11 100 168 / 8%));
+  border-color: var(--border-color-brand-soft);
+  background: var(--surface-brand-panel);
 }
 .recommendation-card > span {
   display: grid;
@@ -168,7 +168,7 @@ li {
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: rgb(179 59 231 / 13%);
+  background: var(--surface-icon-brand);
 }
 .recommendation-card img {
   width: 22px;

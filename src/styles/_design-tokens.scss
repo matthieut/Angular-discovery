@@ -1,0 +1,84 @@
+:root {
+  /* Palette de marque */
+  --color-brand-violet: #b34cff;
+  --color-brand-violet-strong: #9c18d6;
+  --color-brand-cyan: #47c9ff;
+  --color-brand-cyan-strong: #087eea;
+  --color-brand-blue: #5886ff;
+
+  /* Couleurs sémantiques */
+  --color-success: #48dda9;
+  --color-warning: #f3bb54;
+  --color-danger: #ff5d72;
+  --color-info: var(--color-brand-cyan);
+
+  /* Texte */
+  --color-text: #f7f8ff;
+  --color-text-muted: #aeb9ca;
+  --color-text-soft: #cbd2df;
+  --color-text-subtle: #718197;
+  --color-text-disabled: #8493a8;
+  --color-text-on-brand: #fff;
+  --color-code-text: #cbd8e8;
+
+  /* Fonds et surfaces */
+  --color-background: #070e1d;
+  --color-surface: #111a2e;
+  --color-surface-elevated: #18223a;
+  --surface-glass: linear-gradient(145deg, rgb(20 27 47 / 88%), rgb(9 16 30 / 76%));
+  --surface-glass-soft: linear-gradient(145deg, rgb(19 27 48 / 80%), rgb(8 15 29 / 72%));
+  --surface-navigation: linear-gradient(180deg, rgb(14 22 41 / 88%), rgb(8 15 29 / 88%));
+  --surface-brand-soft: linear-gradient(100deg, rgb(157 40 220 / 18%), rgb(19 137 225 / 16%));
+  --surface-brand-control: linear-gradient(110deg, var(--color-brand-violet-strong), var(--color-brand-cyan-strong));
+  --surface-interactive: rgb(255 255 255 / 3%);
+  --surface-interactive-subtle: rgb(255 255 255 / 2%);
+  --surface-interactive-hover: rgb(255 255 255 / 5%);
+  --surface-input: rgb(4 10 21 / 45%);
+  --surface-code: rgb(3 9 19 / 70%);
+  --surface-page-overlay: rgb(6 13 26 / 49%);
+  --surface-dark-overlay: rgb(7 15 29 / 50%);
+  --surface-badge: rgb(17 20 42 / 84%);
+  --surface-icon-brand: rgb(157 45 213 / 12%);
+  --surface-icon-info: rgb(71 201 255 / 10%);
+  --surface-image-overlay: linear-gradient(180deg, transparent 65%, rgb(6 11 24 / 36%));
+  --surface-brand-panel: linear-gradient(145deg, rgb(151 42 215 / 9%), rgb(8 137 223 / 8%));
+  --surface-brand-icon: linear-gradient(135deg, rgb(178 43 230 / 18%), rgb(23 150 230 / 16%));
+  --surface-danger-soft: rgb(255 93 114 / 8%);
+  --surface-success-soft: rgb(20 157 112 / 10%);
+  --surface-muted-soft: rgb(86 110 150 / 10%);
+
+  /* Bordures et effets */
+  --border-color: rgb(131 177 255 / 15%);
+  --border-color-soft: rgb(130 175 239 / 12%);
+  --border-color-strong: rgb(144 185 255 / 18%);
+  --border-color-active: rgb(74 180 255 / 28%);
+  --border-color-brand: rgb(189 72 255 / 34%);
+  --border-color-brand-soft: rgb(191 72 255 / 21%);
+  --border-color-warning: rgb(243 187 84 / 22%);
+  --border-color-danger: rgb(255 93 114 / 25%);
+  --border-color-success: rgb(63 202 155 / 25%);
+  --focus-ring: rgb(45 192 255 / 40%);
+  --shadow-panel: inset 0 1px 0 rgb(255 255 255 / 4%), 0 18px 50px rgb(0 0 0 / 16%);
+  --shadow-floating: 0 24px 70px rgb(0 0 0 / 28%);
+  --shadow-brand: 0 10px 30px rgb(71 85 255 / 22%);
+  --shadow-brand-glow: rgb(83 75 255 / 24%);
+  --shadow-violet-glow: rgb(172 52 255 / 45%);
+  --shadow-success-glow: rgb(41 215 125 / 70%);
+  --backdrop-blur: blur(14px);
+
+  /* Formes, espacements et mouvement */
+  --radius-xs: 7px;
+  --radius-sm: 8px;
+  --radius-md: 11px;
+  --radius-lg: 15px;
+  --radius-pill: 999px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --transition-fast: 160ms ease;
+  --font-family-app: Inter, 'Segoe UI', sans-serif;
+  --gradient-brand: linear-gradient(100deg, var(--color-brand-violet), var(--color-brand-cyan));
+}

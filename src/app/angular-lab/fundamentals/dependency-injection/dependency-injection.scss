@@ -10,7 +10,7 @@
   padding: 0.25rem;
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
-  background: rgb(4 10 21 / 45%);
+  background: var(--surface-input);
 }
 .scope-switch button {
   padding: 0.5rem;
@@ -23,7 +23,7 @@
   font-size: 0.65rem;
 }
 .scope-switch button.is-active {
-  background: linear-gradient(100deg, rgb(157 40 220 / 28%), rgb(19 137 225 / 24%));
+  background: var(--surface-brand-soft);
   color: var(--lab-text);
 }
 .lab-demo-card {

@@ -23,7 +23,7 @@
   padding: 0.65rem;
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
-  background: rgb(255 255 255 / 2%);
+  background: var(--surface-interactive-subtle);
   color: var(--lab-text-muted);
   cursor: pointer;
   font: inherit;
@@ -38,14 +38,14 @@
   height: 26px;
   place-items: center;
   border-radius: 50%;
-  background: rgb(71 201 255 / 10%);
+  background: var(--surface-icon-info);
   color: var(--lab-secondary);
   font-weight: 800;
 }
 
 .lesson-flow button.is-active {
   border-color: var(--lab-border-active);
-  background: linear-gradient(100deg, rgb(157 40 220 / 18%), rgb(19 137 225 / 16%));
+  background: var(--surface-brand-soft);
   color: var(--lab-text);
 }
 
@@ -54,7 +54,7 @@
   padding: 0.9rem;
   border-left: 3px solid var(--lab-secondary);
   border-radius: 0 var(--lab-radius-control) var(--lab-radius-control) 0;
-  background: rgb(71 201 255 / 6%);
+  background: color-mix(in srgb, var(--color-brand-cyan) 6%, transparent);
 }
 
 .lesson-result span {

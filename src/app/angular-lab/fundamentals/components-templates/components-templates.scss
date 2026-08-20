@@ -6,7 +6,7 @@
   padding: 1rem;
   border: 1px solid var(--lab-border-active);
   border-radius: var(--lab-radius-panel);
-  background: linear-gradient(145deg, rgb(151 42 215 / 9%), rgb(8 137 223 / 8%));
+  background: var(--surface-brand-panel);
 }
 .profile-preview h3 {
   margin: 0.7rem 0 0.2rem;
@@ -27,7 +27,7 @@
 .profile-preview li {
   padding: 0.3rem 0.5rem;
   border-radius: 999px;
-  background: rgb(71 201 255 / 10%);
+  background: var(--surface-icon-info);
   color: var(--lab-secondary);
   font-size: 0.6rem;
 }

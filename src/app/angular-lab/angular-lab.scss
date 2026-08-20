@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  padding: 1rem;
-  color: #f7f8ff;
+  color: var(--color-text);
   font-family: Inter, 'Segoe UI', sans-serif;
   height: 100%;
 }
@@ -23,7 +22,7 @@
 }
 .eyebrow {
   margin: 0 0 0.35rem;
-  color: #ae4dff;
+  color: var(--color-brand-violet);
   font-size: 0.76rem;
   font-weight: 850;
   letter-spacing: 0.08em;
@@ -36,14 +35,14 @@ h1 {
   letter-spacing: -0.045em;
 }
 h1 span {
-  background: linear-gradient(100deg, #ca46ff, #38c8ff);
+  background: var(--gradient-brand);
   background-clip: text;
   color: transparent;
 }
 .lab-hero > div > p:last-child {
   max-width: 72ch;
   margin: 0.65rem 0 0;
-  color: #bdc7d8;
+  color: var(--color-text-soft);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -56,18 +55,18 @@ h1 span {
 .lab-progress div {
   min-width: 108px;
   padding: 0.72rem 0.8rem;
-  border: 1px solid rgb(126 177 255 / 17%);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  background: rgb(7 15 29 / 50%);
+  background: var(--surface-dark-overlay);
 }
 .lab-progress dt {
-  color: #56c9ff;
+  color: var(--color-brand-cyan);
   font-size: 1.25rem;
   font-weight: 850;
 }
 .lab-progress dd {
   margin: 0.12rem 0 0;
-  color: #9daabd;
+  color: var(--color-text-muted);
   font-size: 0.67rem;
 }
 .lab-layout {
@@ -75,14 +74,17 @@ h1 span {
   grid-template-columns: 255px minmax(0, 1fr);
   height: 100%;
   overflow: hidden;
-  border: 1px solid rgb(144 185 255 / 18%);
+  /*border: 1px solid var(--border-color-strong);
   border-radius: 15px;
-  background: rgb(6 13 26 / 49%);
+  background: var(--surface-page-overlay);*/
 }
 .concept-browser {
   padding: 0.9rem 0.75rem;
-  border-right: 1px solid rgb(131 177 255 / 14%);
-  background: linear-gradient(180deg, rgb(14 22 41 / 88%), rgb(8 15 29 / 88%));
+  border: 1px solid var(--border-color-strong) !important;
+  background: var(--surface-glass-soft) !important;
+  box-shadow: var(--shadow-floating) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
+    border-radius: var(--p-scrollarea-border-radius);
 }
 .concept-browser__heading {
   display: flex;
@@ -95,9 +97,9 @@ h1 span {
   width: 38px;
   aspect-ratio: 1;
   place-items: center;
-  border: 1px solid rgb(189 72 255 / 34%);
+  border: 1px solid var(--border-color-brand);
   border-radius: 10px;
-  background: rgb(157 45 213 / 12%);
+  background: var(--surface-icon-brand);
 }
 .concept-browser__heading div {
   display: grid;
@@ -107,7 +109,7 @@ h1 span {
 }
 .concept-browser__heading small {
   margin-top: 0.15rem;
-  color: #8795aa;
+  color: var(--color-text-subtle);
   font-size: 0.65rem;
 }
 .concept-search {
@@ -116,21 +118,21 @@ h1 span {
   align-items: center;
   gap: 0.45rem;
   padding: 0 0.65rem;
-  border: 1px solid rgb(134 176 240 / 17%);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  background: rgb(3 10 22 / 45%);
+  background: var(--surface-input);
 }
 .concept-search input {
   width: 100%;
   border: 0;
   outline: 0;
   background: transparent;
-  color: #eaf0fb;
+  color: var(--color-text);
   font: inherit;
   font-size: 0.76rem;
 }
 .concept-search input::placeholder {
-  color: #76849a;
+  color: var(--color-text-subtle);
 }
 .concept-nav {
   margin-top: 0.8rem;
@@ -148,12 +150,12 @@ h1 span {
   border: 0;
   border-radius: 7px;
   background: transparent;
-  color: #dce4f2;
+  color: var(--color-text);
   cursor: pointer;
   text-align: left;
 }
 .concept-group__toggle:hover {
-  background: rgb(255 255 255 / 4%);
+  background: var(--surface-interactive-hover);
 }
 .concept-group__toggle > span:nth-of-type(1) {
   font-size: 0.76rem;
@@ -165,12 +167,12 @@ h1 span {
   height: 19px;
   place-items: center;
   border-radius: 99px;
-  background: rgb(92 124 168 / 17%);
-  color: #91a1b8;
+  background: color-mix(in srgb, var(--color-brand-blue) 17%, transparent);
+  color: var(--color-text-muted);
   font-size: 0.59rem;
 }
 .chevron {
-  color: #6e7d92;
+  color: var(--color-text-subtle);
   transition: transform 160ms ease;
 }
 .concept-group--open .chevron {
@@ -194,7 +196,7 @@ h1 span {
   border: 1px solid transparent;
   border-radius: 7px;
   background: transparent;
-  color: #aeb9ca;
+  color: var(--color-text-muted);
   cursor: pointer;
   font: inherit;
   font-size: 0.68rem;
@@ -203,19 +205,19 @@ h1 span {
   text-decoration: none;
 }
 .concept-group__items :is(a, button):hover {
-  color: #e7edf8;
+  color: var(--color-text);
 }
 .concept-group__items :is(a, button).is-active {
-  border-color: rgb(74 180 255 / 24%);
-  background: linear-gradient(100deg, rgb(156 38 221 / 18%), rgb(17 139 227 / 13%));
-  color: #fff;
+  border-color: var(--border-color-active);
+  background: var(--surface-brand-soft);
+  color: var(--color-text-on-brand);
 }
 .concept-group__items button.is-planned {
   cursor: not-allowed;
   opacity: 0.68;
 }
 .concept-group__items :is(a, button) small {
-  color: #718197;
+  color: var(--color-text-subtle);
   font-size: 0.55rem;
   text-transform: uppercase;
 }
@@ -223,18 +225,18 @@ h1 span {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #56657a;
+  background: var(--color-text-subtle);
 }
 .is-active .status-dot {
-  background: #39c8ff;
-  box-shadow: 0 0 9px #39c8ff;
+  background: var(--color-brand-cyan);
+  box-shadow: 0 0 9px var(--color-brand-cyan);
 }
 .concept-route {
   min-width: 0;
 }
 .empty-search {
   padding: 1rem 0.5rem;
-  color: #8492a6;
+  color: var(--color-text-disabled);
   font-size: 0.72rem;
   text-align: center;
 }
@@ -248,7 +250,7 @@ h1 span {
 }
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid rgb(45 192 255 / 40%);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 @media (max-width: 1050px) {
@@ -277,7 +279,7 @@ input:focus-visible {
   }
   .concept-browser {
     border-right: 0;
-    border-bottom: 1px solid rgb(131 177 255 / 14%);
+    border-bottom: 1px solid var(--border-color);
   }
   .concept-nav {
     max-height: 320px;

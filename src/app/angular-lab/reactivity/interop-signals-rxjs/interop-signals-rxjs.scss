@@ -28,7 +28,7 @@
 .results > span {
   padding: 0.35rem 0.55rem;
   border-radius: 999px;
-  background: rgb(71 201 255 / 10%);
+  background: var(--surface-icon-info);
   color: var(--lab-secondary);
   font-size: 0.62rem;
 }

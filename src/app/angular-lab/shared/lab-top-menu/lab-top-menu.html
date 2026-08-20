@@ -1,0 +1,22 @@
+<nav class="lab-menu" aria-label="Parcours du laboratoire Angular">
+  <div class="lab-menu__brand">
+    <span class="lab-menu__mark"><img [src]="iconPath + '/angular.png'" alt="" /></span>
+    <span><strong>Angular Lab</strong><small>30 fiches disponibles</small></span>
+  </div>
+
+  <div class="lab-menu__links">
+    @for (item of items; track item.route) {
+      <a [routerLink]="item.route" routerLinkActive="is-active">
+        <img [src]="iconPath + '/' + item.icon" alt="" />
+        <span class="label-full">{{ item.label }}</span>
+        <span class="label-short">{{ item.shortLabel }}</span>
+        <small>{{ item.count }}</small>
+      </a>
+    }
+  </div>
+
+  <div class="lab-menu__progress" aria-label="30 fiches disponibles sur 68 prévues">
+    <span><strong>30</strong>/68</span>
+    <i><b></b></i>
+  </div>
+</nav>

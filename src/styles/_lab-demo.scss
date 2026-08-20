@@ -19,7 +19,7 @@
     border: 1px solid var(--lab-border);
     border-radius: var(--lab-radius-control);
     outline: 0;
-    background: rgb(4 10 21 / 45%);
+    background: var(--surface-input);
     color: var(--lab-text);
     font: inherit;
   }
@@ -34,7 +34,7 @@
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--lab-border-active);
     border-radius: var(--lab-radius-control);
-    background: linear-gradient(100deg, rgb(157 40 220 / 24%), rgb(19 137 225 / 22%));
+    background: var(--surface-brand-soft);
     color: var(--lab-text);
     cursor: pointer;
     font: inherit;
@@ -50,7 +50,7 @@
     padding: 0.8rem;
     border: 1px solid var(--lab-border);
     border-radius: var(--lab-radius-control);
-    background: rgb(255 255 255 / 2%);
+    background: var(--surface-interactive-subtle);
   }
   .lab-demo-card h4 {
     margin: 0 0 0.35rem;

@@ -14,7 +14,7 @@
   display: inline-block;
   padding: 0.3rem 0.5rem;
   border-radius: 999px;
-  background: rgb(106 124 153 / 13%);
+  background: color-mix(in srgb, var(--color-text-subtle) 13%, transparent);
   color: var(--lab-text-disabled);
   font-size: 0.57rem;
   text-transform: uppercase;
@@ -41,7 +41,7 @@
   border-color: var(--lab-border-active);
 }
 .comparison-card.is-recommended > span {
-  background: rgb(22 167 216 / 12%);
+  background: color-mix(in srgb, var(--color-brand-cyan) 12%, transparent);
   color: var(--lab-secondary);
 }
 @media (max-width: 700px) {

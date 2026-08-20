@@ -14,7 +14,7 @@
   padding: 0.65rem;
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
-  background: rgb(255 255 255 / 2%);
+  background: var(--surface-interactive-subtle);
   transition: border-color 160ms ease;
 }
 .member-list article > span {
@@ -23,7 +23,7 @@
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgb(178 43 230 / 20%), rgb(23 150 230 / 18%));
+  background: var(--surface-brand-icon);
   color: var(--lab-secondary);
   font-size: 0.65rem;
   font-weight: 850;

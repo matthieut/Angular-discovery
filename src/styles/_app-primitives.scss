@@ -1,0 +1,43 @@
+.app-surface {
+  border: 1px solid var(--border-color-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface-glass);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+.app-control {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--surface-input);
+  color: var(--color-text);
+}
+
+.app-action-primary {
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface-brand-control);
+  box-shadow: var(--shadow-brand);
+  color: var(--color-text-on-brand);
+}
+
+.app-eyebrow {
+  color: var(--color-brand-violet);
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:is(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

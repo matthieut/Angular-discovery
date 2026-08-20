@@ -8,7 +8,7 @@
     box-sizing: border-box;
   }
   code {
-    color: #73d5ff;
+    color: var(--color-brand-cyan);
     font-family: 'Cascadia Code', Consolas, monospace;
   }
   .concept-content {
@@ -42,7 +42,7 @@
   }
   .article-panel > p {
     margin: 0 0 0.8rem;
-    color: #9eabbd;
+    color: var(--color-text-muted);
     font-size: 0.73rem;
     line-height: 1.5;
   }

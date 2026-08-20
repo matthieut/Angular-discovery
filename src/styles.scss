@@ -1,3 +1,5 @@
+@use './styles/design-tokens';
+@use './styles/app-primitives';
 @use './styles/lab-theme';
 @use './styles/lab-concept';
 @use './styles/lab-demo';
@@ -8,6 +10,8 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-family-app);
   background-image: url('/background.png') ;
   background-size: cover;
   --p-scrollarea-handle-background: var(--p-primary-color);
@@ -16,9 +20,16 @@ html, body {
     border-left: 2px solid var(--p-primary-color);
 }
 .app-container{ 
-    border: 1px solid rgb(155 194 255 / 20%) !important;
-  background: linear-gradient(135deg, rgb(15 20 36 / 84%), rgb(9 16 31 / 70%)) !important;
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%), 0 24px 70px rgb(0 0 0 / 28%) !important;
-  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  background: var(--surface-glass-soft) !important;
+  box-shadow: var(--shadow-floating) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
     flex-direction: column !important;
+    border-radius: var(--p-scrollarea-border-radius);
+}
+.app-container-height{
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    height: 100%;
 }

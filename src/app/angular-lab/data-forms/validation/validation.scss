@@ -18,7 +18,7 @@
   padding: 0.5rem;
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
-  background: rgb(4 10 21/45%);
+  background: var(--surface-input);
   color: var(--lab-text);
 }
 .validation-form label:has(small) input {
@@ -33,7 +33,7 @@
 .form-status {
   padding: 0.45rem;
   border-radius: 6px;
-  background: rgb(255 93 114/8%);
+  background: var(--surface-danger-soft);
   color: var(--lab-danger);
   font-size: 0.63rem;
 }

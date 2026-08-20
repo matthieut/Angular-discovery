@@ -4,7 +4,7 @@
 
       <main class="portfolio-page">
         <header class="portfolio-hero">
-          <p class="eyebrow">Portfolio</p>
+          <p class="eyebrow app-eyebrow">Portfolio</p>
           <h1>Des solutions métier, pas seulement du code</h1>
           <p class="portfolio-hero__intro">
             De l’architecture à la livraison, j’accompagne la modernisation et la création
@@ -24,7 +24,7 @@
 
         <section class="projects" aria-label="Projets sélectionnés">
 
-          <article class="featured-project">
+          <article class="featured-project app-surface">
             <div class="featured-project__visual">
               <img src="images/nextcity-smart-concept.png"
                 alt="Illustration conceptuelle d’une ville connectée et de ses équipements urbains" />
@@ -65,7 +65,7 @@
                 </div>
               </dl>
 
-              <a class="primary-action" routerLink="/portfolio/nextcity-smart">
+              <a class="primary-action app-action-primary" routerLink="/portfolio/nextcity-smart">
                 Voir l’étude de cas <img [src]="iconPath + '/arrow.png'" alt="" width="20" height="20" />
               </a>
             </div>
@@ -74,7 +74,7 @@
 
           <div class="secondary-projects">
             @for (project of visibleProjects(); track project.title) {
-            @if($index <= 1){ <article class="project-card">
+            @if($index <= 1){ <article class="project-card app-surface">
               <header>
                 <span class="project-card__icon"><img [src]="iconPath + '/' + project.icon" alt="" width="29"
                     height="29" /></span>
@@ -99,7 +99,7 @@
           <div class="tertiary-projects">
             @for (project of visibleProjects(); track project.title) {
             @if($index > 1){
-            <article class="project-card">
+            <article class="project-card app-surface">
               <header>
                 <span class="project-card__icon"><img [src]="iconPath + '/' + project.icon" alt="" width="29"
                     height="29" /></span>
@@ -119,7 +119,7 @@
             }
           </div>
         </section>
-        <section class="contribution" aria-labelledby="contribution-title">
+        <section class="contribution app-surface" aria-labelledby="contribution-title">
           <h2 id="contribution-title">Ma contribution</h2>
           <ol>
             <li><span><img [src]="iconPath + '/search.png'" alt="" width="27" height="27" /></span>

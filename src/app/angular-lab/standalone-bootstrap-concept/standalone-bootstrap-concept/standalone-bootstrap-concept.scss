@@ -11,7 +11,7 @@
   padding: 0.75rem;
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
-  background: rgb(255 255 255 / 2%);
+  background: var(--surface-interactive-subtle);
 }
 .standalone-demo h4 {
   margin: 0.45rem 0 0.15rem;
@@ -26,7 +26,7 @@
   grid-column: 1 / -1;
   padding: 0.45rem 0.55rem;
   border-radius: 6px;
-  background: rgb(255 93 114 / 8%);
+  background: var(--surface-danger-soft);
   color: var(--lab-danger) !important;
 }
 .standalone-status.is-valid {
@@ -45,7 +45,7 @@
   padding: 0.25rem;
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
-  background: rgb(4 10 21 / 45%);
+  background: var(--surface-input);
 }
 .environment-switch button {
   padding: 0.48rem;
@@ -59,7 +59,7 @@
   font-weight: 750;
 }
 .environment-switch button.is-active {
-  background: linear-gradient(100deg, rgb(157 40 220 / 28%), rgb(19 137 225 / 24%));
+  background: var(--surface-brand-soft);
   color: var(--lab-text);
   box-shadow: inset 0 0 0 1px var(--lab-border-active);
 }
@@ -76,8 +76,8 @@
   padding: 0.65rem;
   border: 1px solid var(--lab-border);
   border-radius: 9px;
-  background: rgb(255 255 255 / 2%);
-  color: #9aa7ba;
+  background: var(--surface-interactive-subtle);
+  color: var(--color-text-muted);
   cursor: pointer;
   font: inherit;
 }
@@ -87,7 +87,7 @@
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background: rgb(86 110 150 / 10%);
+  background: var(--surface-muted-soft);
 }
 .provider-grid img {
   width: 25px;
@@ -108,11 +108,11 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #47566a;
+  background: var(--color-text-subtle);
 }
 .provider-grid button.is-enabled {
   border-color: var(--lab-border-active);
-  background: linear-gradient(145deg, rgb(151 42 215 / 9%), rgb(8 137 223 / 8%));
+  background: var(--surface-brand-panel);
   color: var(--lab-text);
 }
 .provider-grid button.is-enabled img {
@@ -168,7 +168,7 @@
   border: 1px solid var(--lab-border);
   border-radius: 6px;
   color: var(--lab-text-muted);
-  background: rgb(5 12 24 / 45%);
+  background: var(--surface-input);
 }
 app-code-preview {
   margin-top: 0.7rem;

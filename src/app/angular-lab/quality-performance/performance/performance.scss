@@ -32,7 +32,7 @@
 .preview-list span {
   padding: 0.25rem 0.4rem;
   border-radius: 5px;
-  background: rgb(255 255 255/3%);
+  background: var(--surface-interactive);
   color: var(--lab-text-subtle);
   font-size: 0.56rem;
 }

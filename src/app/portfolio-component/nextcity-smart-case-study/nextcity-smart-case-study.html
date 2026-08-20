@@ -1,0 +1,130 @@
+<p-scrollarea class="app-container h-full">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
+      <main class="case-page">
+        <a class="back-link" routerLink="/portfolio">← Retour au portfolio</a>
+
+        <header class="case-hero app-surface">
+          <div class="case-hero__content">
+            <p class="app-eyebrow">Étude de cas · Smart City</p>
+            <h1><span>NextCity</span> SMART</h1>
+            <p class="case-hero__lead">
+              Concevoir et faire évoluer le socle opérationnel utilisé pour structurer les actifs,
+              coordonner les interventions et connecter les systèmes d’un territoire intelligent.
+            </p>
+            <div class="case-hero__tags" aria-label="Contexte du projet">
+              <span>Angers Loire Métropole</span><span>EQUANS</span><span>Architecture & Tech Lead</span>
+            </div>
+          </div>
+          <figure class="case-hero__visual">
+            <img src="/images/nextcity-smart-concept.png" alt="Représentation conceptuelle d’un territoire intelligent connecté" />
+            <figcaption>Illustration conceptuelle — pas une capture de l’application cliente.</figcaption>
+          </figure>
+        </header>
+
+        <section class="case-metrics" aria-label="Résultats et échelle">
+          <article class="app-surface"><strong>70 000+</strong><span>équipements sur le cas public Angers</span></article>
+          <article class="app-surface"><strong>1 min 56 → 22 s</strong><span>temps de chargement cartographique optimisé</span></article>
+          <article class="app-surface"><strong>3 000 → 20 000+</strong><span>objets cartographiques exploitables</span></article>
+          <article class="app-surface"><strong>99,9 %</strong><span>objectif de disponibilité des alertes critiques</span></article>
+        </section>
+
+        <div class="case-grid">
+          <section class="case-section app-surface">
+            <p class="section-index">01 · Contexte</p>
+            <h2>Un environnement opérationnel complexe</h2>
+            <p>
+              Le territoire intelligent réunit une forte volumétrie d’équipements, plusieurs métiers,
+              de nombreux acteurs et des systèmes déjà en place. NextCity intervient comme socle
+              opérationnel pour structurer les actifs, suivre les activités terrain et donner une
+              vision consolidée de l’exploitation.
+            </p>
+            <p>
+              L’enjeu n’était donc pas de produire une application isolée, mais de construire une
+              solution capable de s’intégrer durablement à un écosystème technique et métier exigeant.
+            </p>
+          </section>
+
+          <aside class="case-section app-surface role-card">
+            <p class="section-index">Mon rôle</p>
+            <h2>Chef de projet technique et architecte</h2>
+            <ul>
+              <li>Architecture globale et décisions structurantes</li>
+              <li>Pilotage technique d’une équipe de sept développeurs</li>
+              <li>Conception des connecteurs et des flux d’intégration</li>
+              <li>Développement hands-on des sujets complexes</li>
+              <li>Suivi de la performance et de la mise en production</li>
+            </ul>
+          </aside>
+        </div>
+
+        <section class="case-section app-surface">
+          <p class="section-index">02 · Défis</p>
+          <h2>Trois contraintes structurantes</h2>
+          <div class="challenge-grid">
+            @for (challenge of challenges; track challenge.title) {
+              <article>
+                <span><img [src]="iconPath + '/' + challenge.icon" alt="" /></span>
+                <h3>{{ challenge.title }}</h3>
+                <p>{{ challenge.description }}</p>
+              </article>
+            }
+          </div>
+        </section>
+
+        <section class="case-section app-surface">
+          <p class="section-index">03 · Contribution</p>
+          <h2>Une prise en charge de bout en bout</h2>
+          <div class="responsibility-list">
+            @for (responsibility of responsibilities; track responsibility.title; let index = $index) {
+              <article>
+                <span class="step">{{ (index + 1).toString().padStart(2, '0') }}</span>
+                <img [src]="iconPath + '/' + responsibility.icon" alt="" />
+                <div><h3>{{ responsibility.title }}</h3><p>{{ responsibility.description }}</p></div>
+              </article>
+            }
+          </div>
+        </section>
+
+        <section class="case-grid case-grid--decision">
+          <article class="case-section app-surface">
+            <p class="section-index">04 · Décisions</p>
+            <h2>Des choix guidés par l’exploitation réelle</h2>
+            <ul class="decision-list">
+              <li><strong>Performance cartographique :</strong> limiter les traitements et chargements inutiles afin de supporter des volumes nettement supérieurs.</li>
+              <li><strong>Interopérabilité :</strong> isoler les échanges derrière des connecteurs et des API plutôt que coupler directement les systèmes.</li>
+              <li><strong>Évolutivité :</strong> préserver un socle métier commun tout en permettant les adaptations propres aux exploitants et territoires.</li>
+              <li><strong>Sécurité :</strong> encadrer l’accès aux services et aux données par des mécanismes d’authentification et d’autorisation adaptés.</li>
+            </ul>
+          </article>
+
+          <article class="case-section app-surface">
+            <p class="section-index">05 · Stack</p>
+            <h2>Technologies mobilisées</h2>
+            <ul class="stack-list">
+              @for (technology of stack; track technology) { <li>{{ technology }}</li> }
+            </ul>
+            <p class="stack-note">La stack décrit l’écosystème sur lequel je suis intervenu ; elle ne prétend pas représenter à elle seule toute l’architecture actuelle du produit.</p>
+          </article>
+        </section>
+
+        <section class="case-section app-surface outcome">
+          <div>
+            <p class="section-index">06 · Résultat</p>
+            <h2>Une plateforme devenue centrale dans l’exploitation</h2>
+            <p>
+              Le projet a permis d’industrialiser la gestion d’un patrimoine urbain dense, de mieux
+              coordonner les acteurs et d’accélérer l’accès aux informations opérationnelles. Le site
+              officiel NextCity présente publiquement une efficacité opérationnelle mesurée en hausse
+              de 30 % sur le cas Angers Loire Métropole.
+            </p>
+          </div>
+          <a class="app-action-primary official-link" href="https://www.nextcity.fr/fr/solutions/smart-city/" target="_blank" rel="noopener noreferrer">
+            Consulter le cas client officiel ↗
+          </a>
+        </section>
+      </main>
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical"><p-scrollarea-handle /></p-scrollarea-scrollbar>
+</p-scrollarea>

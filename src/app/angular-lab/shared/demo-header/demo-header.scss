@@ -17,9 +17,9 @@
   width: 39px;
   aspect-ratio: 1;
   place-items: center;
-  border: 1px solid rgb(186 70 255 / 30%);
+  border: 1px solid var(--border-color-brand);
   border-radius: 9px;
-  background: rgb(154 45 213 / 10%);
+  background: var(--surface-icon-brand);
 }
 .demo-header__icon img {
   width: 24px;

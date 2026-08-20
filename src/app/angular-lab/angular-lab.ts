@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ScrollAreaModule } from 'primeng/scrollarea';
+import { LabTopMenu } from './shared/lab-top-menu/lab-top-menu';
 
 interface LabConcept {
   title: string;
@@ -16,7 +17,7 @@ interface LabCategory {
 
 @Component({
   selector: 'app-angular-lab',
-  imports: [FormsModule, RouterLink, RouterLinkActive, RouterOutlet, ScrollAreaModule],
+  imports: [FormsModule, RouterLink, RouterLinkActive, RouterOutlet, ScrollAreaModule, LabTopMenu],
   templateUrl: './angular-lab.html',
   styleUrl: './angular-lab.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

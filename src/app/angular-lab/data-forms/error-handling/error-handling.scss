@@ -22,9 +22,9 @@
 }
 .error-state {
   padding: 1rem;
-  border: 1px solid rgb(255 93 114/25%);
+  border: 1px solid var(--border-color-danger);
   border-radius: var(--lab-radius-panel);
-  background: rgb(255 93 114/6%);
+  background: color-mix(in srgb, var(--color-danger) 6%, transparent);
 }
 .error-state strong {
   font-size: 0.72rem;
