@@ -1,19 +1,12 @@
 <article class="concept-sheet">
-  <header class="concept-header">
-    <div class="breadcrumb"><span>Fondamentaux</span><i>/</i><strong>Fiche 01</strong></div>
-    <div class="concept-title-row">
-      <div>
-        <h2>Projet standalone et bootstrap</h2>
-        <p>Lire le point d’entrée d’une application moderne et configurer ses dépendances globales sans <code>AppModule</code>.</p>
-      </div>
-      <span class="level"><i></i>Fondamental</span>
-    </div>
-    <nav class="tabs" aria-label="Contenu de la fiche">
-      <button type="button" [class.is-active]="activeTab() === 'demo'" (click)="selectTab('demo')"><img [src]="iconPath + '/rocket.png'" alt="" />Démonstration</button>
-      <button type="button" [class.is-active]="activeTab() === 'code'" (click)="selectTab('code')"><img [src]="iconPath + '/code.png'" alt="" />Code</button>
-      <button type="button" [class.is-active]="activeTab() === 'comparison'" (click)="selectTab('comparison')"><img [src]="iconPath + '/grid.png'" alt="" />Comparaison</button>
-    </nav>
-  </header>
+  <app-concept-header
+    category="Fondamentaux"
+    [sheetNumber]="1"
+    title="Projet standalone et bootstrap"
+    description="Lire le point d’entrée d’une application moderne et configurer ses dépendances globales sans AppModule."
+    level="Fondamental"
+  />
+  <app-concept-tabs [activeTab]="activeTab()" (tabChange)="selectTab($event)" />
 
   <div class="concept-content">
     <section class="workspace">
@@ -41,29 +34,18 @@
           </div>
         </div>
 
-        <div class="code-preview">
-          <div class="code-preview__bar"><span><i></i><i></i><i></i></span><strong>main.ts</strong><small>Configuration générée</small></div>
-          <pre><code>{{ bootstrapCode() }}</code></pre>
-        </div>
+        <app-code-preview
+          filename="main.ts"
+          caption="Configuration générée"
+          [code]="bootstrapCode()"
+        />
       }
 
       @if (activeTab() === 'code') {
         <div class="panel article-panel">
           <h3>Implémentation complète</h3>
           <p>Le point d’entrée reste court : il démarre le composant racine et rassemble uniquement les providers globaux.</p>
-          <pre><code>import &#123; bootstrapApplication &#125; from '@angular/platform-browser';
-import &#123; provideRouter &#125; from '@angular/router';
-import &#123; provideHttpClient, withInterceptors &#125; from '@angular/common/http';
-import &#123; AppComponent &#125; from './app/app.component';
-import &#123; routes &#125; from './app/app.routes';
-import &#123; authInterceptor &#125; from './app/core/auth.interceptor';
-
-bootstrapApplication(AppComponent, &#123;
-  providers: [
-    provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor]))
-  ]
-&#125;).catch(console.error);</code></pre>
+          <app-code-preview filename="main.ts" caption="Implémentation complète" [code]="implementationCode" />
           <h4>Points d’attention</h4>
           <ul><li>Déclarer un provider global une seule fois.</li><li>Importer explicitement les dépendances de chaque composant standalone.</li><li>Utiliser un <code>InjectionToken</code> pour rendre la configuration substituable en test.</li></ul>
         </div>

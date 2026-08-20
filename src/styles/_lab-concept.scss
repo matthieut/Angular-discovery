@@ -1,0 +1,59 @@
+.concept-sheet {
+  min-height:100%;
+  color:var(--lab-text);
+
+  *, *::before, *::after { box-sizing:border-box; }
+  code { color:#73d5ff; font-family:"Cascadia Code",Consolas,monospace; }
+  .concept-content { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(265px,.7fr); gap:.9rem; padding:.9rem; }
+  .workspace { min-width:0; }
+  .panel,.insight-card,.use-card,.recommendation-card,.exercise-card { border:1px solid var(--lab-border); border-radius:var(--lab-radius-panel); background:var(--lab-panel-background); }
+  .article-panel { overflow:hidden; padding:1rem; }
+  .article-panel h3 { margin:0 0 .35rem; font-size:1rem; }
+  .article-panel>p { margin:0 0 .8rem; color:#9eabbd; font-size:.73rem; line-height:1.5; }
+  .article-panel app-code-preview { margin-inline:-1rem; }
+  .article-panel h4 { margin:1rem 0 .4rem; font-size:.77rem; }
+  .article-panel ul,.comparison-card ul { margin:.3rem 0 0; padding-left:1.1rem; color:#aab6c8; font-size:.68rem; line-height:1.7; }
+  .comparison-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+  .comparison-card { position:relative; padding:1.1rem; }
+  .comparison-card>span { display:inline-block; padding:.3rem .5rem; border-radius:999px; background:rgb(106 124 153 / 13%); color:#8696ab; font-size:.57rem; text-transform:uppercase; }
+  .comparison-card h3 { margin:.7rem 0 .35rem; font-size:1rem; }
+  .comparison-card p { min-height:65px; margin:0; color:#9eabbd; font-size:.7rem; line-height:1.5; }
+  .comparison-card.is-recommended { border-color:var(--lab-border-active); }
+  .comparison-card.is-recommended>span { background:rgb(22 167 216 / 12%); color:#54d2ff; }
+  .sheet-pagination { display:flex; align-items:center; justify-content:space-between; margin-top:.75rem; }
+  .sheet-pagination button { padding:.45rem .6rem; border:1px solid var(--lab-border-subtle); border-radius:6px; background:transparent; color:#526176; font:inherit; font-size:.58rem; }
+  .sheet-pagination span { color:#68778c; font-size:.59rem; }
+  .learning-column { display:grid; align-content:start; gap:.65rem; }
+  .insight-card,.use-card,.exercise-card { padding:.9rem; }
+  .insight-card__icon { display:grid; width:38px; aspect-ratio:1; place-items:center; border-radius:9px; background:linear-gradient(135deg,rgb(178 43 230 / 18%),rgb(23 150 230 / 16%)); }
+  .insight-card__icon img { width:25px; }
+  .learning-column h3 { margin:.7rem 0 .45rem; font-size:.79rem; }
+  .learning-column p,.learning-column li { color:#9ca9bc; font-size:.65rem; line-height:1.5; }
+  .insight-card>p { margin:0; }
+  .insight-card ul { display:grid; gap:.4rem; margin:.65rem 0 0; padding:0; list-style:none; }
+  .insight-card li { position:relative; padding-left:.85rem; }
+  .insight-card li::before { content:""; position:absolute; top:.48rem; left:0; width:5px; height:5px; border-radius:50%; background:var(--lab-secondary); }
+  .use-card h3 { display:flex; align-items:center; gap:.45rem; margin-top:0; }
+  .use-card h3 img { width:19px; }
+  .use-card>div { padding:.55rem 0; border-top:1px solid var(--lab-border-subtle); }
+  .use-card strong { font-size:.67rem; }
+  .use-card p { margin:.15rem 0 0; }
+  .recommendation-card { display:flex; gap:.65rem; padding:.8rem; border-color:rgb(191 72 255 / 21%); background:linear-gradient(135deg,rgb(156 38 210 / 10%),rgb(11 100 168 / 8%)); }
+  .recommendation-card>span { display:grid; width:34px; height:34px; flex:0 0 auto; place-items:center; border-radius:50%; background:rgb(179 59 231 / 13%); }
+  .recommendation-card img { width:22px; }
+  .recommendation-card strong { font-size:.68rem; }
+  .recommendation-card p { margin:.15rem 0 0; }
+  .exercise-card h3 { margin-top:0; color:var(--lab-secondary); }
+  .exercise-card ol { margin:.2rem 0 0; padding-left:1.15rem; }
+  button:focus-visible { outline:3px solid var(--lab-focus-ring); outline-offset:2px; }
+}
+
+@media (max-width:1180px) {
+  .concept-sheet .concept-content { grid-template-columns:1fr; }
+  .concept-sheet .learning-column { grid-template-columns:repeat(2,1fr); }
+  .concept-sheet :is(.recommendation-card,.exercise-card) { min-height:100%; }
+}
+@media (max-width:700px) {
+  .concept-sheet :is(.comparison-grid,.learning-column) { grid-template-columns:1fr; }
+  .concept-sheet .concept-content { padding:.65rem; }
+}

@@ -1,0 +1,13 @@
+<section class="code-preview" [attr.aria-label]="'Exemple de code ' + filename()">
+  <div class="code-preview__bar">
+    <span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+    <strong>{{ filename() }}</strong>
+    <div>
+      <small>{{ caption() }}</small>
+      <button type="button" (click)="copyCode()" [attr.aria-label]="'Copier le code de ' + filename()">
+        {{ copied() ? 'Copié' : 'Copier' }}
+      </button>
+    </div>
+  </div>
+  <pre><code>{{ code() }}</code></pre>
+</section>

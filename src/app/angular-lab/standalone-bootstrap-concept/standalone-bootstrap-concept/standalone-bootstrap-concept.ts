@@ -1,17 +1,21 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { CodePreview } from '../../shared/code-preview/code-preview';
+import { ConceptHeader } from '../../shared/concept-header/concept-header';
+import { ConceptTab, ConceptTabs } from '../../shared/concept-tabs/concept-tabs';
 
-type ConceptTab = 'demo' | 'code' | 'comparison';
 type Environment = 'development' | 'production';
 
 
 @Component({
   selector: 'app-standalone-bootstrap-concept',
   standalone: true,
+  imports: [CodePreview, ConceptHeader, ConceptTabs],
   templateUrl: './standalone-bootstrap-concept.html',
   styleUrl: './standalone-bootstrap-concept.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StandaloneBootstrapConcept {
-readonly iconPath = 'icons';
+  readonly iconPath = '/icons/lab';
   readonly activeTab = signal<ConceptTab>('demo');
   readonly environment = signal<Environment>('development');
   readonly routerEnabled = signal(true);
@@ -33,6 +37,20 @@ readonly iconPath = 'icons';
 
     return `bootstrapApplication(AppComponent, {\n  providers: [\n${providers}\n  ]\n}).catch(console.error);`;
   });
+
+  readonly implementationCode = `import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+import { authInterceptor } from './app/core/auth.interceptor';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ]
+}).catch(console.error);`;
 
   selectTab(tab: ConceptTab): void {
     this.activeTab.set(tab);

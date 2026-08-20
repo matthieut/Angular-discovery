@@ -1,0 +1,14 @@
+:host { display:block; min-width:0; }
+.code-preview { overflow:hidden; border:1px solid var(--lab-border); border-radius:var(--lab-radius-panel); background:var(--lab-panel-background); }
+.code-preview__bar { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.75rem; padding:.52rem .7rem; border-bottom:1px solid var(--lab-border-subtle); color:var(--lab-text-muted); font-size:.6rem; }
+.window-controls { display:flex; gap:.28rem; }
+.window-controls i { width:7px; height:7px; border-radius:50%; background:var(--lab-danger); }
+.window-controls i:nth-child(2) { background:var(--lab-warning); }
+.window-controls i:nth-child(3) { background:var(--lab-success); }
+.code-preview__bar>div { display:flex; align-items:center; justify-content:flex-end; gap:.55rem; }
+.code-preview__bar small { color:var(--lab-text-subtle); }
+.code-preview button { padding:.28rem .45rem; border:1px solid var(--lab-border); border-radius:5px; background:transparent; color:var(--lab-secondary); cursor:pointer; font:inherit; font-size:.58rem; }
+.code-preview button:focus-visible { outline:3px solid var(--lab-focus-ring); outline-offset:2px; }
+pre { max-width:100%; margin:0; overflow:auto; padding:1rem; background:var(--lab-code-background); color:var(--lab-code-text); font:500 .68rem/1.65 "Cascadia Code",Consolas,monospace; white-space:pre; }
+code { font-family:inherit; }
+@media (max-width:560px) { .code-preview__bar { grid-template-columns:auto 1fr; }.code-preview__bar>strong { text-align:center; }.code-preview__bar>div { grid-column:1 / -1; justify-content:space-between; } }

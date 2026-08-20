@@ -6,8 +6,12 @@ import { AngularLab } from './angular-lab/angular-lab';
 
 export const routes: Routes = [{ path: '', redirectTo: '/home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponent },
-    { path: 'lab', component: AngularLab, children: [{
-        path: 'fondamentaux/standalone-bootstrap', loadComponent: () => import('./angular-lab/standalone-bootstrap-concept/standalone-bootstrap-concept/standalone-bootstrap-concept').then(m => m.StandaloneBootstrapConcept)
-    }]},
+    { path: 'lab', component: AngularLab, children: [
+      { path: '', pathMatch: 'full', redirectTo: 'fondamentaux/standalone-bootstrap' },
+      {
+        path: 'fondamentaux/standalone-bootstrap',
+        loadComponent: () => import('./angular-lab/standalone-bootstrap-concept/standalone-bootstrap-concept/standalone-bootstrap-concept').then(m => m.StandaloneBootstrapConcept)
+      }
+    ]},
     { path: 'portfolio', component: PortfolioComponent },
 ];

@@ -1,0 +1,11 @@
+<nav class="tabs" aria-label="Contenu de la fiche">
+  <button type="button" [class.is-active]="activeTab() === 'demo'" (click)="tabChange.emit('demo')">
+    <img [src]="iconPath + '/rocket.png'" alt="" />Démonstration
+  </button>
+  <button type="button" [class.is-active]="activeTab() === 'code'" (click)="tabChange.emit('code')">
+    <img [src]="iconPath + '/code.png'" alt="" />Code
+  </button>
+  <button type="button" [class.is-active]="activeTab() === 'comparison'" (click)="tabChange.emit('comparison')">
+    <img [src]="iconPath + '/grid.png'" alt="" />Comparaison
+  </button>
+</nav>

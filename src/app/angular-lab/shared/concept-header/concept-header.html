@@ -1,0 +1,13 @@
+<header class="concept-header">
+  <div class="breadcrumb">
+    <span>{{ category() }}</span><i>/</i><strong>Fiche {{ sheetNumber().toString().padStart(2, '0') }}</strong>
+  </div>
+
+  <div class="concept-title-row">
+    <div>
+      <h2>{{ title() }}</h2>
+      <p>{{ description() }}</p>
+    </div>
+    <span class="level"><i></i>{{ level() }}</span>
+  </div>
+</header>

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { StandaloneBootstrapConcept } from './standalone-bootstrap-concept/standalone-bootstrap-concept/standalone-bootstrap-concept';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ScrollAreaModule } from 'primeng/scrollarea';
 
@@ -20,12 +19,12 @@ interface LabCategory {
   imports: [FormsModule, RouterLink, RouterLinkActive, RouterOutlet, ScrollAreaModule],
   templateUrl: './angular-lab.html',
   styleUrl: './angular-lab.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AngularLab {
-readonly iconPath = '/icons';
+  readonly iconPath = '/icons/lab';
   readonly search = signal('');
   readonly expandedCategory = signal('Fondamentaux');
-  readonly selectedConcept = signal('Projet standalone et bootstrap');
 
   readonly categories: LabCategory[] = [
     {
