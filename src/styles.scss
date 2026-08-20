@@ -1,0 +1,12 @@
+@import 'primeflex/primeflex.css';
+@import 'primeicons/primeicons.css';
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-image: url('/background.png') ;
+  background-size: cover;
+}
+.p-dock-item:has(.p-dock-item-link.router-link-active) {
+    border-bottom: 2px solid var(--p-primary-color);
+}
