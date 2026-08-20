@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin: 0.7rem 0;
+}
+.metrics div {
+  display: grid;
+  padding: 0.7rem;
+  border: 1px solid var(--lab-border);
+  border-radius: 8px;
+  text-align: center;
+}
+.metrics strong {
+  color: var(--lab-secondary);
+  font-size: 1.2rem;
+}
+.metrics small {
+  color: var(--lab-text-muted);
+}
+.preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  max-height: 120px;
+  overflow: hidden;
+}
+.preview-list span {
+  padding: 0.25rem 0.4rem;
+  border-radius: 5px;
+  background: rgb(255 255 255/3%);
+  color: var(--lab-text-subtle);
+  font-size: 0.56rem;
+}

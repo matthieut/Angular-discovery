@@ -1,0 +1,59 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Données et formulaires"
+    [sheetNumber]="11"
+    title="Formulaires réactifs"
+    description="Construire un modèle de formulaire typé, observable et indépendant du DOM."
+    level="Fondamental"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/code.png'"
+            title="Éditer un profil"
+            description="Le FormGroup reste la source de vérité pendant toute la saisie."
+          />
+          <form class="profile-form" [formGroup]="profileForm" (ngSubmit)="save()">
+            <label>Nom<input formControlName="name" /></label
+            ><label>Email<input type="email" formControlName="email" /></label
+            ><label class="checkbox"
+              ><input type="checkbox" formControlName="remote" />Disponible en télétravail</label
+            >
+            <div>
+              <button class="lab-demo-action" type="button" (click)="reset()">Remettre</button
+              ><button class="lab-demo-action" type="submit">Enregistrer</button>
+            </div>
+          </form>
+          <pre class="form-value">{{ profileForm.getRawValue() | json }}</pre>
+          @if (submitted()) {
+            <p class="success">✓ Valeurs lues depuis le FormGroup.</p>
+          }
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="profile-form.ts"
+            [code]="code"
+            caption="Modèle réactif"
+          /><app-code-preview
+            filename="profile-form.html"
+            [code]="templateCode"
+            caption="Liaison au template"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="11"
+        previousRoute="../http-client"
+        nextRoute="../validation"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

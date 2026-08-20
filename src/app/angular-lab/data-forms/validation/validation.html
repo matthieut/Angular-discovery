@@ -1,0 +1,60 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Données et formulaires"
+    [sheetNumber]="12"
+    title="Validation"
+    description="Associer des règles au modèle, afficher les erreurs au bon moment et bloquer une soumission invalide."
+    level="Fondamental"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/shield.png'"
+            title="Valider une inscription"
+            description="Les messages dépendent à la fois des erreurs et de l’interaction utilisateur."
+          />
+          <form class="validation-form" [formGroup]="form" (ngSubmit)="submit()">
+            <label
+              >Email<input formControlName="email" />
+              @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+                <small>Adresse obligatoire.</small>
+              } @else if (form.controls.email.touched && form.controls.email.hasError('email')) {
+                <small>Format d’adresse incorrect.</small>
+              }</label
+            ><label
+              >Mot de passe<input type="password" formControlName="password" />
+              @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+                <small>Mot de passe obligatoire.</small>
+              } @else if (
+                form.controls.password.touched && form.controls.password.hasError('minlength')
+              ) {
+                <small>8 caractères minimum.</small>
+              }</label
+            ><button class="lab-demo-action" type="submit">Valider</button
+            ><span class="form-status" [class.is-valid]="form.valid"
+              >Formulaire {{ form.valid ? 'valide' : 'invalide' }}</span
+            >
+          </form>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="registration.ts"
+          [code]="code"
+          caption="Règles et soumission"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="12"
+        previousRoute="../formulaires-reactifs"
+        nextRoute="../gestion-erreurs"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

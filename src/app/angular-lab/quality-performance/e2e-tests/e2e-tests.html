@@ -1,0 +1,54 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Qualité et performance"
+    [sheetNumber]="21"
+    title="Tests end-to-end"
+    description="Piloter un navigateur et vérifier qu’un parcours critique fonctionne réellement du point de vue utilisateur."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/rocket.png'"
+            title="Dérouler un scénario de connexion"
+            description="Chaque étape représente une action ou une assertion du navigateur."
+          />
+          <ol class="scenario">
+            @for (step of steps; track step; let index = $index) {
+              <li [class.is-done]="isCompleted(index)" [class.is-current]="index === currentStep()">
+                <i>{{ isCompleted(index) ? '✓' : index + 1 }}</i
+                ><span>{{ step }}</span>
+              </li>
+            }
+          </ol>
+          <div class="scenario-actions">
+            <button class="lab-demo-action" type="button" (click)="currentStep.set(0)">
+              Recommencer</button
+            ><button
+              class="lab-demo-action"
+              type="button"
+              [disabled]="currentStep() === steps.length"
+              (click)="next()"
+            >
+              {{ currentStep() === steps.length ? 'Scénario réussi' : 'Exécuter l’étape' }}
+            </button>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="login.spec.ts"
+          [code]="code"
+          caption="Scénario Playwright"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination [current]="21" previousRoute="../tests-unitaires" />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

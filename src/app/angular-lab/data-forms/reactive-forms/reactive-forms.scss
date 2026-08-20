@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.profile-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+.profile-form label {
+  display: grid;
+  gap: 0.3rem;
+  color: var(--lab-text-muted);
+  font-size: 0.62rem;
+}
+.profile-form input:not([type='checkbox']) {
+  min-height: 38px;
+  padding: 0.5rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-control);
+  background: rgb(4 10 21/45%);
+  color: var(--lab-text);
+}
+.checkbox {
+  grid-column: 1/-1;
+  display: flex !important;
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+}
+.profile-form > div {
+  display: flex;
+  grid-column: 1/-1;
+  gap: 0.5rem;
+}
+.form-value {
+  margin: 0.75rem 0 0;
+  padding: 0.7rem;
+  border-radius: 8px;
+  background: var(--lab-code-background);
+  color: var(--lab-code-text);
+  font-size: 0.62rem;
+}
+.success {
+  color: var(--lab-success);
+  font-size: 0.65rem;
+}
+.code-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+@media (max-width: 600px) {
+  .profile-form {
+    grid-template-columns: 1fr;
+  }
+}

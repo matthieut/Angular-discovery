@@ -1,0 +1,77 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Architecture"
+    [sheetNumber]="17"
+    title="Organisation par features"
+    description="Structurer le code selon les domaines qui évoluent ensemble plutôt que selon les seuls types techniques."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/architecture.png'"
+            title="Lire une architecture par le chemin"
+            description="Le dossier doit révéler le domaine et la responsabilité du fichier."
+          />
+          <div class="feature-layout">
+            <nav>
+              @for (
+                path of [
+                  'projects/pages/project-list.page.ts',
+                  'projects/ui/project-card.ts',
+                  'projects/data-access/project-api.ts',
+                  'shared/ui/button.ts',
+                  'core/http/auth.interceptor.ts',
+                ];
+                track path
+              ) {
+                <button
+                  type="button"
+                  [class.is-active]="selected() === path"
+                  (click)="selected.set(path)"
+                >
+                  {{ path }}
+                </button>
+              }
+            </nav>
+            <div>
+              <span class="lab-demo-chip">Fichier sélectionné</span
+              ><strong>{{ selected() }}</strong>
+              <p>
+                @if (selected().includes('/pages/')) {
+                  Composant associé à une route.
+                } @else if (selected().includes('/ui/')) {
+                  Composant de présentation.
+                } @else if (selected().includes('data-access')) {
+                  Accès aux données de la feature.
+                } @else if (selected().startsWith('shared')) {
+                  Élément transversal sans dépendance métier.
+                } @else {
+                  Infrastructure globale de l’application.
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="structure.txt"
+          [code]="code"
+          caption="Exemple de dossiers"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="17"
+        previousRoute="../gestion-etat"
+        nextRoute="../../qualite-performance/change-detection"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

@@ -1,0 +1,61 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Architecture"
+    [sheetNumber]="16"
+    title="Gestion d’état"
+    description="Choisir une source de vérité, contrôler les mutations et dériver les valeurs plutôt que les dupliquer."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/database.png'"
+            title="Piloter un panier"
+            description="Les actions modifient la source ; computed produit le total."
+          />
+          <div class="catalogue">
+            @for (item of catalogue; track item.id) {
+              <button type="button" (click)="add(item)">
+                <strong>{{ item.name }}</strong
+                ><small>{{ item.price }} € · Ajouter</small>
+              </button>
+            }
+          </div>
+          <div class="cart">
+            <header>
+              <strong>Panier</strong><button type="button" (click)="cart.set([])">Vider</button>
+            </header>
+            @for (item of cart(); track $index) {
+              <p>
+                {{ item.name }}<span>{{ item.price }} €</span>
+              </p>
+            } @empty {
+              <p class="lab-demo-empty">Panier vide</p>
+            }
+            <footer>
+              Total <strong>{{ total() }} €</strong>
+            </footer>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="cart.store.ts"
+          [code]="code"
+          caption="Store avec signals"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="16"
+        previousRoute="../lazy-loading"
+        nextRoute="../organisation-features"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

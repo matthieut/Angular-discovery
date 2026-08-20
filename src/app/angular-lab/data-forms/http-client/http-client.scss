@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.request-action {
+  margin: 1rem 0;
+}
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-control);
+  color: var(--lab-text-muted);
+  font-size: 0.65rem;
+}
+.loading i {
+  width: 12px;
+  aspect-ratio: 1;
+  border: 2px solid var(--lab-border);
+  border-top-color: var(--lab-secondary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+.user-list,
+.code-stack {
+  display: grid;
+  gap: 0.55rem;
+}
+.user-list span {
+  padding: 0.65rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-control);
+  color: var(--lab-text-muted);
+  font-size: 0.66rem;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,72 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Données et formulaires"
+    [sheetNumber]="13"
+    title="Gestion des erreurs"
+    description="Transformer un échec technique en état d’interface compréhensible et récupérable."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/shield.png'"
+            title="Réagir selon le type d’échec"
+            description="Toutes les erreurs ne doivent pas produire le même comportement."
+          />
+          <div class="error-kinds">
+            <button
+              type="button"
+              [class.is-active]="kind() === 'network'"
+              (click)="kind.set('network')"
+            >
+              Réseau</button
+            ><button
+              type="button"
+              [class.is-active]="kind() === 'unauthorized'"
+              (click)="kind.set('unauthorized')"
+            >
+              Session</button
+            ><button
+              type="button"
+              [class.is-active]="kind() === 'server'"
+              (click)="kind.set('server')"
+            >
+              Serveur
+            </button>
+          </div>
+          <div class="error-state">
+            <strong>{{ message() }}</strong>
+            <p>Tentatives : {{ attempts() }}</p>
+            @if (kind() === 'network') {
+              <button class="lab-demo-action" type="button" (click)="attempts.update((v) => v + 1)">
+                Réessayer
+              </button>
+            } @else if (kind() === 'unauthorized') {
+              <button class="lab-demo-action" type="button">Se reconnecter</button>
+            } @else {
+              <span class="lab-demo-chip">Incident journalisé</span>
+            }
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="user-api.service.ts"
+          [code]="code"
+          caption="Pipeline de récupération"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="13"
+        previousRoute="../validation"
+        nextRoute="../../architecture/routing"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

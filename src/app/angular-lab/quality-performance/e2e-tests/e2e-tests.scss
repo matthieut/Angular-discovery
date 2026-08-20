@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.scenario {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+.scenario li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem;
+  border: 1px solid var(--lab-border);
+  border-radius: 7px;
+  color: var(--lab-text-muted);
+  font-size: 0.65rem;
+}
+.scenario i {
+  display: grid;
+  width: 24px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(255 255 255/4%);
+  font-style: normal;
+}
+.scenario li.is-current {
+  border-color: var(--lab-secondary);
+}
+.scenario li.is-done {
+  border-color: var(--lab-success-border);
+  color: var(--lab-success);
+}
+.scenario-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+}

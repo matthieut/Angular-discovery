@@ -1,0 +1,58 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Qualité et performance"
+    [sheetNumber]="18"
+    title="Change detection"
+    description="Comprendre quand Angular relit les templates et pourquoi OnPush fonctionne naturellement avec les signals."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/trend.png'"
+            title="Suivre deux dépendances indépendantes"
+            description="Chaque carte lit son propre signal et son propre computed."
+          />
+          <div class="lab-demo-grid detection-grid">
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">Signal A</span>
+              <h4>{{ firstLabel() }}</h4>
+              <button class="lab-demo-action" type="button" (click)="first.update((v) => v + 1)">
+                Modifier A
+              </button>
+            </div>
+            <div class="lab-demo-card">
+              <span class="lab-demo-chip">Signal B</span>
+              <h4>{{ secondLabel() }}</h4>
+              <button class="lab-demo-action" type="button" (click)="second.update((v) => v + 1)">
+                Modifier B
+              </button>
+            </div>
+          </div>
+          <p class="measure-note">
+            Cette vue explique les dépendances. Utilise Angular DevTools pour compter les
+            vérifications réelles.
+          </p>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="counter.ts"
+          [code]="code"
+          caption="OnPush avec signal"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="18"
+        previousRoute="../../architecture/organisation-features"
+        nextRoute="../performance"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

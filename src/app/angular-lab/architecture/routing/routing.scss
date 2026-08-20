@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.route-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 1rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-panel);
+}
+.route-result div {
+  display: grid;
+  gap: 0.2rem;
+  text-align: center;
+}
+.route-result small {
+  color: var(--lab-text-subtle);
+  font-size: 0.57rem;
+}
+.route-result strong {
+  color: var(--lab-secondary);
+  font-size: 0.68rem;
+}
+.route-result i {
+  color: var(--lab-text-subtle);
+}
+.code-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+@media (max-width: 600px) {
+  .route-result {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .route-result i {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+}

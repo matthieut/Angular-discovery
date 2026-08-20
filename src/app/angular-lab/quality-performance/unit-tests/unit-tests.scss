@@ -1,0 +1,52 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.test-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.test-actions label {
+  color: var(--lab-text-muted);
+  font-size: 0.63rem;
+}
+.test-list,
+.code-stack {
+  display: grid;
+  gap: 0.5rem;
+}
+.test-list div {
+  display: grid;
+  grid-template-columns: 10px 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  border: 1px solid var(--lab-border);
+  border-radius: 7px;
+  color: var(--lab-text-muted);
+  font-size: 0.63rem;
+}
+.test-list i {
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--lab-text-subtle);
+}
+.test-list .passed i {
+  background: var(--lab-success);
+}
+.test-list .failed i {
+  background: var(--lab-danger);
+}
+.test-list strong {
+  font-size: 0.58rem;
+}
+.test-list .passed strong {
+  color: var(--lab-success);
+}
+.test-list .failed strong {
+  color: var(--lab-danger);
+}

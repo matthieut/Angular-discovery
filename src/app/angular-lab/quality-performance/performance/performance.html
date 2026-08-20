@@ -1,0 +1,67 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Qualité et performance"
+    [sheetNumber]="19"
+    title="Performance"
+    description="Mesurer le coût réel d’une interaction puis réduire le réseau, les calculs ou les opérations DOM responsables."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/rocket.png'"
+            title="Estimer le travail d’une liste"
+            description="La simulation illustre l’identité stable ; elle ne remplace pas un profiler."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >Taille : {{ size()
+              }}<input
+                type="range"
+                min="10"
+                max="1000"
+                step="10"
+                [ngModel]="size()"
+                (ngModelChange)="size.set(+$event)" /></label
+            ><button class="lab-demo-action" type="button" (click)="tracked.update((v) => !v)">
+              {{ tracked() ? 'Désactiver' : 'Activer' }} track item.id
+            </button>
+          </div>
+          <div class="metrics">
+            <div>
+              <strong>{{ size() }}</strong
+              ><small>éléments métier</small>
+            </div>
+            <div>
+              <strong>{{ estimatedOps() }}</strong
+              ><small>opérations estimées</small>
+            </div>
+          </div>
+          <div class="preview-list">
+            @for (item of visibleItems(); track tracked() ? item.id : $index) {
+              <span>{{ item.label }}</span>
+            }
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <app-code-preview
+          filename="results.html"
+          [code]="code"
+          caption="Identité et dérivation"
+        /><app-code-walkthrough [items]="walkthrough" />
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="19"
+        previousRoute="../change-detection"
+        nextRoute="../tests-unitaires"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

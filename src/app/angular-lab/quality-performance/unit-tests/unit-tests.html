@@ -1,0 +1,67 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Qualité et performance"
+    [sheetNumber]="20"
+    title="Tests unitaires"
+    description="Décrire une règle attendue, isoler son contexte et détecter immédiatement une régression."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/shield.png'"
+            title="Exécuter une petite suite de tests"
+            description="La démonstration simule les résultats d’un runner Vitest/Jasmine."
+          />
+          <div class="test-actions">
+            <label
+              ><input
+                type="checkbox"
+                [checked]="broken()"
+                (change)="broken.update((v) => !v)"
+              />Introduire une régression</label
+            ><button class="lab-demo-action" type="button" (click)="run()">Lancer les tests</button>
+          </div>
+          <div class="test-list">
+            @for (test of tests(); track test.name) {
+              <div [class]="test.status">
+                <i></i><span>{{ test.name }}</span
+                ><strong>{{
+                  test.status === 'idle'
+                    ? 'Non exécuté'
+                    : test.status === 'passed'
+                      ? 'Réussi'
+                      : 'Échec'
+                }}</strong>
+              </div>
+            }
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="cart.service.ts"
+            [code]="serviceCode"
+            caption="Unité testée"
+          /><app-code-preview
+            filename="cart.service.spec.ts"
+            [code]="testCode"
+            caption="Test Arrange / Act / Assert"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="20"
+        previousRoute="../performance"
+        nextRoute="../tests-end-to-end"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

@@ -1,0 +1,62 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Architecture"
+    [sheetNumber]="15"
+    title="Lazy loading"
+    description="Découper le code par route et ne télécharger une fonctionnalité qu’au moment où elle devient utile."
+    level="Intermédiaire"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/rocket.png'"
+            title="Charger les chunks à la demande"
+            description="Chaque feature représente un fichier JavaScript produit séparément."
+          />
+          <div class="chunks">
+            @for (feature of ['shell', 'catalogue', 'admin']; track feature) {
+              <button
+                type="button"
+                [class.is-loaded]="loaded().has(feature)"
+                (click)="load(feature)"
+              >
+                <strong>{{ feature }}</strong
+                ><small>{{
+                  loading() === feature
+                    ? 'Chargement…'
+                    : loaded().has(feature)
+                      ? 'Chunk chargé'
+                      : 'Non téléchargé'
+                }}</small>
+              </button>
+            }
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="app.routes.ts"
+            [code]="code"
+            caption="Composant lazy"
+          /><app-code-preview
+            filename="app.routes.ts"
+            [code]="routesCode"
+            caption="Feature lazy"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="15"
+        previousRoute="../routing"
+        nextRoute="../gestion-etat"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

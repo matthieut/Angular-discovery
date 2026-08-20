@@ -1,0 +1,62 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Architecture"
+    [sheetNumber]="14"
+    title="Routing"
+    description="Associer des URLs à des composants et gérer paramètres, redirections et routes inconnues."
+    level="Fondamental"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/architecture.png'"
+            title="Faire correspondre une URL"
+            description="Le routeur teste les configurations dans l’ordre."
+          />
+          <div class="lab-demo-controls">
+            <label class="lab-demo-control"
+              >URL<input [ngModel]="url()" (ngModelChange)="url.set($event)"
+            /></label>
+          </div>
+          <div class="route-result">
+            <div>
+              <small>Route</small><strong>{{ match().route }}</strong>
+            </div>
+            <i>→</i>
+            <div>
+              <small>Composant</small><strong>{{ match().component }}</strong>
+            </div>
+            <i>→</i>
+            <div>
+              <small>Paramètres</small><strong>{{ match().params }}</strong>
+            </div>
+          </div>
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="app.routes.ts"
+            [code]="code"
+            caption="Configuration"
+          /><app-code-preview
+            filename="project-page.ts"
+            [code]="paramsCode"
+            caption="Lecture du paramètre"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="14"
+        previousRoute="../../donnees-formulaires/gestion-erreurs"
+        nextRoute="../lazy-loading"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

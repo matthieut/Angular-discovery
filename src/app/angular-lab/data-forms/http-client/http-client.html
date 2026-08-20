@@ -1,0 +1,62 @@
+<article class="concept-sheet">
+  <app-concept-header
+    category="Données et formulaires"
+    [sheetNumber]="10"
+    title="HttpClient"
+    description="Interroger une API, typer sa réponse et représenter clairement le chargement des données."
+    level="Fondamental"
+  /><app-concept-tabs [activeTab]="activeTab()" (tabChange)="activeTab.set($event)" />
+  <div class="concept-content">
+    <section class="workspace">
+      @if (activeTab() === 'demo') {
+        <div class="panel demo-panel">
+          <app-demo-header
+            [icon]="iconPath + '/api.png'"
+            title="Charger une liste d’utilisateurs"
+            description="La réponse est simulée afin d’observer les états de la requête."
+          /><button
+            class="lab-demo-action request-action"
+            type="button"
+            [disabled]="state() === 'loading'"
+            (click)="load()"
+          >
+            {{ state() === 'loading' ? 'Chargement…' : 'Charger les utilisateurs' }}
+          </button>
+          @if (state() === 'idle') {
+            <p class="lab-demo-empty">Aucune requête envoyée.</p>
+          } @else if (state() === 'loading') {
+            <div class="loading"><i></i><span>GET /api/users</span></div>
+          } @else {
+            <div class="user-list">
+              @for (user of users(); track user) {
+                <span>{{ user }}</span>
+              }
+            </div>
+          }
+        </div>
+      }
+      @if (activeTab() === 'code') {
+        <div class="code-stack">
+          <app-code-preview
+            filename="user-api.service.ts"
+            [code]="code"
+            caption="Service d’accès aux données"
+          /><app-code-preview
+            filename="users.component.ts"
+            [code]="usageCode"
+            caption="Consommation dans le composant"
+          /><app-code-walkthrough [items]="walkthrough" />
+        </div>
+      }
+      @if (activeTab() === 'comparison') {
+        <app-concept-comparison [items]="comparisons" />
+      }
+      <app-concept-pagination
+        [current]="10"
+        previousRoute="../../reactivite/interop-signals-rxjs"
+        nextRoute="../formulaires-reactifs"
+      />
+    </section>
+    <app-concept-learning [content]="learning" />
+  </div>
+</article>

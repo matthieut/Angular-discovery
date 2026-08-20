@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.catalogue {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin: 1rem 0;
+}
+.catalogue button {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem;
+  border: 1px solid var(--lab-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--lab-text);
+  cursor: pointer;
+  text-align: left;
+}
+.catalogue small {
+  color: var(--lab-secondary);
+}
+.cart {
+  padding: 0.8rem;
+  border: 1px solid var(--lab-border-active);
+  border-radius: var(--lab-radius-panel);
+}
+.cart header,
+.cart footer,
+.cart p {
+  display: flex;
+  justify-content: space-between;
+}
+.cart header button {
+  border: 0;
+  background: transparent;
+  color: var(--lab-danger);
+  cursor: pointer;
+}
+.cart p {
+  color: var(--lab-text-muted);
+  font-size: 0.64rem;
+}
+.cart footer {
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--lab-border);
+  font-size: 0.68rem;
+}
+.cart footer strong {
+  color: var(--lab-secondary);
+}
+@media (max-width: 600px) {
+  .catalogue {
+    grid-template-columns: 1fr;
+  }
+}

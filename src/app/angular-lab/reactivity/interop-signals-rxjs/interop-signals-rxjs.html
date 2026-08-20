@@ -46,7 +46,11 @@
       @if (activeTab() === 'comparison') {
         <app-concept-comparison [items]="comparisons" />
       }
-      <app-concept-pagination [current]="9" previousRoute="../rxjs-observables" />
+      <app-concept-pagination
+        [current]="9"
+        previousRoute="../rxjs-observables"
+        nextRoute="../../donnees-formulaires/http-client"
+      />
     </section>
     <app-concept-learning [content]="learning" />
   </div>

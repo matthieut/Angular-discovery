@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.chunks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.chunks button {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-panel);
+  background: transparent;
+  color: var(--lab-text-muted);
+  cursor: pointer;
+}
+.chunks button.is-loaded {
+  border-color: var(--lab-success-border);
+  background: var(--lab-success-background);
+}
+.chunks strong {
+  font-size: 0.72rem;
+}
+.chunks small {
+  color: var(--lab-text-subtle);
+  font-size: 0.58rem;
+}
+.code-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+@media (max-width: 600px) {
+  .chunks {
+    grid-template-columns: 1fr;
+  }
+}
