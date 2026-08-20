@@ -8,10 +8,10 @@
 .lab-demo-card h4 {
   margin: 0.8rem 0;
   color: var(--lab-secondary);
-  font-size: 0.85rem;
+  font-size: var(--font-size-body);
 }
 .measure-note {
   margin: 0.75rem 0 0;
   color: var(--lab-warning);
-  font-size: 0.62rem;
+  font-size: var(--font-size-label);
 }

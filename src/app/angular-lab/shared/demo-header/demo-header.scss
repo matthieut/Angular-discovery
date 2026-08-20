@@ -27,19 +27,19 @@
 h3 {
   margin: 0;
   color: var(--lab-text);
-  font-size: 0.86rem;
+  font-size: var(--font-size-body);
 }
 p {
   margin: 0.18rem 0 0;
   color: var(--lab-text-disabled);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
 }
 .demo-header__badge {
   display: flex;
   align-items: center;
   gap: 0.42rem;
   color: var(--lab-success);
-  font-size: 0.6rem;
+  font-size: var(--font-size-caption);
   font-weight: 800;
 }
 .demo-header__badge i {

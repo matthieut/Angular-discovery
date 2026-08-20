@@ -27,9 +27,9 @@
   background: color-mix(in srgb, var(--color-danger) 6%, transparent);
 }
 .error-state strong {
-  font-size: 0.72rem;
+  font-size: var(--font-size-label);
 }
 .error-state p {
   color: var(--lab-text-muted);
-  font-size: 0.62rem;
+  font-size: var(--font-size-label);
 }

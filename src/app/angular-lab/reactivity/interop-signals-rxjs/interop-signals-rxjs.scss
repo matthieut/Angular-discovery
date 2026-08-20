@@ -9,7 +9,7 @@
   gap: 0.45rem;
   margin: 0.8rem 0;
   color: var(--lab-text-subtle);
-  font-size: 0.6rem;
+  font-size: var(--font-size-caption);
 }
 .interop-flow span {
   padding: 0.4rem 0.5rem;
@@ -30,7 +30,7 @@
   border-radius: 999px;
   background: var(--surface-icon-info);
   color: var(--lab-secondary);
-  font-size: 0.62rem;
+  font-size: var(--font-size-label);
 }
 @media (max-width: 700px) {
   .interop-flow {

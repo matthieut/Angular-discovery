@@ -12,7 +12,7 @@
   border: 1px solid var(--lab-border-subtle);
   border-radius: 6px;
   background: transparent;
-  font-size: 0.58rem;
+  font-size: var(--font-size-caption);
   text-decoration: none;
 }
 .sheet-pagination a {
@@ -24,7 +24,7 @@
 }
 .sheet-pagination strong {
   color: var(--lab-text-subtle);
-  font-size: 0.59rem;
+  font-size: var(--font-size-caption);
 }
 .sheet-pagination a:focus-visible {
   outline: 3px solid var(--lab-focus-ring);

@@ -18,11 +18,11 @@
 }
 .route-result small {
   color: var(--lab-text-subtle);
-  font-size: 0.57rem;
+  font-size: var(--font-size-caption);
 }
 .route-result strong {
   color: var(--lab-secondary);
-  font-size: 0.68rem;
+  font-size: var(--font-size-label);
 }
 .route-result i {
   color: var(--lab-text-subtle);

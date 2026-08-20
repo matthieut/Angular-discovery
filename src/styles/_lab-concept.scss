@@ -38,12 +38,12 @@
   }
   .article-panel h3 {
     margin: 0 0 0.35rem;
-    font-size: 1rem;
+    font-size: var(--font-size-card-title);
   }
   .article-panel > p {
     margin: 0 0 0.8rem;
     color: var(--color-text-muted);
-    font-size: 0.73rem;
+    font-size: var(--font-size-label);
     line-height: 1.5;
   }
   .article-panel app-code-preview {
@@ -51,13 +51,13 @@
   }
   .article-panel h4 {
     margin: 1rem 0 0.4rem;
-    font-size: 0.77rem;
+    font-size: var(--font-size-label);
   }
   .article-panel ul {
     margin: 0.3rem 0 0;
     padding-left: 1.1rem;
     color: var(--lab-text-muted);
-    font-size: 0.68rem;
+    font-size: var(--font-size-label);
     line-height: 1.7;
   }
   button:focus-visible {

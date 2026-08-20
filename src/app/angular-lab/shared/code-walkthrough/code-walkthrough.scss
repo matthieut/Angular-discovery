@@ -11,7 +11,7 @@
 h3 {
   margin: 0 0 0.65rem;
   color: var(--lab-text);
-  font-size: 0.8rem;
+  font-size: var(--font-size-body);
 }
 ol {
   display: grid;
@@ -21,7 +21,7 @@ ol {
 }
 li {
   color: var(--lab-secondary);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
 }
 code {
   display: inline-block;
@@ -37,6 +37,6 @@ code {
 p {
   margin: 0.22rem 0 0;
   color: var(--lab-text-muted);
-  font-size: 0.64rem;
+  font-size: var(--font-size-label);
   line-height: 1.45;
 }

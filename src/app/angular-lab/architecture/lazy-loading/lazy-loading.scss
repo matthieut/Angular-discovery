@@ -23,11 +23,11 @@
   background: var(--lab-success-background);
 }
 .chunks strong {
-  font-size: 0.72rem;
+  font-size: var(--font-size-label);
 }
 .chunks small {
   color: var(--lab-text-subtle);
-  font-size: 0.58rem;
+  font-size: var(--font-size-caption);
 }
 .code-stack {
   display: grid;

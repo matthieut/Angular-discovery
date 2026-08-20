@@ -17,7 +17,7 @@
   border: 1px solid var(--lab-border);
   border-radius: 7px;
   color: var(--lab-text-muted);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
 }
 .scenario i {
   display: grid;

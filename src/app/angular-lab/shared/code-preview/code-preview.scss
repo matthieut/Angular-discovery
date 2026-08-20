@@ -16,7 +16,7 @@
   padding: 0.52rem 0.7rem;
   border-bottom: 1px solid var(--lab-border-subtle);
   color: var(--lab-text-muted);
-  font-size: 0.6rem;
+  font-size: var(--font-size-caption);
 }
 .window-controls {
   display: flex;
@@ -51,7 +51,7 @@
   color: var(--lab-secondary);
   cursor: pointer;
   font: inherit;
-  font-size: 0.58rem;
+  font-size: var(--font-size-caption);
 }
 .code-preview button:focus-visible {
   outline: 3px solid var(--lab-focus-ring);

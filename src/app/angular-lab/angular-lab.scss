@@ -23,14 +23,14 @@
 .eyebrow {
   margin: 0 0 0.35rem;
   color: var(--color-brand-violet);
-  font-size: 0.76rem;
+  font-size: var(--font-size-label);
   font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 h1 {
   margin: 0;
-  font-size: clamp(2.25rem, 4vw, 3.65rem);
+  font-size: var(--font-size-hero-title);
   line-height: 1;
   letter-spacing: -0.045em;
 }
@@ -43,7 +43,7 @@ h1 span {
   max-width: 72ch;
   margin: 0.65rem 0 0;
   color: var(--color-text-soft);
-  font-size: 0.9rem;
+  font-size: var(--font-size-body);
   line-height: 1.5;
 }
 .lab-progress {
@@ -61,13 +61,13 @@ h1 span {
 }
 .lab-progress dt {
   color: var(--color-brand-cyan);
-  font-size: 1.25rem;
+  font-size: var(--font-size-section-title);
   font-weight: 850;
 }
 .lab-progress dd {
   margin: 0.12rem 0 0;
   color: var(--color-text-muted);
-  font-size: 0.67rem;
+  font-size: var(--font-size-label);
 }
 .lab-layout {
   display: flex;
@@ -105,12 +105,12 @@ h1 span {
   display: grid;
 }
 .concept-browser__heading strong {
-  font-size: 0.88rem;
+  font-size: var(--font-size-body);
 }
 .concept-browser__heading small {
   margin-top: 0.15rem;
   color: var(--color-text-subtle);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
 }
 .concept-search {
   display: flex;
@@ -129,7 +129,7 @@ h1 span {
   background: transparent;
   color: var(--color-text);
   font: inherit;
-  font-size: 0.76rem;
+  font-size: var(--font-size-label);
 }
 .concept-search input::placeholder {
   color: var(--color-text-subtle);
@@ -158,7 +158,7 @@ h1 span {
   background: var(--surface-interactive-hover);
 }
 .concept-group__toggle > span:nth-of-type(1) {
-  font-size: 0.76rem;
+  font-size: var(--font-size-label);
   font-weight: 750;
 }
 .concept-group__toggle small {
@@ -169,7 +169,7 @@ h1 span {
   border-radius: 99px;
   background: color-mix(in srgb, var(--color-brand-blue) 17%, transparent);
   color: var(--color-text-muted);
-  font-size: 0.59rem;
+  font-size: var(--font-size-caption);
 }
 .chevron {
   color: var(--color-text-subtle);
@@ -199,7 +199,7 @@ h1 span {
   color: var(--color-text-muted);
   cursor: pointer;
   font: inherit;
-  font-size: 0.68rem;
+  font-size: var(--font-size-label);
   line-height: 1.25;
   text-align: left;
   text-decoration: none;
@@ -218,7 +218,7 @@ h1 span {
 }
 .concept-group__items :is(a, button) small {
   color: var(--color-text-subtle);
-  font-size: 0.55rem;
+  font-size: var(--font-size-caption);
   text-transform: uppercase;
 }
 .status-dot {
@@ -237,7 +237,7 @@ h1 span {
 .empty-search {
   padding: 1rem 0.5rem;
   color: var(--color-text-disabled);
-  font-size: 0.72rem;
+  font-size: var(--font-size-label);
   text-align: center;
 }
 .sr-only {

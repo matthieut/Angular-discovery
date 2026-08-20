@@ -25,16 +25,16 @@
   border-radius: 50%;
   background: var(--surface-brand-icon);
   color: var(--lab-secondary);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
   font-weight: 850;
 }
 .member-list div {
   display: grid;
 }
 .member-list strong {
-  font-size: 0.68rem;
+  font-size: var(--font-size-label);
 }
 .member-list small {
   color: var(--lab-text-subtle);
-  font-size: 0.58rem;
+  font-size: var(--font-size-caption);
 }

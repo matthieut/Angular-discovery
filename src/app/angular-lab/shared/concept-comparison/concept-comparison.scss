@@ -16,25 +16,25 @@
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-text-subtle) 13%, transparent);
   color: var(--lab-text-disabled);
-  font-size: 0.57rem;
+  font-size: var(--font-size-caption);
   text-transform: uppercase;
 }
 .comparison-card h3 {
   margin: 0.7rem 0 0.35rem;
-  font-size: 1rem;
+  font-size: var(--font-size-card-title);
 }
 .comparison-card p {
   min-height: 65px;
   margin: 0;
   color: var(--lab-text-muted);
-  font-size: 0.7rem;
+  font-size: var(--font-size-label);
   line-height: 1.5;
 }
 .comparison-card ul {
   margin: 0.3rem 0 0;
   padding-left: 1.1rem;
   color: var(--lab-text-muted);
-  font-size: 0.68rem;
+  font-size: var(--font-size-label);
   line-height: 1.7;
 }
 .comparison-card.is-recommended {

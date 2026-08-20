@@ -5,7 +5,7 @@
 .lab-demo-card h4 {
   margin: 0.75rem 0;
   color: var(--lab-secondary);
-  font-size: 1.15rem;
+  font-size: var(--font-size-lg);
 }
 .logs {
   display: grid;

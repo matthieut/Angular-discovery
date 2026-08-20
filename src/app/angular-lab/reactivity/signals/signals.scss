@@ -14,12 +14,12 @@
 }
 .cart-line h3 {
   margin: 0.55rem 0 0.2rem;
-  font-size: 0.9rem;
+  font-size: var(--font-size-body);
 }
 .cart-line p {
   margin: 0;
   color: var(--lab-text-muted);
-  font-size: 0.64rem;
+  font-size: var(--font-size-label);
 }
 .quantity {
   display: flex;

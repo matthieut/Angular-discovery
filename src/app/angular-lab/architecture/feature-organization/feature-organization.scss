@@ -38,12 +38,12 @@
   display: block;
   margin: 0.7rem 0;
   color: var(--lab-secondary);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
   overflow-wrap: anywhere;
 }
 .feature-layout p {
   color: var(--lab-text-muted);
-  font-size: 0.63rem;
+  font-size: var(--font-size-label);
 }
 @media (max-width: 700px) {
   .feature-layout {

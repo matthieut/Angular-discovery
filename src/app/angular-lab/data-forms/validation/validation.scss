@@ -11,7 +11,7 @@
   display: grid;
   gap: 0.3rem;
   color: var(--lab-text-muted);
-  font-size: 0.63rem;
+  font-size: var(--font-size-label);
 }
 .validation-form input {
   min-height: 38px;
@@ -35,7 +35,7 @@
   border-radius: 6px;
   background: var(--surface-danger-soft);
   color: var(--lab-danger);
-  font-size: 0.63rem;
+  font-size: var(--font-size-label);
 }
 .form-status.is-valid {
   background: var(--lab-success-background);

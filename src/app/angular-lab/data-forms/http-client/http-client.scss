@@ -13,7 +13,7 @@
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
   color: var(--lab-text-muted);
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
 }
 .loading i {
   width: 12px;
@@ -33,7 +33,7 @@
   border: 1px solid var(--lab-border);
   border-radius: var(--lab-radius-control);
   color: var(--lab-text-muted);
-  font-size: 0.66rem;
+  font-size: var(--font-size-label);
 }
 @keyframes spin {
   to {

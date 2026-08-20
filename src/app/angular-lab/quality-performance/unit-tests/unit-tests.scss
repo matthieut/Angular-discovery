@@ -11,7 +11,7 @@
 }
 .test-actions label {
   color: var(--lab-text-muted);
-  font-size: 0.63rem;
+  font-size: var(--font-size-label);
 }
 .test-list,
 .code-stack {
@@ -27,7 +27,7 @@
   border: 1px solid var(--lab-border);
   border-radius: 7px;
   color: var(--lab-text-muted);
-  font-size: 0.63rem;
+  font-size: var(--font-size-label);
 }
 .test-list i {
   width: 8px;
@@ -42,7 +42,7 @@
   background: var(--lab-danger);
 }
 .test-list strong {
-  font-size: 0.58rem;
+  font-size: var(--font-size-caption);
 }
 .test-list .passed strong {
   color: var(--lab-success);

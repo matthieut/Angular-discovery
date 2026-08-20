@@ -15,12 +15,12 @@
 }
 .standalone-demo h4 {
   margin: 0.45rem 0 0.15rem;
-  font-size: 0.72rem;
+  font-size: var(--font-size-label);
 }
 .standalone-demo p {
   margin: 0;
   color: var(--lab-text-muted);
-  font-size: 0.63rem;
+  font-size: var(--font-size-label);
 }
 .standalone-status {
   grid-column: 1 / -1;
@@ -55,7 +55,7 @@
   color: var(--lab-text-disabled);
   cursor: pointer;
   font: inherit;
-  font-size: 0.65rem;
+  font-size: var(--font-size-label);
   font-weight: 750;
 }
 .environment-switch button.is-active {
@@ -96,10 +96,10 @@
 }
 .provider-grid strong {
   margin-top: 0.38rem;
-  font-size: 0.72rem;
+  font-size: var(--font-size-label);
 }
 .provider-grid small {
-  font-size: 0.57rem;
+  font-size: var(--font-size-caption);
 }
 .provider-grid button > i {
   position: absolute;
@@ -139,7 +139,7 @@
   justify-content: space-between;
   gap: 1rem;
   color: var(--lab-text-muted);
-  font-size: 0.62rem;
+  font-size: var(--font-size-label);
 }
 .boot-result__status span {
   display: flex;
@@ -161,7 +161,7 @@
   gap: 0.5rem;
   margin-top: 0.7rem;
   color: var(--lab-text-subtle);
-  font-size: 0.62rem;
+  font-size: var(--font-size-label);
 }
 .boot-flow span {
   padding: 0.38rem 0.5rem;
