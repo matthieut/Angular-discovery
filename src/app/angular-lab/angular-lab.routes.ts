@@ -1,6 +1,55 @@
 import { Routes } from '@angular/router';
 import { AngularLab } from './angular-lab';
 
+const DATA_LESSON_ROUTES = [
+  ['signals/linked-signal', 'linked-signal'],
+  ['signals/input-output-model', 'signal-input-output-model'],
+  ['signals/resource-http-resource', 'resource-http-resource'],
+  ['rxjs/subjects-partage', 'rxjs-subjects-sharing'],
+  ['rxjs/operateurs', 'rxjs-operators'],
+  ['rxjs/concurrence', 'rxjs-concurrency'],
+  ['rxjs/erreurs-retry', 'rxjs-errors-retry'],
+  ['rxjs/souscriptions', 'rxjs-subscriptions'],
+  ['rxjs/rxjs-vs-signals', 'rxjs-vs-signals'],
+  ['formulaires/choisir-approche', 'forms-choose'],
+  ['formulaires/form-array', 'forms-array'],
+  ['formulaires/controle-personnalise', 'forms-custom-control'],
+  ['formulaires/signal-forms', 'signal-forms'],
+  ['formulaires/migration-coexistence', 'forms-migration'],
+  ['routing/parametres', 'routing-params'],
+  ['routing/guards', 'routing-guards'],
+  ['routing/resolvers', 'routing-resolvers'],
+  ['routing/routes-enfants-outlets', 'routing-nested-outlets'],
+  ['routing/cycle-erreurs', 'routing-cycle-errors'],
+  ['routing/tests', 'routing-tests'],
+  ['architecture/frontieres-couches', 'architecture-boundaries'],
+  ['architecture/data-access-dto', 'architecture-data-access'],
+  ['architecture/configuration-tokens', 'architecture-config-tokens'],
+  ['architecture/erreurs-observabilite', 'architecture-observability'],
+  ['architecture/securite-frontend', 'architecture-security'],
+  ['architecture/accessibilite-i18n', 'architecture-a11y-i18n'],
+  ['performance/zoneless', 'performance-zoneless'],
+  ['performance/listes-calculs', 'performance-lists'],
+  ['performance/defer', 'performance-defer'],
+  ['performance/images-bundles', 'performance-assets'],
+  ['performance/ssr-ssg-hydratation', 'performance-rendering'],
+  ['performance/budgets-monitoring', 'performance-budgets'],
+  ['tests/signals-inputs-outputs', 'tests-signals-io'],
+  ['tests/http', 'tests-http'],
+  ['tests/router-guards', 'tests-router-guards'],
+  ['tests/component-harnesses', 'tests-harnesses'],
+  ['tests/defer', 'tests-defer'],
+  ['plateforme-web/stockage-navigateur', 'browser-storage'],
+  ['plateforme-web/indexed-db', 'indexed-db'],
+  ['plateforme-web/compatibilite-ssr', 'browser-ssr'],
+  ['plateforme-web/web-workers', 'web-workers'],
+  ['plateforme-web/service-worker-angular', 'angular-service-worker'],
+  ['plateforme-web/cache-hors-ligne', 'pwa-cache-offline'],
+  ['plateforme-web/synchronisation-hors-ligne', 'offline-sync'],
+  ['plateforme-web/broadcast-channel', 'broadcast-channel'],
+  ['plateforme-web/notifications-push', 'push-notifications'],
+] as const;
+
 export const ANGULAR_LAB_ROUTES: Routes = [
   {
     path: '',
@@ -178,6 +227,11 @@ export const ANGULAR_LAB_ROUTES: Routes = [
         loadComponent: () =>
           import('./quality-performance/e2e-tests/e2e-tests').then((m) => m.E2eTestsConcept),
       },
+      ...DATA_LESSON_ROUTES.map(([path, lessonId]) => ({
+        path,
+        loadComponent: () => import('./shared/lesson-page/lesson-page').then((m) => m.LessonPage),
+        data: { lessonId },
+      })),
     ],
   },
 ];

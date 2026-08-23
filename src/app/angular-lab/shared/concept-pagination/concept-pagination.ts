@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ConceptPagination {
   readonly current = input.required<number>();
-  readonly total = input(68);
+  readonly total = input(76);
   readonly previousRoute = input<string>();
   readonly nextRoute = input<string>();
 }

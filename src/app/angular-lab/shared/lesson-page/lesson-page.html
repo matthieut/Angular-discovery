@@ -32,6 +32,12 @@
           <div class="lesson-result" aria-live="polite">
             <span>Ce qu’Angular fait</span>
             <p>{{ lesson().demoResults[selectedStep()] }}</p>
+            @if (lesson().demoCode?.[selectedStep()]; as code) {
+              <div class="lesson-result__code">
+                <small>Code correspondant à cette étape</small>
+                <pre><code>{{ code }}</code></pre>
+              </div>
+            }
           </div>
           <p class="demo-warning">
             La démonstration isole le mécanisme étudié. L’onglet Code montre son implémentation réelle.

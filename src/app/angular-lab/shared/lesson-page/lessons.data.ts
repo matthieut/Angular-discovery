@@ -1,6 +1,8 @@
 import { LessonPageDefinition } from './lesson-page.models';
+import { REMAINING_LESSONS } from './remaining-lessons.data';
 
 export const LAB_LESSONS: Record<string, LessonPageDefinition> = {
+  ...REMAINING_LESSONS,
   'lifecycle-rendering': {
     id: 'lifecycle-rendering', category: 'Fondamentaux', sheetNumber: 6,
     title: 'Cycle de vie et rendu',

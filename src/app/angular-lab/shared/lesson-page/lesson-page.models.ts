@@ -15,7 +15,8 @@ export type LessonDemoKind =
   | 'queries'
   | 'host'
   | 'composition'
-  | 'dynamic';
+  | 'dynamic'
+  | 'concept';
 
 export interface LessonPageDefinition {
   id: string;
@@ -29,6 +30,7 @@ export interface LessonPageDefinition {
   demoDescription: string;
   demoActions: string[];
   demoResults: string[];
+  demoCode?: string[];
   codeExamples: ConceptCodeExample[];
   walkthrough: CodeWalkthroughItem[];
   comparisons: ConceptComparisonItem[];
