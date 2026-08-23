@@ -1,0 +1,58 @@
+<div class="training-page correction-page">
+  <main class="v2-page training-content-shell">
+    <header class="training-page__header">
+      <p class="v2-eyebrow">Fondamentaux · Injection de dépendances · Correction</p>
+      <h1 class="v2-title">{{ correct() ? 'Ta réponse confirme le bon modèle mental' : 'Ta réponse révèle une confusion de portée' }}</h1>
+      <p class="v2-subtitle">{{ correct() ? 'Tu as relié la déclaration du provider à la durée de vie du composant.' : 'Tu as identifié la création d’une instance, mais pas l’endroit qui possède cette instance.' }}</p>
+      <div class="result-strip">
+        <span class="result-status" [class.is-correct]="correct()"><i [class]="correct() ? 'pi pi-check-circle' : 'pi pi-times-circle'"></i>{{ correct() ? 'Réponse correcte' : 'Réponse incorrecte' }}</span>
+        <span class="confidence-status"><i class="pi pi-bullseye"></i> Confiance {{ confidenceLabel() }}</span>
+        <span class="mastery-status"><i class="pi pi-chart-line"></i> Bilan actualisé en fin de session</span>
+      </div>
+    </header>
+
+    <div class="correction-layout">
+      <section class="explanation-card v2-panel">
+        <h2 class="v2-section-title">Pourquoi {{ correct() ? 'cette réponse est correcte' : 'la réponse est incorrecte' }}</h2>
+        <div class="explanation-grid">
+          <pre class="v2-code"><code>{{ codeBefore }}
+<mark>{{ codeProvider }}</mark>
+{{ codeAfter }}</code></pre>
+          <div class="injector-flow">
+            <div><span>1</span><strong>Création de UserPage</strong></div>
+            <i class="pi pi-arrow-down"></i>
+            <div><span>2</span><strong>Création de son injecteur</strong></div>
+            <i class="pi pi-arrow-down"></i>
+            <div><span>3</span><strong>Une instance de UserStore pour cette instance de composant</strong></div>
+          </div>
+        </div>
+        <p class="core-explanation"><i class="pi pi-info-circle"></i> Deux instances de UserPage créent donc deux injecteurs et deux instances de UserStore.</p>
+        <div class="scope-comparison">
+          <article><span class="v2-icon"><i class="pi pi-box"></i></span><div><strong>providedIn: 'root'</strong><small>Une instance partagée dans l’application</small></div></article>
+          <span class="versus">VS</span>
+          <article><span class="v2-icon"><i class="pi pi-user"></i></span><div><strong>providers du composant</strong><small>Une instance par instance de composant</small></div></article>
+        </div>
+      </section>
+
+      <aside class="correction-aside">
+        <section class="v2-panel gap-card">
+          <h2 class="v2-section-title">Ce que tu dois consolider</h2>
+          <ul><li>Hiérarchie des injecteurs</li><li>Portée d’un provider local</li><li>Durée de vie liée au composant</li></ul>
+          <span class="v2-badge" [class.v2-badge--danger]="!correct()" [class.v2-badge--info]="correct()">{{ correct() ? 'Concept compris' : 'Lacune conceptuelle' }}</span>
+        </section>
+        <section class="v2-panel remediation-card">
+          <h2 class="v2-section-title">Remédiation recommandée</h2>
+          <ol><li><span>1</span> Revoir le modèle mental</li><li><span>2</span> Manipuler l’exemple parent / enfant</li><li><span>3</span> Refaire un diagnostic similaire</li></ol>
+          <a class="v2-button v2-button--primary" routerLink="/lab/fondamentaux/injection-dependances"><i class="pi pi-play"></i> Revoir dans Angular Lab</a>
+          <a class="v2-button" routerLink="/formation/session/injection-dependances"><i class="pi pi-arrow-right-arrow-left"></i> Essayer un autre exemple</a>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="correction-footer v2-panel">
+      <a class="v2-button" routerLink="/formation/session/injection-dependances"><i class="pi pi-angle-left"></i> Question précédente</a>
+      <p>Le score de maîtrise sera recalculé lorsque la session sera terminée.</p>
+      <a class="v2-button v2-button--primary" routerLink="/formation"><span>Continuer l’évaluation</span><i class="pi pi-angle-right"></i></a>
+    </footer>
+  </main>
+</div>

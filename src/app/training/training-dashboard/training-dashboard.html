@@ -1,0 +1,108 @@
+<p-scrollarea class="app-container h-full">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
+      <div class="training-page">
+        <main class="v2-page training-content-shell">
+          <header class="training-page__header">
+            <p class="v2-eyebrow">Formation Angular</p>
+            <h1 class="v2-title">Pilote ta progression</h1>
+            <p class="v2-subtitle">Mesure ce que tu sais expliquer, diagnostiquer et mettre en pratique.</p>
+          </header>
+
+          <div class="training-grid training-grid--dashboard">
+            <div class="training-stack">
+              <section class="training-metrics" aria-label="Résumé de progression">
+                @for (metric of metrics; track metric.label) {
+                <article class="training-metric v2-panel">
+                  <span class="v2-icon"><i [class]="metric.icon"></i></span>
+                  <div><strong>{{ metric.value }}</strong><small>{{ metric.label }}</small></div>
+                </article>
+                }
+              </section>
+
+              <section class="resume-card v2-panel v2-panel--strong">
+                <span class="resume-card__icon"><i class="pi pi-box"></i></span>
+                <div class="resume-card__body">
+                  <small>Continuer ma formation</small>
+                  <h2>Injection de dépendances</h2>
+                  <div class="resume-card__progress"><span>Question 3 sur 6</span><strong>50%</strong></div>
+                  <div class="v2-progress" style="--progress: 50%"><span></span></div>
+                </div>
+                <a class="v2-button v2-button--primary" routerLink="/formation/session/injection-dependances">
+                  <i class="pi pi-play"></i> Reprendre la session
+                </a>
+              </section>
+
+              <section class="paths-card v2-panel">
+                <div class="training-card-header">
+                  <h2 class="v2-section-title">Progression par parcours</h2>
+                </div>
+                <div class="training-paths">
+                  @for (path of paths; track path.id) {
+                  <a class="training-path" [routerLink]="['/formation/session', path.id]">
+                    <span class="v2-icon"><i [class]="path.icon"></i></span>
+                    <span class="training-path__body">
+                      <span class="training-path__row"><strong>{{ path.title }}</strong><small>{{ path.progress
+                          }}%</small></span>
+                      <span class="v2-progress" [style.--progress]="path.progress + '%'"><span></span></span>
+                    </span>
+                    <i class="pi pi-angle-right"></i>
+                  </a>
+                  }
+                </div>
+              </section>
+            </div>
+
+            <aside class="training-stack">
+              <section class="side-card v2-panel">
+                <div class="training-card-header">
+                  <h2 class="v2-section-title">Priorités recommandées</h2>
+                </div>
+                <div class="training-list">
+                  @for (priority of priorities; track priority.title; let index = $index) {
+                  <a class="training-list-item priority" [routerLink]="priority.route">
+                    <span class="priority__rank">{{ index + 1 }}</span>
+                    <span><strong>{{ priority.title }}</strong><small>{{ statusLabel(priority.status) }}</small></span>
+                    <i class="pi pi-angle-right"></i>
+                  </a>
+                  }
+                </div>
+              </section>
+
+              <section class="side-card v2-panel">
+                <div class="training-card-header">
+                  <h2 class="v2-section-title">Prochaines révisions</h2>
+                </div>
+                <div class="training-list">
+                  <div class="training-list-item"><span class="v2-icon"><i
+                        class="pi pi-bolt"></i></span><strong>Signals</strong><small>Aujourd’hui</small></div>
+                  <div class="training-list-item"><span class="v2-icon"><i class="pi pi-link"></i></span><strong>Data
+                      binding</strong><small>Dans 2 jours</small></div>
+                </div>
+              </section>
+            </aside>
+          </div>
+
+          <section class="insights v2-panel">
+            <div>
+              <h2 class="v2-section-title">Ce que tes erreurs révèlent</h2>
+              <p>Le score global ne masque pas les dimensions à retravailler.</p>
+            </div>
+            @for (insight of [['Décision d’architecture', 40], ['Diagnostic de code', 50], ['Compréhension', 75]]; track
+            insight[0]) {
+            <div class="insight"><span>{{ insight[0] }}</span><strong>{{ insight[1] }}%</strong>
+              <div class="v2-progress" [style.--progress]="insight[1] + '%'"><span></span></div>
+            </div>
+            }
+            <a class="v2-button" routerLink="/formation/session/injection-dependances"><i class="pi pi-eye"></i> Voir
+              mon bilan détaillé</a>
+          </section>
+        </main>
+      </div>
+
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical">
+    <p-scrollarea-handle />
+  </p-scrollarea-scrollbar>
+</p-scrollarea>

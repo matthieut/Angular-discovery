@@ -81,6 +81,7 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --transition-fast: 160ms ease;
+  --transition-base: 220ms ease;
   --font-family-app: Inter, 'Segoe UI', sans-serif;
   --font-family-code: 'Cascadia Code', Consolas, monospace;
   --line-height-code: 1.55;
@@ -106,6 +107,24 @@
   --font-size-page-title: var(--font-size-2xl);
   --font-size-hero-title: var(--font-size-3xl);
   --gradient-brand: linear-gradient(100deg, var(--color-brand-violet), var(--color-brand-cyan));
+
+  /* Design system V2 — Formation puis migration du Lab */
+  --v2-page-max-width: 1480px;
+  --v2-panel: var(--surface-glass-soft);
+  --v2-panel-strong: var(--surface-glass);
+  --v2-panel-soft: var(--surface-interactive-subtle);
+  --v2-panel-hover: var(--surface-interactive-hover);
+  --v2-ring-center: #091329;
+  --v2-button-hover: linear-gradient(110deg, #b33bed, #159de9);
+  --v2-border: var(--border-color);
+  --v2-border-strong: var(--border-color-strong);
+  --v2-border-brand: var(--border-color-brand);
+  --v2-shadow: var(--shadow-floating);
+  --v2-glow-violet: 0 0 32px rgb(179 76 255 / 16%);
+  --v2-glow-cyan: 0 0 32px rgb(71 201 255 / 13%);
+  --v2-radius-panel: var(--radius-md);
+  --v2-radius-control: var(--radius-sm);
+  --v2-header-height: 72px;
 
   --p-scrollarea-handle-background: linear-gradient(100deg, rgb(157 40 220 / 18%), rgb(19 137 225 / 16%)) !important;
 }

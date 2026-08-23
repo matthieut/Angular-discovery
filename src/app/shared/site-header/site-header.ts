@@ -19,9 +19,10 @@ export class SiteHeader {
   readonly menuOpen = signal(false);
   readonly navigation: readonly SiteNavigationItem[] = [
     { label: 'Accueil', route: '/home', exact: true },
-    //{ label: 'CV', route: '/cv', exact: true },
+    { label: 'CV', route: '/cv', exact: true },
     { label: 'Portfolio', route: '/portfolio' },
     { label: 'Angular Lab', route: '/lab' },
+    { label: 'Formation', route: '/formation' },
   ];
 
   toggleMenu(): void { this.menuOpen.update((open) => !open); }
