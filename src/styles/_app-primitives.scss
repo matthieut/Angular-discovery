@@ -23,12 +23,17 @@
   color: var(--color-text-on-brand);
 }
 
-.app-eyebrow {
-  background: var(--color-gradiant-brand);
+.app-eyebrow,
+.v2-eyebrow {
+  margin: 0 0 var(--space-2);
+  background: var(--gradient-brand);
+  font-size: var(--font-size-xs);
   font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
 }
 

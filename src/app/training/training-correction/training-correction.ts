@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ScrollAreaModule } from 'primeng/scrollarea';
 import { TrainingProgressService } from '../training-progress.service';
 
 @Component({
   selector: 'app-training-correction',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ScrollAreaModule],
   templateUrl: './training-correction.html',
   styleUrl: './training-correction.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

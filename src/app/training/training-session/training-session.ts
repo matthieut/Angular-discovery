@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { ScrollAreaModule } from 'primeng/scrollarea';
 import { ConfidenceLevel } from '../training.models';
 import { TrainingProgressService } from '../training-progress.service';
 
@@ -8,7 +9,7 @@ interface AnswerOption { id: string; label: string; detail: string; }
 @Component({
   selector: 'app-training-session',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ScrollAreaModule],
   templateUrl: './training-session.html',
   styleUrl: './training-session.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
