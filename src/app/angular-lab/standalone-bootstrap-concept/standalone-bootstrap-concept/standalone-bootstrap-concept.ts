@@ -92,6 +92,25 @@ export class UserCard {
 })
 export class UserList {}`;
 
+  readonly routingConfigCode = `// app.config.ts
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
+
+// app.component.ts
+@Component({
+  standalone: true,
+  imports: [RouterOutlet],
+  template: '<router-outlet />'
+})
+export class AppComponent {}`;
+
+  readonly legacyBootstrapCode = `// Ancienne approche avec NgModule
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+// Approche standalone moderne
+bootstrapApplication(AppComponent, appConfig);`;
+
   readonly comparisons: ConceptComparisonItem[] = [
     {
       badge: 'Recommandé',
@@ -121,6 +140,7 @@ export class UserList {}`;
       "Un parent importe explicitement un composant enfant avant d'utiliser son selector.",
       'main.ts appelle bootstrapApplication avec le composant racine.',
       'Le tableau providers configure des services ; il ne sert pas aux éléments du template.',
+      'ApplicationConfig centralise les providers globaux ; RouterOutlet reste une dépendance du template à importer.',
     ],
     demoGuide: [
       "Simule d'abord l'import de UserCard : sans import, le selector est inconnu.",

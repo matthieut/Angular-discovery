@@ -11,7 +11,7 @@ export interface TrainingQuestion {
 }
 export interface TrainingLesson {
   id: string; title: string; category: string; icon: string; description: string;
-  labRoute: string; questions: readonly TrainingQuestion[];
+  definition: string; mentalModel: string; rule: string; labRoute: string; questions: readonly TrainingQuestion[];
 }
 export interface TrainingAnswer {
   conceptId: string; questionId: string; optionId: string; confidence: ConfidenceLevel;

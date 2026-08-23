@@ -16,7 +16,10 @@
 
           <div class="correction-layout">
             <section class="explanation-card v2-panel">
-              <h2 class="v2-section-title">Comprendre la correction</h2>
+              <h2 class="v2-section-title">Définition complète</h2>
+              <p class="concept-definition">{{ lesson.definition }}</p>
+              <div class="mental-model"><span class="v2-icon"><i class="pi pi-compass"></i></span><div><small>Modèle mental</small><strong>{{ lesson.mentalModel }}</strong></div></div>
+              <h2 class="v2-section-title correction-subtitle">Application à la question</h2>
               @if (question.code) { <pre class="v2-code correction-code"><code>{{ question.code }}</code></pre> }
               <div class="answer-comparison">
                 <article [class.is-wrong]="!correct()"><small>Ta réponse</small><strong>{{ selectedOption?.label }}</strong><p>{{ selectedOption?.detail }}</p></article>
@@ -24,6 +27,13 @@
                 <article class="is-correct"><small>Réponse attendue</small><strong>{{ correctOption?.label }}</strong><p>{{ question.explanation }}</p></article>
               </div>
               <p class="core-explanation"><i class="pi pi-info-circle"></i> {{ question.explanation }}</p>
+              <h2 class="v2-section-title correction-subtitle">Pourquoi chaque réponse fonctionne ou échoue</h2>
+              <div class="option-feedback-list">
+                @for (option of question.options; track option.id) {
+                  <article [class.is-correct]="option.id === question.correctOptionId"><i [class]="option.id === question.correctOptionId ? 'pi pi-check-circle' : 'pi pi-times-circle'"></i><div><strong>{{ option.label }}</strong><p>{{ option.detail }}</p></div></article>
+                }
+              </div>
+              <div class="rule-to-remember"><small>Règle à retenir</small><strong>{{ lesson.rule }}</strong></div>
             </section>
 
             <aside class="correction-aside">

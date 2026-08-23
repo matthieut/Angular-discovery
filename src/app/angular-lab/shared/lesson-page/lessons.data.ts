@@ -46,12 +46,23 @@ export class ProductCard implements OnChanges, OnInit, OnDestroy {
     this.destroyRef.onDestroy(() => clearInterval(timer));
   }
 }` },
+      { filename: 'live-clock.ts', caption: 'Souscription RxJS liée à la destruction', code: `export class LiveClock {
+  readonly now = signal(new Date());
+
+  constructor() {
+    interval(1000).pipe(
+      takeUntilDestroyed()
+    ).subscribe(() => this.now.set(new Date()));
+  }
+}` },
     ],
     walkthrough: [
       { code: 'input.required<Product>()', explanation: 'Déclare une donnée obligatoire fournie par le parent. Elle est disponible avant ngOnInit.' },
       { code: 'ngOnChanges(changes)', explanation: 'Réagit aux changements d’inputs. Utilise-le seulement si tu dois connaître la valeur précédente.' },
       { code: 'afterNextRender(...)', explanation: 'Exécute le callback après le prochain rendu réel du DOM, contrairement à ngOnInit.' },
       { code: 'destroyRef.onDestroy(...)', explanation: 'Rattache explicitement le nettoyage à la durée de vie de l’instance.' },
+      { code: 'takeUntilDestroyed()', explanation: 'Complète automatiquement une souscription RxJS lorsque le composant est détruit.' },
+      { code: 'ngAfterViewChecked', explanation: 'Est rappelé après de nombreuses vérifications de la vue : évite d’y placer un calcul ou une mutation répétitive.' },
     ],
     comparisons: [
       { badge: 'État', title: 'Réaction déclarative', description: 'computed et le template dérivent automatiquement une valeur.', points: ['Moins de hooks', 'Dépendances visibles', 'Choix par défaut'], recommended: true },
@@ -69,7 +80,7 @@ export class ProductCard implements OnChanges, OnInit, OnDestroy {
         { title: 'DOM externe', description: 'afterNextRender pour initialiser un graphique ou mesurer un élément rendu.' },
         { title: 'Nettoyage', description: 'DestroyRef ou ngOnDestroy pour un timer, un listener manuel ou une API impérative.' },
       ],
-      mistakes: ['Utiliser ngOnInit pour lire un élément du template.', 'Mettre toute la logique métier dans les hooks.', 'S’abonner manuellement sans organiser la désinscription.', 'Utiliser ngDoCheck pour contourner un état mal modélisé.'],
+      mistakes: ['Utiliser ngOnInit pour lire un élément du template.', 'Mettre toute la logique métier dans les hooks.', 'S’abonner manuellement sans takeUntilDestroyed, AsyncPipe ou autre stratégie de désinscription.', 'Effectuer un calcul coûteux dans ngAfterViewChecked ou ngDoCheck.'],
       takeaway: 'Choisis un hook uniquement lorsque ton code dépend réellement d’un moment du cycle de vie ; pour calculer une valeur, préfère computed.',
       exercises: ['Ajoute un timer et arrête-le à la destruction.', 'Journalise les changements d’un input productId.', 'Initialise une fausse bibliothèque après le rendu.'],
       exerciseSolutions: ['Conserve l’identifiant de setInterval puis appelle clearInterval avec DestroyRef.onDestroy.', 'Déclare productId avec input.required et lis changes["productId"] dans ngOnChanges.', 'Appelle la fonction d’initialisation dans afterNextRender, pas dans le constructeur directement.'],
@@ -115,6 +126,15 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
     : request;
   return next(authenticated);
 };` },
+      { filename: 'http-errors.ts', caption: 'Traiter puis propager une erreur', code: `return this.http.get<ProductDto[]>('/api/products').pipe(
+  catchError(error => {
+    this.logger.error('Chargement impossible', error);
+    return throwError(() => error);
+  })
+);
+
+// Deux souscriptions indépendantes à un Observable HTTP froid
+// déclenchent deux requêtes, sauf stratégie de partage explicite.` },
     ],
     walkthrough: [
       { code: 'provideHttpClient(...)', explanation: 'Enregistre HttpClient dans l’injecteur de l’application. Sans ce provider, inject(HttpClient) échoue.' },
@@ -122,6 +142,7 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
       { code: 'get<ProductDto[]>', explanation: 'Informe TypeScript du type attendu ; ce n’est pas une validation runtime du serveur.' },
       { code: 'request.clone(...)', explanation: 'Crée une nouvelle requête modifiée, car HttpRequest est immuable.' },
       { code: 'return next(authenticated)', explanation: 'Transmet la requête au maillon suivant et retourne le flux de réponse.' },
+      { code: 'throwError(() => error)', explanation: 'Propage l’erreur après le traitement technique afin que le contexte appelant puisse décider de la réaction métier.' },
     ],
     comparisons: [
       { badge: 'Métier', title: 'Service de data access', description: 'Connaît les endpoints et transforme les DTO.', points: ['Responsabilité locale', 'API lisible', 'Facile à tester'], recommended: true },

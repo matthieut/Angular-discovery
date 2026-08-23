@@ -55,6 +55,29 @@ export class ProfileCard {
     </ul>
   }
 </article>`;
+  readonly responsibilityCode = `@Component({
+  selector: 'app-profile-page',
+  imports: [ProfileCard],
+  template: '<app-profile-card [profile]="profile()" />'
+})
+export class ProfilePage {
+  private readonly api = inject(ProfileApi);
+  readonly profile = toSignal(this.api.getCurrent());
+}
+
+@Injectable({ providedIn: 'root' })
+export class ProfileApi {
+  private readonly http = inject(HttpClient);
+  getCurrent() { return this.http.get<Profile>('/api/profile'); }
+}`;
+  readonly creationModesCode = `// Template
+<app-profile-card />
+
+// Route
+{ path: 'profile', loadComponent: () => import('./profile-card') }
+
+// Création dynamique
+viewContainer.createComponent(ProfileCard);`;
   readonly comparisons: ConceptComparisonItem[] = [
     {
       badge: 'Par défaut',
@@ -76,6 +99,7 @@ export class ProfileCard {
     why: "Découper l'interface évite qu'une seule classe gère toute l'application. Chaque composant peut être compris, testé, réutilisé et modifié sans connaître tous les autres.",
     steps: [
       'Angular rencontre le selector du composant dans un template.',
+      'Une route ou ViewContainerRef peut également demander la création d’une instance.',
       'Il crée une instance de la classe TypeScript.',
       'Le template lit les propriétés ou signals de cette instance.',
       "Quand l'état change, Angular actualise les parties du DOM concernées.",
@@ -101,6 +125,7 @@ export class ProfileCard {
       'Créer un composant uniquement pour déplacer quelques lignes sans responsabilité claire.',
       'Mettre des appels réseau ou des calculs complexes directement dans le template.',
       'Oublier track dans une boucle contenant des éléments qui évoluent.',
+      'Mélanger affichage, accès HTTP et règles métier indépendantes dans le même composant.',
     ],
     takeaway:
       "La classe prépare l'état et répond aux actions ; le template décrit l'affichage de cet état.",

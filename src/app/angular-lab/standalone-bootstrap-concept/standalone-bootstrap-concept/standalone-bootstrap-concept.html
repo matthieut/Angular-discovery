@@ -130,6 +130,8 @@
             caption="Import du composant enfant"
             [code]="parentComponentCode"
           />
+          <app-code-preview filename="app.config.ts" caption="ApplicationConfig, routeur et RouterOutlet" [code]="routingConfigCode" />
+          <app-code-preview filename="main.ts" caption="Bootstrap historique et standalone" [code]="legacyBootstrapCode" />
           <app-code-walkthrough [items]="walkthrough" />
           <h4>Points d’attention</h4>
           <ul>

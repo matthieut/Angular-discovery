@@ -61,6 +61,23 @@ export class InitialsPipe implements PipeTransform {
     return value.split(/\\s+/).map(part => part[0]).join('').slice(0, 2);
   }
 }`;
+  readonly pureImpureCode = `// Pipe pur : valeur par défaut
+@Pipe({ name: 'initials', standalone: true, pure: true })
+export class InitialsPipe { /* recalcul si une entrée change */ }
+
+// Pipe impur : à réserver aux cas exceptionnels
+@Pipe({ name: 'filterUsers', standalone: true, pure: false })
+export class FilterUsersPipe implements PipeTransform {
+  transform(users: User[], query: string): User[] {
+    return users.filter(user => user.name.includes(query));
+  }
+}`;
+  readonly directiveKindsCode = `// Directive d’attribut : modifie un élément existant
+<article [appHighlight]="selected()"></article>
+
+// Contrôle de flux structurel : crée ou retire des vues
+@if (selected()) { <article>Détail</article> }
+@for (user of users(); track user.id) { <user-card [user]="user" /> }`;
   readonly comparisons: ConceptComparisonItem[] = [
     {
       badge: 'Transformation',
@@ -84,6 +101,8 @@ export class InitialsPipe implements PipeTransform {
       'Angular repère le nom de la directive ou du pipe dans le template.',
       "Il fournit la valeur d'entrée au code réutilisable.",
       "La directive agit sur l'élément, tandis que le pipe renvoie une valeur d'affichage.",
+      'Une directive d’attribut modifie un élément existant ; un contrôle structurel crée ou retire des vues.',
+      'Un pipe pur est recalculé lorsque ses entrées changent ; pure: false autorise des exécutions beaucoup plus fréquentes.',
       "Lorsque l'entrée change, Angular réévalue ce qui doit l'être.",
     ],
     demoGuide: [
@@ -104,6 +123,7 @@ export class InitialsPipe implements PipeTransform {
       'Mettre une transformation métier ou un appel HTTP dans un pipe.',
       'Utiliser une directive pour recréer un composant qui devrait avoir son propre template.',
       "Créer un pipe impur pour contourner une mauvaise gestion de l'état.",
+      'Utiliser pure: false sur un filtrage coûteux sans mesurer sa fréquence d’exécution.',
     ],
     takeaway:
       "Le pipe transforme une valeur d'affichage ; la directive enrichit le comportement d'un élément du DOM.",

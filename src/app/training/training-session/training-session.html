@@ -19,7 +19,7 @@
               <div class="answer-grid" role="radiogroup" aria-label="Réponses proposées">
                 @for (option of question.options; track option.id) {
                   <button type="button" role="radio" [attr.aria-checked]="selectedOption() === option.id" [class.is-selected]="selectedOption() === option.id" (click)="selectOption(option.id)">
-                    <span class="radio-dot"></span><span><strong>{{ option.label }}</strong><small>{{ option.detail }}</small></span>
+                    <span class="radio-dot"></span><span><strong>{{ option.label }}</strong></span>
                   </button>
                 }
               </div>

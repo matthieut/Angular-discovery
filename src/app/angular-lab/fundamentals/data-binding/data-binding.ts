@@ -42,6 +42,21 @@ export class DataBinding {
   readonly code = `<h3>{{ name() }}</h3>
 <button [disabled]="locked()" (click)="increment()">{{ count() }}</button>
 <input [ngModel]="name()" (ngModelChange)="name.set($event)" />`;
+  readonly customTwoWayCode = `export class RatingInput {
+  readonly value = input.required<number>();
+  readonly valueChange = output<number>();
+}
+
+// [(value)] se décompose ainsi :
+<rating-input [value]="rating()" (valueChange)="rating.set($event)" />`;
+  readonly reactiveFormCode = `readonly form = new FormGroup({
+  email: new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required]
+  })
+});
+
+<form [formGroup]="form"><input formControlName="email" /></form>`;
   readonly comparisons: ConceptComparisonItem[] = [
     {
       badge: 'Flux explicite',
@@ -66,6 +81,7 @@ export class DataBinding {
       'Le template lit cette valeur avec une syntaxe de binding.',
       'Angular affiche ou applique la valeur au DOM.',
       "Un événement peut ensuite modifier l'état, ce qui actualise le template.",
+      'Un binding personnalisé associe une entrée value à une sortie valueChange ; [(value)] combine les deux.',
     ],
     demoGuide: [
       "Écris dans le champ : name change et l'interpolation Bonjour ... est immédiatement recalculée.",
@@ -85,6 +101,7 @@ export class DataBinding {
       "Utiliser l'interpolation pour une propriété booléenne comme disabled.",
       "Modifier directement le DOM alors qu'un binding suffit.",
       'Employer le two-way binding partout et rendre le sens des mises à jour difficile à suivre.',
+      'Gérer un formulaire métier complexe avec des variables dispersées plutôt qu’un modèle réactif explicite.',
     ],
     takeaway:
       'Les crochets envoient une valeur vers le DOM ; les parenthèses font remonter un événement vers le composant.',
