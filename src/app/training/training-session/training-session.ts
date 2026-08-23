@@ -1,50 +1,42 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ScrollAreaModule } from 'primeng/scrollarea';
-import { ConfidenceLevel } from '../training.models';
+import { findTrainingLesson } from '../training.data';
+import { ConfidenceLevel, QuestionType } from '../training.models';
 import { TrainingProgressService } from '../training-progress.service';
 
-interface AnswerOption { id: string; label: string; detail: string; }
-
 @Component({
-  selector: 'app-training-session',
-  standalone: true,
-  imports: [RouterLink, ScrollAreaModule],
-  templateUrl: './training-session.html',
-  styleUrl: './training-session.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-training-session', standalone: true, imports: [RouterLink, ScrollAreaModule],
+  templateUrl: './training-session.html', styleUrl: './training-session.scss', changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrainingSession {
+  private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly progress = inject(TrainingProgressService);
+  readonly progress = inject(TrainingProgressService);
+  readonly lesson = findTrainingLesson(this.route.snapshot.paramMap.get('conceptId'));
+  readonly questionIndex = this.lesson ? this.progress.nextQuestionIndex(this.lesson) : 0;
+  readonly question = this.lesson?.questions[this.questionIndex];
   readonly selectedOption = signal<string | null>(null);
   readonly confidence = signal<ConfidenceLevel | null>(null);
   readonly hintVisible = signal(false);
-  readonly code = `@Component({
-  selector: 'app-user-page',
-  providers: [UserStore]
-})
-export class UserPage {
-  readonly store = inject(UserStore);
-}`;
-  readonly options: readonly AnswerOption[] = [
-    { id: 'none', label: 'Aucune instance', detail: 'Le provider ne serait jamais résolu.' },
-    { id: 'single', label: 'Une instance globale', detail: 'Une instance pour toute l’application.' },
-    { id: 'component', label: 'Une instance par composant', detail: 'Autant d’instances que de UserPage.' },
-    { id: 'injection', label: 'Une instance par injection', detail: 'Autant d’instances que d’appels à inject().' },
-  ];
+  readonly lessonStats = computed(() => this.lesson ? this.progress.statsFor(this.lesson) : null);
+  readonly mastery = computed(() => this.lesson ? this.progress.dimensionScores(this.lesson) : []);
+  readonly questionProgress = this.lesson ? Math.round((this.questionIndex + 1) / this.lesson.questions.length * 100) : 0;
+
+  typeLabel(type: QuestionType): string {
+    return ({ quiz: 'Question de compréhension', 'code-diagnostic': 'Diagnostic de code', 'code-completion': 'Code à compléter', architecture: 'Choix d’architecture' })[type];
+  }
 
   selectOption(id: string): void { this.selectedOption.set(id); }
   selectConfidence(level: ConfidenceLevel): void { this.confidence.set(level); }
 
   validate(): void {
+    if (!this.lesson || !this.question) return;
     const optionId = this.selectedOption();
     const confidence = this.confidence();
     if (!optionId || !confidence) return;
-    this.progress.saveAnswer({
-      conceptId: 'injection-dependances', optionId, confidence,
-      correct: optionId === 'component', answeredAt: new Date().toISOString(),
-    });
-    void this.router.navigate(['/formation/correction/injection-dependances']);
+    this.progress.saveAnswer({ conceptId: this.lesson.id, questionId: this.question.id, optionId, confidence,
+      usedHint: this.hintVisible(), correct: optionId === this.question.correctOptionId, answeredAt: new Date().toISOString() });
+    void this.router.navigate(['/formation/correction', this.lesson.id]);
   }
 }

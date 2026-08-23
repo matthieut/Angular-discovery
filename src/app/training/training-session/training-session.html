@@ -1,61 +1,57 @@
 <p-scrollarea class="app-container h-full">
-  <p-scrollarea-viewport>
-    <p-scrollarea-content>
-<div class="training-page session-page">
-  <main class="v2-page training-content-shell session-layout">
-    <section class="session-main">
-      <header class="session-header">
-        <a class="back-link" routerLink="/formation"><i class="pi pi-angle-left"></i> Retour à la formation</a>
-        <p class="v2-eyebrow">Fondamentaux · Évaluation 05</p>
-        <h1 class="v2-title">Injection de dépendances</h1>
-        <p class="v2-subtitle">Vérifier que tu comprends la portée des providers et la durée de vie des instances.</p>
-        <div class="question-progress"><strong>Question 3 sur 6</strong><div class="v2-progress" style="--progress: 50%"><span></span></div><span>50%</span></div>
-      </header>
+  <p-scrollarea-viewport><p-scrollarea-content>
+    <div class="training-page session-page">
+      @if (lesson && question) {
+        <main class="v2-page training-content-shell session-layout">
+          <section class="session-main">
+            <header class="session-header">
+              <a class="back-link" routerLink="/formation"><i class="pi pi-angle-left"></i> Retour à la formation</a>
+              <p class="v2-eyebrow">{{ lesson.category }} · Évaluation</p>
+              <h1 class="v2-title">{{ lesson.title }}</h1>
+              <p class="v2-subtitle">{{ lesson.description }}</p>
+              <div class="question-progress"><strong>Question {{ questionIndex + 1 }} sur {{ lesson.questions.length }}</strong><div class="v2-progress" [style.--progress]="questionProgress + '%'"><span></span></div><span>{{ questionProgress }}%</span></div>
+            </header>
 
-      <article class="exercise-card v2-panel v2-panel--strong">
-        <span class="exercise-type"><i class="pi pi-code"></i> Diagnostic de code</span>
-        <h2>Combien d’instances seront créées&nbsp;?</h2>
-        <pre class="v2-code"><code>{{ code }}</code></pre>
-        <div class="answer-grid" role="radiogroup" aria-label="Réponses proposées">
-          @for (option of options; track option.id) {
-            <button type="button" role="radio" [attr.aria-checked]="selectedOption() === option.id" [class.is-selected]="selectedOption() === option.id" (click)="selectOption(option.id)">
-              <span class="radio-dot"></span><span><strong>{{ option.label }}</strong><small>{{ option.detail }}</small></span>
-            </button>
-          }
-        </div>
+            <article class="exercise-card v2-panel v2-panel--strong">
+              <span class="exercise-type"><i [class]="question.type.includes('code') ? 'pi pi-code' : 'pi pi-question-circle'"></i> {{ typeLabel(question.type) }}</span>
+              <h2>{{ question.prompt }}</h2>
+              @if (question.code) { <pre class="v2-code"><code>{{ question.code }}</code></pre> }
+              <div class="answer-grid" role="radiogroup" aria-label="Réponses proposées">
+                @for (option of question.options; track option.id) {
+                  <button type="button" role="radio" [attr.aria-checked]="selectedOption() === option.id" [class.is-selected]="selectedOption() === option.id" (click)="selectOption(option.id)">
+                    <span class="radio-dot"></span><span><strong>{{ option.label }}</strong><small>{{ option.detail }}</small></span>
+                  </button>
+                }
+              </div>
+              @if (hintVisible()) { <p class="hint"><i class="pi pi-lightbulb"></i> {{ question.hint }}</p> }
+              <fieldset class="confidence"><legend>Niveau de confiance</legend>
+                <button type="button" [class.is-selected]="confidence() === 'low'" (click)="selectConfidence('low')">Faible</button>
+                <button type="button" [class.is-selected]="confidence() === 'medium'" (click)="selectConfidence('medium')">Moyen</button>
+                <button type="button" [class.is-selected]="confidence() === 'high'" (click)="selectConfidence('high')">Élevé</button>
+              </fieldset>
+              <div class="exercise-actions">
+                <button class="v2-button" type="button" [disabled]="hintVisible()" (click)="hintVisible.set(true)"><i class="pi pi-eye"></i> Voir un indice</button>
+                <button class="v2-button v2-button--primary" type="button" [disabled]="!selectedOption() || !confidence()" (click)="validate()"><i class="pi pi-check"></i> Valider ma réponse</button>
+              </div>
+            </article>
+            <p class="lab-link-note"><i class="pi pi-info-circle"></i> La correction explique le modèle mental et renvoie vers la fiche exacte du Lab.</p>
+          </section>
 
-        @if (hintVisible()) {
-          <p class="hint"><i class="pi pi-lightbulb"></i> Observe l’endroit où le tableau <code>providers</code> est déclaré : sa position détermine la portée.</p>
-        }
-
-        <fieldset class="confidence"><legend>Niveau de confiance</legend>
-          <button type="button" [class.is-selected]="confidence() === 'low'" (click)="selectConfidence('low')">Faible</button>
-          <button type="button" [class.is-selected]="confidence() === 'medium'" (click)="selectConfidence('medium')">Moyen</button>
-          <button type="button" [class.is-selected]="confidence() === 'high'" (click)="selectConfidence('high')">Élevé</button>
-        </fieldset>
-        <div class="exercise-actions">
-          <button class="v2-button" type="button" (click)="hintVisible.set(true)"><i class="pi pi-eye"></i> Voir un indice</button>
-          <button class="v2-button v2-button--primary" type="button" [disabled]="!selectedOption() || !confidence()" (click)="validate()"><i class="pi pi-check"></i> Valider ma réponse</button>
-        </div>
-      </article>
-      <p class="lab-link-note"><i class="pi pi-info-circle"></i> Une erreur renverra vers la section précise du Lab à revoir.</p>
-    </section>
-
-    <aside class="mastery-sidebar">
-      <section class="mastery-card training-mastery-card v2-panel">
-        <h2 class="v2-section-title">Maîtrise de cette leçon</h2>
-        <div class="mastery-ring training-mastery-ring" aria-label="Maîtrise 62 pour cent"><strong>62<small>%</small></strong></div>
-        @for (metric of [['Compréhension', 75], ['Hiérarchie', 60], ['Portée', 50], ['Décision', 40]]; track metric[0]) {
-          <div class="mastery-row training-mastery-row"><span>{{ metric[0] }}</span><strong>{{ metric[1] }}%</strong><div class="v2-progress" [style.--progress]="metric[1] + '%'"><span></span></div></div>
-        }
-      </section>
-      <section class="objective-card training-objective-card v2-panel"><h2 class="v2-section-title">Objectif</h2><p><i class="pi pi-bullseye"></i> Atteindre 80% sans indice</p><div><span class="v2-badge v2-badge--warning">Fragile</span><span class="v2-badge v2-badge--info">À consolider</span></div></section>
-    </aside>
-  </main>
-</div>
-    </p-scrollarea-content>
-  </p-scrollarea-viewport>
-  <p-scrollarea-scrollbar orientation="vertical">
-    <p-scrollarea-handle />
-  </p-scrollarea-scrollbar>
+          <aside class="mastery-sidebar">
+            <section class="mastery-card training-mastery-card v2-panel">
+              <h2 class="v2-section-title">Maîtrise de cette leçon</h2>
+              <div class="mastery-ring training-mastery-ring" [attr.aria-label]="'Maîtrise ' + (lessonStats()?.mastery ?? 0) + ' pour cent'"><strong>{{ lessonStats()?.mastery ?? 0 }}<small>%</small></strong></div>
+              @for (metric of mastery(); track metric.label) {
+                <div class="mastery-row training-mastery-row"><span>{{ metric.label }}</span><strong>{{ metric.value }}%</strong><div class="v2-progress" [style.--progress]="metric.value + '%'"><span></span></div></div>
+              }
+            </section>
+            <section class="objective-card training-objective-card v2-panel"><h2 class="v2-section-title">Objectif</h2><p><i class="pi pi-bullseye"></i> Atteindre 80% sans indice</p><div><span class="v2-badge v2-badge--info">{{ lessonStats()?.answered ?? 0 }}/{{ lesson.questions.length }} répondues</span></div></section>
+          </aside>
+        </main>
+      } @else {
+        <main class="v2-page training-content-shell"><h1 class="v2-title">Évaluation introuvable</h1><a class="v2-button" routerLink="/formation">Retour à la formation</a></main>
+      }
+    </div>
+  </p-scrollarea-content></p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical"><p-scrollarea-handle /></p-scrollarea-scrollbar>
 </p-scrollarea>
