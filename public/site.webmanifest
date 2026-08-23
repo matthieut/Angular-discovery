@@ -1,0 +1,14 @@
+{
+  "name": "Portfolio de Matthieu Talleu",
+  "short_name": "M. Talleu",
+  "description": "Portfolio, CV, projets et laboratoire Angular de Matthieu Talleu.",
+  "lang": "fr",
+  "start_url": "/home",
+  "display": "standalone",
+  "background_color": "#070e1d",
+  "theme_color": "#070e1d",
+  "icons": [
+    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

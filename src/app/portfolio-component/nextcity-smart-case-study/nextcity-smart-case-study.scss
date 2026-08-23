@@ -8,9 +8,7 @@
 * { box-sizing: border-box; }
 
 .case-page {
-  //width: min(1380px, calc(100% - 2rem));
   margin-inline: auto;
-  padding: var(--space-4) 0 7rem;
 }
 
 .back-link {
@@ -36,14 +34,7 @@
   font-size: var(--font-size-label);
 }
 
-h1 {
-  margin: 0;
-  font-size: var(--font-size-display);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-h1 span { color: var(--color-brand-violet); }
+.case-hero .app-page-title { font-size: var(--font-size-display); line-height: 0.95; letter-spacing: -0.05em; }
 
 .case-hero__lead {
   max-width: 64ch;
@@ -124,7 +115,6 @@ h1 span { color: var(--color-brand-violet); }
 }
 
 @media (max-width: 700px) {
-  .case-page { width: min(100% - 1rem, 1380px); }
   .case-metrics, .challenge-grid, .responsibility-list { grid-template-columns: 1fr; }
   .outcome { align-items: flex-start; flex-direction: column; }
 }

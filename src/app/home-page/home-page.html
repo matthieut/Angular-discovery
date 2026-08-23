@@ -1,0 +1,74 @@
+<p-scrollarea class="app-container h-full">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
+      <main class="home-page app-content-page">
+        <section class="home-hero" aria-labelledby="home-title">
+          <div class="home-hero__content">
+            <p class="app-eyebrow">Architecte logiciel · Tech Lead · Freelance</p>
+            <h1 id="home-title" class="home-title"><span class="app-title-accent">Je transforme des applications métier complexes</span> en solutions fiables et évolutives</h1>
+            <p class="home-hero__lead">12 ans d’expérience en .NET, Angular, architecture logicielle et pilotage technique.</p>
+            <div class="home-actions">
+              <a class="home-action app-action-primary" routerLink="/portfolio">Découvrir mes réalisations <i class="pi pi-arrow-right"></i></a>
+              <a class="home-action home-action--secondary" routerLink="/cv">Consulter mon CV</a>
+            </div>
+            <a class="lab-entry" routerLink="/lab">Explorer Angular Lab <i class="pi pi-arrow-right"></i></a>
+          </div>
+
+          <figure class="architecture-visual">
+            <img
+              src="/images/software-architecture-hero.png"
+              alt="Architecture logicielle représentée par des modules reliés à la base de données, au cloud, au code, aux utilisateurs et aux indicateurs"
+            />
+          </figure>
+        </section>
+
+        <section class="home-proof" aria-label="Chiffres clés">
+          <article class="app-surface"><span class="home-icon"><i class="pi pi-calendar"></i></span><p><strong>12+</strong><small>ans d’expérience</small></p></article>
+          <article class="app-surface"><span class="home-icon"><i class="pi pi-users"></i></span><p><strong>7</strong><small>développeurs pilotés</small></p></article>
+          <article class="app-surface"><span class="home-icon"><i class="pi pi-chart-bar"></i></span><p><strong>1,2 M+</strong><small>équipements en production</small></p></article>
+        </section>
+
+        <section class="home-value" aria-label="Ma contribution">
+          <article class="app-surface"><span class="home-icon"><i class="pi pi-search"></i></span><div><h2>Comprendre</h2><p>Analyser les pratiques métier, les contraintes opérationnelles et les difficultés des utilisateurs.</p></div></article>
+          <article class="app-surface"><span class="home-icon"><i class="pi pi-sitemap"></i></span><div><h2>Concevoir</h2><p>Définir une architecture robuste et évolutive, réellement adaptée au contexte.</p></div></article>
+          <article class="app-surface"><span class="home-icon home-icon--cyan"><i class="pi pi-send"></i></span><div><h2>Piloter et livrer</h2><p>Accompagner l’équipe, sécuriser les décisions et conduire la solution jusqu’à la production.</p></div></article>
+        </section>
+
+        <section class="featured-case app-surface" aria-labelledby="featured-case-title">
+          <div class="featured-case__content">
+            <p class="app-eyebrow">Projet phare · Smart City</p>
+            <h2 id="featured-case-title"><span class="app-title-accent">NextCity</span> SMART</h2>
+            <p class="featured-case__context">Angers Loire Métropole · EQUANS</p>
+            <p class="featured-case__description">Pilotage du projet, interlocuteur principal du client et définition des processus métier après immersion auprès des équipes opérationnelles d’Angers.</p>
+            <dl class="featured-case__metrics">
+              <div><dt>70 000+</dt><dd>équipements</dd></div>
+              <div><dt>1 min 56 → 22 s</dt><dd>temps de chargement</dd></div>
+              <div><dt>3 000 → 20 000+</dt><dd>objets cartographiques</dd></div>
+            </dl>
+            <a class="home-action app-action-primary" routerLink="/portfolio/nextcity-smart">Découvrir l’étude de cas <i class="pi pi-arrow-right"></i></a>
+          </div>
+          <figure class="smart-city">
+            <img
+              src="/images/nextcity-smart-home.png"
+              alt="Panorama nocturne d’une ville connectée avec des équipements urbains, des données et des services géolocalisés"
+            />
+          </figure>
+        </section>
+
+        <section class="references app-surface" aria-labelledby="references-title">
+          <header><p class="app-eyebrow">Contextes professionnels</p><h2 id="references-title">Des solutions utilisées sur le terrain</h2></header>
+          <div class="reference-group"><h3>Au sein d’Agapes Services</h3><ul>@for (reference of agapesReferences; track reference) { <li>{{ reference }}</li> }</ul></div>
+          <div class="reference-group"><h3>Au sein d’Effect Software</h3><ul>@for (reference of effectReferences; track reference) { <li>{{ reference }}</li> }</ul></div>
+          <p class="references__note">Références présentées uniquement pour contextualiser les environnements d’utilisation des solutions développées dans le cadre de mes précédentes expériences professionnelles.</p>
+        </section>
+
+        <section class="home-contact app-surface" aria-labelledby="contact-title">
+          <span class="home-icon"><i class="pi pi-comments"></i></span>
+          <div><h2 id="contact-title">Un projet de modernisation ou une application métier complexe&nbsp;?</h2><p>Disponible autour de Lille, Douai, Lens et Arras, en hybride ou à distance.</p></div>
+          <div class="home-contact__actions"><a class="home-action app-action-primary" href="mailto:mtalleu@outlook.fr">Me contacter <i class="pi pi-arrow-right"></i></a><a class="home-action home-action--secondary" href="/cv/matthieu-talleu-cv.pdf" download><i class="pi pi-download"></i> Télécharger mon CV</a></div>
+        </section>
+      </main>
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical"><p-scrollarea-handle /></p-scrollarea-scrollbar>
+</p-scrollarea>

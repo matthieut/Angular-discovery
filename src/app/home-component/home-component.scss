@@ -37,12 +37,7 @@
   box-shadow: 0 0 28px var(--shadow-brand-glow);
 }
 
-h1 {
-  margin: 0 0 .35rem;
-  font-size: var(--font-size-page-title);
-  line-height: 1;
-  letter-spacing: .025em;
-}
+.cv-profile h1 { margin-bottom: .35rem; }
 
 .cv-profile__role {
   display: flex;
@@ -141,9 +136,7 @@ h1 {
 
 
 .cv-page {
-  width: min(1480px, calc(100% - 2rem));
   margin-inline: auto;
-  padding: clamp(1rem, 2.5vw, 2rem) 0 7rem;
 }
 
 .metrics {
@@ -235,12 +228,11 @@ h1 {
 
 .case-study h3 {
   margin: -.25rem 0 .3rem;
-  color: var(--color-brand-cyan);
+  color: var(--color-text);
   font-size: var(--font-size-2xl);
 }
 
-.case-study h3 span { color: var(--color-brand-violet); }
-.case-study__client { margin: 0 0 1rem; font-weight: 700; }
+.case-study__client { margin: 0 0 1rem; color: var(--color-brand-cyan); font-weight: 700; }
 .text-link { display: inline-flex; gap: .5rem; margin-top: 1.2rem; color: var(--color-brand-cyan); font-weight: 700; text-decoration: none; }
 .text-link:hover { color: var(--color-brand-violet); }
 
@@ -277,6 +269,5 @@ h1 {
 }
 
 @media (max-width: 480px) {
-  .cv-page { width: min(100% - 1rem, 1480px); }
   .skill-list { grid-template-columns: 1fr; }
 }
